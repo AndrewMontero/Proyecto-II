@@ -12,10 +12,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author 50672
- */
+
 public class RolDAO {
      public RolDAO() {
     }
