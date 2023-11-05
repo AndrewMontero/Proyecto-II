@@ -1,10 +1,9 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -13,8 +12,6 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.Reservation;
 import model.ReservationDAO;
-
-
 
 public class CtrlReservation {
 
@@ -34,15 +31,26 @@ public class CtrlReservation {
         }
     }
 
+    public void addReservation(JTextField userName, JTextField date, JTextField quantity, JTextField eventId) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date reservationDate = dateFormat.parse(date.getText());
+            this.dao.create(new Reservation(userName.getText(), reservationDate, Integer.parseInt(quantity.getText()), Integer.parseInt(eventId.getText())));
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Error de formato en la fecha, el formato correcto es año-mes-día (yyyy-MM-dd): " + ex.toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar la reserva: " + e.toString());
+        }
+    }
 
-    public void deleteEvent(){
+    public void deleteRol() {
         this.dao.delete(this.id);
     }
-   
+
     public void clearFields(JTextField IDNumber, JTextField name) {
         IDNumber.setText("");
         name.setText("");
-      
+
     }
 
 }

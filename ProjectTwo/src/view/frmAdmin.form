@@ -70,11 +70,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="btnPanel4" pref="119" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btnPanel3" max="32767" attributes="0"/>
-                          <Component id="btnPanel1" alignment="1" max="32767" attributes="0"/>
-                          <Component id="btnPanel2" alignment="1" pref="119" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btnPanel3" max="32767" attributes="0"/>
+                      <Component id="btnPanel1" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btnPanel2" alignment="1" pref="119" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="35" max="32767" attributes="0"/>
               </Group>
@@ -157,7 +155,7 @@
     <Container class="javax.swing.JTabbedPane" name="tabPanels">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="160" y="50" width="1130" height="780"/>
+          <AbsoluteConstraints x="160" y="40" width="1130" height="790"/>
         </Constraint>
       </Constraints>
 
@@ -187,7 +185,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Component id="lblHeader" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="719" max="32767" attributes="0"/>
+                      <EmptySpace pref="724" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -224,7 +222,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="lblHeaderReservations" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="701" max="32767" attributes="0"/>
+                      <EmptySpace pref="706" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -261,7 +259,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="lblMyProfileHeader" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="705" max="32767" attributes="0"/>
+                      <EmptySpace pref="710" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -298,7 +296,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="701" max="32767" attributes="0"/>
+                      <EmptySpace pref="706" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

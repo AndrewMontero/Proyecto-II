@@ -1,10 +1,9 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -13,8 +12,6 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.User;
 import model.UserDAO;
-
-
 
 public class CtrlUser {
 
@@ -34,15 +31,26 @@ public class CtrlUser {
         }
     }
 
+    public void addUser(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password, JTextField rolId) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date userBirthDate = dateFormat.parse(birthDate.getText());
+            this.dao.create(new User(Integer.parseInt(IDNumber.getText()), name.getText(), lastName.getText(), userBirthDate, email.getText(), Integer.parseInt(phoneNumber.getText()), password.getText(), Integer.parseInt(rolId.getText())));
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Error de formato en la fecha, el formato correcto es año-mes-día (yyyy-MM-dd): " + ex.toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar el usuario: " + e.toString());
+        }
+    }
 
-    public void deleteEvent(){
+    public void deleteuser() {
         this.dao.delete(this.id);
     }
-   
+
     public void clearFields(JTextField IDNumber, JTextField name) {
         IDNumber.setText("");
         name.setText("");
-      
+
     }
 
 }

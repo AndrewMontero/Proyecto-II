@@ -112,10 +112,9 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                    .addGroup(jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)))
+                    .addComponent(btnPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, Short.MAX_VALUE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jpMenuLayout.setVerticalGroup(
@@ -150,7 +149,7 @@ public class frmAdmin extends javax.swing.JFrame {
             .addGroup(jpSearchLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblHeader)
-                .addContainerGap(719, Short.MAX_VALUE))
+                .addContainerGap(724, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Eventos Disponibles", jpSearch);
@@ -171,7 +170,7 @@ public class frmAdmin extends javax.swing.JFrame {
             .addGroup(jpReservationsLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(lblHeaderReservations)
-                .addContainerGap(701, Short.MAX_VALUE))
+                .addContainerGap(706, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Reservaciones", jpReservations);
@@ -192,7 +191,7 @@ public class frmAdmin extends javax.swing.JFrame {
             .addGroup(jpmyProfileLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(lblMyProfileHeader)
-                .addContainerGap(705, Short.MAX_VALUE))
+                .addContainerGap(710, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Mi Perfil", jpmyProfile);
@@ -213,12 +212,12 @@ public class frmAdmin extends javax.swing.JFrame {
             .addGroup(jpUserSettingsLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addContainerGap(701, Short.MAX_VALUE))
+                .addContainerGap(706, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Gestión de usuarios", jpUserSettings);
 
-        getContentPane().add(tabPanels, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 1130, 780));
+        getContentPane().add(tabPanels, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 1130, 790));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

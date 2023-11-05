@@ -1,11 +1,6 @@
-
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -14,8 +9,6 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.Place;
 import model.PlaceDAO;
-
-
 
 public class CtrlPlace {
 
@@ -35,15 +28,22 @@ public class CtrlPlace {
         }
     }
 
+    public void addPlace(JTextField name, JTextField address, JTextField city, JTextField postalCode, JTextField latitude, JTextField longitude, JTextField tripAdvisorLink) {
+        try {
+            this.dao.create(new Place(name.getText(), address.getText(), city.getText(), Integer.parseInt(postalCode.getText()), latitude.getText(), longitude.getText(), tripAdvisorLink.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar el lugar: " + e.toString());
+        }
+    }
 
-    public void deleteEvent(){
+    public void deletePlace() {
         this.dao.delete(this.id);
     }
-   
+
     public void clearFields(JTextField IDNumber, JTextField name) {
         IDNumber.setText("");
         name.setText("");
-      
+
     }
 
 }

@@ -1,10 +1,9 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -14,14 +13,12 @@ import javax.swing.table.TableRowSorter;
 import model.Event;
 import model.EventDAO;
 
-
-
 public class CtrlEvent {
 
     EventDAO dao = new EventDAO();
     int id;
 
-    public void loadDataTeacher(JTable table) {
+    public void loadDataEvent(JTable table) {
 
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(model);
@@ -34,14 +31,25 @@ public class CtrlEvent {
         }
     }
 
+    public void addEvent(JTextField name, JTextField description, JTextField date, JTextField address, JTextField city, JTextField postalCode, JTextField price, JTextField room, JTextField placeId) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date eventDate = dateFormat.parse(date.getText());
+            this.dao.create(new Event(name.getText(), description.getText(), eventDate, address.getText(), city.getText(), Integer.parseInt(postalCode.getText()), Double.parseDouble(price.getText()), Integer.parseInt(room.getText()), Integer.parseInt(placeId.getText())));
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Error de formato en la fecha, el formato correcto es año-mes-día (yyyy-MM-dd): " + ex.toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar el evento: " + e.toString());
+        }
+    }
 
-    public void deleteEvent(){
+    public void deleteEvent() {
         this.dao.delete(this.id);
     }
-    
+
     public void clearFields(JTextField IDNumber, JTextField name) {
         IDNumber.setText("");
         name.setText("");
-      
+
     }
 }

@@ -1,11 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -14,14 +9,12 @@ import javax.swing.table.TableRowSorter;
 import model.Rol;
 import model.RolDAO;
 
-
-
 public class CtrlRol {
 
     RolDAO dao = new RolDAO();
     int id;
 
-    public void loadDataPlace(JTable table) {
+    public void loadDataRol(JTable table) {
 
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(model);
@@ -34,15 +27,14 @@ public class CtrlRol {
         }
     }
 
-
-    public void deleteEvent(){
+    public void deleteEvent() {
         this.dao.delete(this.id);
     }
-   
+
     public void clearFields(JTextField IDNumber, JTextField name) {
         IDNumber.setText("");
         name.setText("");
-      
+
     }
 
 }
