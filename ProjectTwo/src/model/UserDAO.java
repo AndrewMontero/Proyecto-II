@@ -110,7 +110,7 @@ public class UserDAO {
         }
     }
 
-    public int getIDRol(String name) {
+    public int getIDUser(String name) {
         int ID = 0;
         DBConnection db = new DBConnection();
         String sql = "SELECT id FROM users WHERE name = ?";
@@ -129,7 +129,7 @@ public class UserDAO {
         return ID;
     }
 
-    public String getNameRol(int id) {
+    public String getNameUser(int id) {
         String name = "";
         DBConnection db = new DBConnection();
         String sql = "SELECT name FROM users WHERE id = ?";

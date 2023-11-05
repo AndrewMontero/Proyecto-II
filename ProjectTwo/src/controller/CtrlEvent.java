@@ -12,10 +12,12 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.Event;
 import model.EventDAO;
+import model.PlaceDAO;
 
 public class CtrlEvent {
 
     EventDAO dao = new EventDAO();
+    PlaceDAO place = new PlaceDAO();
     int id;
 
     public void loadDataEvent(JTable table) {
@@ -26,7 +28,7 @@ public class CtrlEvent {
         model.setRowCount(0);
         List<Event> event = dao.read();
         for (Event events : event) {
-            Object[] row = {events.getId(), events.getName(), events.getDescription(), events.getDate(), events.getAddress(), events.getCity(), events.getPostal_code(), events.getPrice(), events.getRoom(), events.getPlace_id()};
+            Object[] row = {events.getId(), events.getName(), events.getDescription(), events.getDate(), events.getAddress(), events.getCity(), events.getPostal_code(), events.getPrice(), events.getRoom(), this.place.getNamePlaces(events.getPlace_id())};
             model.addRow(row);
         }
     }

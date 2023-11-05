@@ -10,12 +10,14 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import model.EventDAO;
 import model.Reservation;
 import model.ReservationDAO;
 
 public class CtrlReservation {
 
     ReservationDAO dao = new ReservationDAO();
+    EventDAO event = new EventDAO();
     int id;
 
     public void loadDataReservation(JTable table) {
@@ -26,7 +28,7 @@ public class CtrlReservation {
         model.setRowCount(0);
         List<Reservation> reservation = dao.read();
         for (Reservation reservations : reservation) {
-            Object[] row = {reservations.getId(), reservations.getUser_name(), reservations.getDate(), reservations.getQuantity(), reservations.getEvent_id()};
+            Object[] row = {reservations.getId(), reservations.getUser_name(), reservations.getDate(), reservations.getQuantity(), this.event.getNameEvents(reservations.getEvent_id())};
             model.addRow(row);
         }
     }
