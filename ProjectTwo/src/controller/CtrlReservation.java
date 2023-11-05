@@ -47,10 +47,10 @@ public class CtrlReservation {
         this.dao.delete(this.id);
     }
 
-    public void clearFields(JTextField IDNumber, JTextField name) {
-        IDNumber.setText("");
-        name.setText("");
-
+    public void clearFields(JTextField userName, JTextField date, JTextField quantity, JTextField eventId) {
+        userName.setText("");
+        date.setText("");
+        quantity.setText("");
+        eventId.setText("");
     }
-
 }

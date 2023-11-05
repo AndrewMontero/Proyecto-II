@@ -47,9 +47,15 @@ public class CtrlEvent {
         this.dao.delete(this.id);
     }
 
-    public void clearFields(JTextField IDNumber, JTextField name) {
-        IDNumber.setText("");
+    public void clearFields(JTextField name, JTextField description, JTextField date, JTextField address, JTextField city, JTextField postalCode, JTextField price, JTextField room, JTextField placeId) {
         name.setText("");
-
+        description.setText("");
+        date.setText("");
+        address.setText("");
+        city.setText("");
+        postalCode.setText("");
+        price.setText("");
+        room.setText("");
+        placeId.setText("");
     }
 }

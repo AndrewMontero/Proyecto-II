@@ -14,12 +14,12 @@ import model.User;
 import model.UserDAO;
 
 public class CtrlUser {
-
+    
     UserDAO dao = new UserDAO();
     int id;
-
+    
     public void loadDataUser(JTable table) {
-
+        
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(model);
         table.setRowSorter(order);
@@ -30,7 +30,7 @@ public class CtrlUser {
             model.addRow(row);
         }
     }
-
+    
     public void addUser(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password, JTextField rolId) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -42,15 +42,19 @@ public class CtrlUser {
             JOptionPane.showMessageDialog(null, "Error al agregar el usuario: " + e.toString());
         }
     }
-
+    
     public void deleteuser() {
         this.dao.delete(this.id);
     }
-
-    public void clearFields(JTextField IDNumber, JTextField name) {
+    
+    public void clearFields(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password, JTextField rolId) {
         IDNumber.setText("");
         name.setText("");
-
+        lastName.setText("");
+        birthDate.setText("");
+        email.setText("");
+        phoneNumber.setText("");
+        password.setText("");
+        rolId.setText("");
     }
-
 }

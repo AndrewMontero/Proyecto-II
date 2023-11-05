@@ -40,10 +40,13 @@ public class CtrlPlace {
         this.dao.delete(this.id);
     }
 
-    public void clearFields(JTextField IDNumber, JTextField name) {
-        IDNumber.setText("");
+    public void clearFields(JTextField name, JTextField address, JTextField city, JTextField postalCode, JTextField latitude, JTextField longitude, JTextField tripAdvisorLink) {
         name.setText("");
-
+        address.setText("");
+        city.setText("");
+        postalCode.setText("");
+        latitude.setText("");
+        longitude.setText("");
+        tripAdvisorLink.setText("");
     }
-
 }
