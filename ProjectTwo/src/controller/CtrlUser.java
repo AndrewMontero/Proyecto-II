@@ -44,6 +44,19 @@ public class CtrlUser {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar el usuario: " + e.toString());
         }
+        this.clearFields(IDNumber, name, lastName, birthDate, email, phoneNumber, password, email);
+    }
+
+    public void updatedUser(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date userBirthDate = dateFormat.parse(birthDate.getText());
+            this.dao.update(new User(this.id, Integer.parseInt(IDNumber.getText()), name.getText(), lastName.getText(), userBirthDate, email.getText(), Integer.parseInt(phoneNumber.getText()), password.getText(), rolId));
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Error de formato, el indicado es año-mes-día : ");
+        }
+        this.clearFields(IDNumber, name, lastName, birthDate, email, phoneNumber, password, email);
     }
 
     public void deleteuser() {

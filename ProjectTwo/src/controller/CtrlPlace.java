@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.ParseException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -34,6 +35,16 @@ public class CtrlPlace {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar el lugar: " + e.toString());
         }
+        this.clearFields(name, address, city, postalCode, latitude, longitude, tripAdvisorLink);
+    }
+    
+     public void updatedPlace(JTextField name, JTextField address, JTextField city, JTextField postalCode, JTextField latitude, JTextField longitude, JTextField tripAdvisorLink) {
+        try {     
+            this.dao.update(new Place(this.id, name.getText(), address.getText(), city.getText(), Integer.parseInt(postalCode.getText()), latitude.getText(), longitude.getText(), tripAdvisorLink.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar el lugar: " + e.toString());
+        }
+        this.clearFields(name, address, city, postalCode, latitude, longitude, tripAdvisorLink);
     }
 
     public void deletePlace() {

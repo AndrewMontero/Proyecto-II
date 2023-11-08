@@ -43,6 +43,19 @@ public class CtrlEvent {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar el evento: " + e.toString());
         }
+        this.clearFields(name, description, date, address, city, postalCode, price, room, placeId);
+    }
+
+    public void updatedEvent(JTextField name, JTextField description, JTextField date, JTextField address, JTextField city, JTextField postalCode, JTextField price, JTextField room, JTextField placeId) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date eventDate = dateFormat.parse(date.getText());
+            this.dao.update(new Event(this.id, name.getText(), description.getText(), eventDate, address.getText(), city.getText(), Integer.parseInt(postalCode.getText()), Double.parseDouble(price.getText()), Integer.parseInt(room.getText()), Integer.parseInt(placeId.getText())));
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Error de formato, el indicado es año-mes-día : ");
+        }
+        this.clearFields(name, description, date, address, city, postalCode, price, room, placeId);
     }
 
     public void deleteEvent() {

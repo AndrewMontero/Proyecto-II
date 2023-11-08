@@ -13,6 +13,7 @@ import javax.swing.table.TableRowSorter;
 import model.EventDAO;
 import model.Reservation;
 import model.ReservationDAO;
+import model.User;
 
 public class CtrlReservation {
 
@@ -43,6 +44,19 @@ public class CtrlReservation {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar la reserva: " + e.toString());
         }
+        this.clearFields(userName, date, quantity, eventId);
+    }
+    
+     public void updatedReservation(JTextField userName, JTextField date, JTextField quantity, JTextField eventId) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date reservationDate = dateFormat.parse(date.getText());
+            this.dao.update(new Reservation(this.id, userName.getText(), reservationDate, Integer.parseInt(quantity.getText()), Integer.parseInt(eventId.getText())));
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Error de formato, el indicado es año-mes-día : ");
+        }
+        this.clearFields(userName, date, quantity, eventId);
     }
 
     public void deleteRol() {
