@@ -93,6 +93,7 @@ public class frmUser extends javax.swing.JFrame {
 
         btnPanel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPanel3.setForeground(new java.awt.Color(255, 255, 255));
+        btnPanel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/usuario.png"))); // NOI18N
         btnPanel3.setText("Mi Perfil");
         btnPanel3.setBorderPainted(false);
         btnPanel3.setContentAreaFilled(false);
@@ -104,6 +105,7 @@ public class frmUser extends javax.swing.JFrame {
 
         btnPanel4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPanel4.setForeground(new java.awt.Color(255, 255, 255));
+        btnPanel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/salida.png"))); // NOI18N
         btnPanel4.setText("Salir");
         btnPanel4.setBorderPainted(false);
         btnPanel4.setContentAreaFilled(false);
@@ -166,7 +168,9 @@ public class frmUser extends javax.swing.JFrame {
         txtFilterByLocation.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         btnFilter.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/filtrar.png"))); // NOI18N
         btnFilter.setText("FILTRAR");
+        btnFilter.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jPFiltersLayout = new javax.swing.GroupLayout(jPFilters);
         jPFilters.setLayout(jPFiltersLayout);
@@ -238,7 +242,9 @@ public class frmUser extends javax.swing.JFrame {
         );
 
         btnClearFilter.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btnClearFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/escoba.png"))); // NOI18N
         btnClearFilter.setText("Limpiar mi búsqueda anterior");
+        btnClearFilter.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jpSearchLayout = new javax.swing.GroupLayout(jpSearch);
         jpSearch.setLayout(jpSearchLayout);
@@ -250,7 +256,7 @@ public class frmUser extends javax.swing.JFrame {
                     .addComponent(jPFilters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scrollAvailable)
-                    .addComponent(btnClearFilter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClearFilter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         jpSearchLayout.setVerticalGroup(
@@ -460,13 +466,12 @@ public class frmUser extends javax.swing.JFrame {
                             .addComponent(txtPhone))
                         .addGap(18, 18, 18)
                         .addComponent(btnBirthCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jpmyProfileLayout.createSequentialGroup()
-                            .addGap(46, 46, 46)
-                            .addComponent(lblHeaderMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jpmyProfileLayout.createSequentialGroup()
-                            .addGap(504, 504, 504)
-                            .addComponent(btnUpdateInfoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jpmyProfileLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(lblHeaderMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpmyProfileLayout.createSequentialGroup()
+                        .addGap(504, 504, 504)
+                        .addComponent(btnUpdateInfoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(397, Short.MAX_VALUE))
         );
         jpmyProfileLayout.setVerticalGroup(
@@ -516,6 +521,7 @@ public class frmUser extends javax.swing.JFrame {
 
         btnPanel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        btnPanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/plano-alt.png"))); // NOI18N
         btnPanel1.setText("Buscar eventos");
         btnPanel1.setBorderPainted(false);
         btnPanel1.setContentAreaFilled(false);
@@ -528,6 +534,7 @@ public class frmUser extends javax.swing.JFrame {
         btnPanel2.setBackground(new java.awt.Color(255, 255, 255));
         btnPanel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        btnPanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/billete-de-avion.png"))); // NOI18N
         btnPanel2.setText("Ver reservaciones");
         btnPanel2.setBorderPainted(false);
         btnPanel2.setContentAreaFilled(false);

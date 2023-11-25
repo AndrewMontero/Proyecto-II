@@ -16,6 +16,7 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
@@ -84,6 +85,7 @@ public class frmLogin extends javax.swing.JFrame {
         );
 
         btnLogin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/llave.png"))); // NOI18N
         btnLogin.setText("Ingresar");
         btnLogin.setBorderPainted(false);
         btnLogin.setContentAreaFilled(false);
