@@ -17,15 +17,20 @@ public class EventPanel extends javax.swing.JPanel {
         this.event = event;
         lblName.setText(event.getName());
         lblAddress.setText("Direccion: " + event.getAddress());
-
         try {
-            Event details = api.getEventDetails(event.getId());
+
             List<String> imageUrls = api.getEventImages(event.getId());
-            event.setDescription(details.getDescription());
             event.setImageUrls(imageUrls);
             updateDetails();
         } catch (Exception e) {
-            System.out.println("Error cargando detalles: " + e.getMessage());
+            System.out.println("Error cargando imagenes: " + e.getMessage());
+        }
+        try {
+            Event details = api.getEventDetails(event.getId());
+            event.setDescription(details.getDescription());
+        } catch (Exception e) {
+            System.out.println("Error cargando descripcion: " + e.getMessage());
+            btnDetails.setEnabled(false);
         }
         this.parent = parent;
     }
