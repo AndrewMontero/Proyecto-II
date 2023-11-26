@@ -4,17 +4,21 @@
  */
 package view;
 
+import controller.CtrlTripAdvisor;
+
 /**
  *
  * @author Diego
  */
 public class frmAdmin extends javax.swing.JFrame {
-
+CtrlTripAdvisor cta = new CtrlTripAdvisor();
     /**
      * Creates new form frmAdmin
      */
     public frmAdmin() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -50,6 +54,8 @@ public class frmAdmin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         btnFilter = new javax.swing.JButton();
+        lblFinalDate1 = new javax.swing.JLabel();
+        boxCategory = new javax.swing.JComboBox<>();
         scrollAvailable = new javax.swing.JScrollPane();
         btnClearFilter = new javax.swing.JButton();
         jpReservations = new javax.swing.JPanel();
@@ -230,7 +236,7 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeader1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeader1.setText("Buscar eventos cerca de mi");
 
-        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblFilterByName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFilterByName.setText("Nombre del evento:");
@@ -245,7 +251,7 @@ public class frmAdmin extends javax.swing.JFrame {
         btnCalendarBegin.setText("...");
 
         lblFinalDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblFinalDate.setText("Fecha final:");
+        lblFinalDate.setText("Categoria:");
 
         txtFinalDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
@@ -260,6 +266,16 @@ public class frmAdmin extends javax.swing.JFrame {
         btnFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/filtrar.png"))); // NOI18N
         btnFilter.setText("FILTRAR");
         btnFilter.setContentAreaFilled(false);
+        btnFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilterActionPerformed(evt);
+            }
+        });
+
+        lblFinalDate1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        lblFinalDate1.setText("Fecha final:");
+
+        boxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hotels", "attractions ", "restaurants", "geos" }));
 
         javax.swing.GroupLayout jPFiltersLayout = new javax.swing.GroupLayout(jPFilters);
         jPFilters.setLayout(jPFiltersLayout);
@@ -282,16 +298,18 @@ public class frmAdmin extends javax.swing.JFrame {
                                     .addGroup(jPFiltersLayout.createSequentialGroup()
                                         .addComponent(lblFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(28, 28, 28)
+                                        .addComponent(lblFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPFiltersLayout.createSequentialGroup()
                                         .addComponent(lblBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnCalendarBegin)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(lblFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(124, 124, 124)
                                         .addComponent(txtFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnCalendarFinal)))
@@ -302,6 +320,11 @@ public class frmAdmin extends javax.swing.JFrame {
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 938, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 938, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(42, 42, 42))
+            .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPFiltersLayout.createSequentialGroup()
+                    .addGap(348, 348, 348)
+                    .addComponent(lblFinalDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(549, Short.MAX_VALUE)))
         );
         jPFiltersLayout.setVerticalGroup(
             jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +338,9 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFilterByLocation)
-                    .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFinalDate)
+                    .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -323,11 +348,15 @@ public class frmAdmin extends javax.swing.JFrame {
                     .addComponent(lblBeginDate)
                     .addComponent(txtBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCalendarBegin)
-                    .addComponent(lblFinalDate)
                     .addComponent(txtFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCalendarFinal)
                     .addComponent(btnFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
+            .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFiltersLayout.createSequentialGroup()
+                    .addContainerGap(124, Short.MAX_VALUE)
+                    .addComponent(lblFinalDate1)
+                    .addGap(34, 34, 34)))
         );
 
         btnClearFilter.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -367,7 +396,7 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeaderReservations.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeaderReservations.setText("Ver reservaciones");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblUserR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblUserR.setText("Usuario:");
@@ -804,12 +833,17 @@ public class frmAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteUserActionPerformed
 
+    private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
+        this.cta.searchEvents(txtFilterByName, txtFilterByLocation, scrollAvailable, boxCategory);
+    }//GEN-LAST:event_btnFilterActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxCategory;
     private javax.swing.JButton btnBirthCalendar;
     private javax.swing.JButton btnBirthCalendar1;
     private javax.swing.JButton btnCalendarBegin;
@@ -850,6 +884,7 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel lblFilterByLocation;
     private javax.swing.JLabel lblFilterByName;
     private javax.swing.JLabel lblFinalDate;
+    private javax.swing.JLabel lblFinalDate1;
     private javax.swing.JLabel lblHeader1;
     private javax.swing.JLabel lblHeaderMyProfile;
     private javax.swing.JLabel lblHeaderMyProfile1;

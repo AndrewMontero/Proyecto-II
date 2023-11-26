@@ -13,8 +13,8 @@ public class Main {
      */
     public static void main(String[] args) {
         System.out.println("We gonna start the system, please wait a moment!");
-        frmUser ventanaAdmin = new frmUser();
+        frmAdmin ventanaAdmin = new frmAdmin();
         ventanaAdmin.setVisible(true);
     }
-    
+
 }

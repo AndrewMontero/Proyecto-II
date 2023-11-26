@@ -4,11 +4,15 @@
  */
 package view;
 
+import controller.CtrlTripAdvisor;
+
 /**
  *
  * @author Bravo
  */
 public class frmUser extends javax.swing.JFrame {
+
+    CtrlTripAdvisor cta = new CtrlTripAdvisor();
 
     /**
      * Creates new form frmUser
@@ -46,6 +50,7 @@ public class frmUser extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         btnFilter = new javax.swing.JButton();
+        boxCategory = new javax.swing.JComboBox<>();
         scrollAvailable = new javax.swing.JScrollPane();
         btnClearFilter = new javax.swing.JButton();
         jpReservations = new javax.swing.JPanel();
@@ -141,7 +146,7 @@ public class frmUser extends javax.swing.JFrame {
         lblHeader.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeader.setText("Buscar eventos cerca de mi");
 
-        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblFilterByName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFilterByName.setText("Nombre del evento:");
@@ -172,6 +177,8 @@ public class frmUser extends javax.swing.JFrame {
         btnFilter.setText("FILTRAR");
         btnFilter.setContentAreaFilled(false);
 
+        boxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hotels", "attractions ", "restaurants", "geos" }));
+
         javax.swing.GroupLayout jPFiltersLayout = new javax.swing.GroupLayout(jPFilters);
         jPFilters.setLayout(jPFiltersLayout);
         jPFiltersLayout.setHorizontalGroup(
@@ -193,7 +200,9 @@ public class frmUser extends javax.swing.JFrame {
                                     .addGroup(jPFiltersLayout.createSequentialGroup()
                                         .addComponent(lblFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPFiltersLayout.createSequentialGroup()
                                         .addComponent(lblBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -226,7 +235,8 @@ public class frmUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFilterByLocation)
-                    .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -257,7 +267,7 @@ public class frmUser extends javax.swing.JFrame {
                     .addComponent(lblHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scrollAvailable)
                     .addComponent(btnClearFilter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jpSearchLayout.setVerticalGroup(
             jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,7 +280,7 @@ public class frmUser extends javax.swing.JFrame {
                 .addComponent(scrollAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnClearFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Eventos Disponibles", jpSearch);
@@ -278,7 +288,7 @@ public class frmUser extends javax.swing.JFrame {
         lblHeaderReservations.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeaderReservations.setText("Ver reservaciones");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblUserR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblUserR.setText("Usuario:");
@@ -579,7 +589,7 @@ public class frmUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPanel3ActionPerformed
 
     private void btnUpdateInfoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoUserActionPerformed
-        
+        this.cta.searchEvents(txtFilterByName, txtFilterByLocation, scrollAvailable, boxCategory);
     }//GEN-LAST:event_btnUpdateInfoUserActionPerformed
 
     private void btnPanel4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel4ActionPerformed
@@ -592,8 +602,8 @@ public class frmUser extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxCategory;
     private javax.swing.JButton btnBirthCalendar;
     private javax.swing.JButton btnCalendarBegin;
     private javax.swing.JButton btnCalendarFinal;

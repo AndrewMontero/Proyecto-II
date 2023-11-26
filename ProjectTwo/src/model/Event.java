@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Event {
 
@@ -14,6 +16,7 @@ public class Event {
     private double price;
     private int room;
     private int place_id;
+    private List<String> imageUrls;
 
     public Event() {
     }
@@ -121,5 +124,20 @@ public class Event {
 
     public void setPlace_id(int place_id) {
         this.place_id = place_id;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void addImageUrl(String imageUrl) {
+        if (imageUrls == null) {
+            imageUrls = new ArrayList<>();
+        }
+        imageUrls.add(imageUrl);
     }
 }
