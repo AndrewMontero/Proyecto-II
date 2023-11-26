@@ -176,6 +176,11 @@ public class frmUser extends javax.swing.JFrame {
         btnFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/filtrar.png"))); // NOI18N
         btnFilter.setText("FILTRAR");
         btnFilter.setContentAreaFilled(false);
+        btnFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilterActionPerformed(evt);
+            }
+        });
 
         boxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hotels", "attractions ", "restaurants", "geos" }));
 
@@ -255,6 +260,11 @@ public class frmUser extends javax.swing.JFrame {
         btnClearFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/escoba.png"))); // NOI18N
         btnClearFilter.setText("Limpiar mi búsqueda anterior");
         btnClearFilter.setContentAreaFilled(false);
+        btnClearFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearFilterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpSearchLayout = new javax.swing.GroupLayout(jpSearch);
         jpSearch.setLayout(jpSearchLayout);
@@ -589,7 +599,7 @@ public class frmUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPanel3ActionPerformed
 
     private void btnUpdateInfoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoUserActionPerformed
-        this.cta.searchEvents(txtFilterByName, txtFilterByLocation, scrollAvailable, boxCategory);
+        
     }//GEN-LAST:event_btnUpdateInfoUserActionPerformed
 
     private void btnPanel4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel4ActionPerformed
@@ -597,6 +607,14 @@ public class frmUser extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPanel4ActionPerformed
+
+    private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
+        this.cta.searchEvents(txtFilterByName, txtFilterByLocation, scrollAvailable, boxCategory);
+    }//GEN-LAST:event_btnFilterActionPerformed
+
+    private void btnClearFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearFilterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearFilterActionPerformed
 
     /**
      * @param args the command line arguments

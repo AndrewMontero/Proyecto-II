@@ -11,7 +11,9 @@ import controller.CtrlTripAdvisor;
  * @author Diego
  */
 public class frmAdmin extends javax.swing.JFrame {
-CtrlTripAdvisor cta = new CtrlTripAdvisor();
+
+    CtrlTripAdvisor cta = new CtrlTripAdvisor();
+
     /**
      * Creates new form frmAdmin
      */
@@ -800,7 +802,7 @@ CtrlTripAdvisor cta = new CtrlTripAdvisor();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPanel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel1ActionPerformed
-         tabPanels.setSelectedIndex(0);
+        tabPanels.setSelectedIndex(0);
     }//GEN-LAST:event_btnPanel1ActionPerformed
 
     private void btnPanel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel2ActionPerformed
@@ -812,7 +814,7 @@ CtrlTripAdvisor cta = new CtrlTripAdvisor();
     }//GEN-LAST:event_btnPanel3ActionPerformed
 
     private void btnPanel4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel4ActionPerformed
-       tabPanels.setSelectedIndex(3);
+        tabPanels.setSelectedIndex(3);
     }//GEN-LAST:event_btnPanel4ActionPerformed
 
     private void btnPanel5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel5ActionPerformed
@@ -840,7 +842,6 @@ CtrlTripAdvisor cta = new CtrlTripAdvisor();
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxCategory;

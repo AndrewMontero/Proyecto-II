@@ -348,6 +348,9 @@
                     <Property name="text" type="java.lang.String" value="FILTRAR"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFilterActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="boxCategory">
                   <Properties>
@@ -381,6 +384,9 @@
                 <Property name="text" type="java.lang.String" value="Limpiar mi b&#xfa;squeda anterior"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearFilterActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

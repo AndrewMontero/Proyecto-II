@@ -87,7 +87,7 @@ public class EventAPI {
         for (int i = 0; i < photoData.length(); i++) {
             JSONObject photo = photoData.getJSONObject(i);
             JSONObject images = photo.getJSONObject("images");
-            JSONObject smallImg = images.getJSONObject("small");
+            JSONObject smallImg = images.getJSONObject("medium");
             String imageUrl = smallImg.getString("url");
             imageUrls.add(imageUrl);
         }
