@@ -50,18 +50,17 @@ public class EventAPI {
             Event event = new Event();
             event.setId(eventObj.getInt("location_id"));
             event.setName(eventObj.getString("name"));
-            if (eventObj.has("postalcode") && !eventObj.isNull("postalcode")) {
-                event.setPostal_code(eventObj.getInt("postalcode"));
-            } else {
-                event.setPostal_code(0);
-            }
+            event.setAddress(eventObj.getJSONObject("address_obj").getString("address_string"));
             if (eventObj.has("city") && !eventObj.isNull("city")) {
                 event.setCity(eventObj.getString("city"));
             } else {
                 event.setCity("Ciudad no disponible");
             }
-            event.setAddress(eventObj.getJSONObject("address_obj").getString("address_string"));
-
+            if (eventObj.has("postalcode") && !eventObj.isNull("postalcode")) {
+                event.setPostal_code(eventObj.getInt("postalcode"));
+            } else {
+                event.setPostal_code(0);
+            }
             events.add(event);
         }
 
@@ -105,9 +104,27 @@ public class EventAPI {
         InputStream in = connection.getInputStream();
         String responseBody = new Scanner(in, "UTF-8").useDelimiter("\\A").next();
         JSONObject jsonResponse = new JSONObject(responseBody);
-
-        event.setDescription(jsonResponse.getString("description"));
-
+        if (jsonResponse.has("description") && !jsonResponse.isNull("description")) {
+            event.setDescription(jsonResponse.getString("description"));
+        } else {
+            event.setDescription("Descripcion no disponible");
+        }
+        event.setNumReviews(jsonResponse.getString("num_reviews"));
+        event.setRatingImageUrl(jsonResponse.getString("rating_image_url"));
         return event;
+    }
+
+    public Place getPlaceDetails(int locationId) throws Exception {
+        Place place = new Place();
+        String endpoint = String.format("location/%s/details?key=%s&language=en&currency=USD", locationId, API_KEY);
+        URL url = new URL(LOCATION_URL + endpoint);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        connection.connect();
+        InputStream in = connection.getInputStream();
+        String responseBody = new Scanner(in, "UTF-8").useDelimiter("\\A").next();
+        JSONObject jsonResponse = new JSONObject(responseBody);
+        place.setTripAdvisor_link(jsonResponse.getString("web_url"));
+        return place;
     }
 }

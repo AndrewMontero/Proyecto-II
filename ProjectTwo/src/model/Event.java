@@ -17,6 +17,9 @@ public class Event {
     private int room;
     private int place_id;
     private List<String> imageUrls;
+    private String rating;
+    private String numReviews;
+    private String ratingImageUrl;
 
     public Event() {
     }
@@ -140,4 +143,29 @@ public class Event {
         }
         imageUrls.add(imageUrl);
     }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public String getNumReviews() {
+        return numReviews;
+    }
+
+    public void setNumReviews(String numReviews) {
+        this.numReviews = numReviews;
+    }
+
+    public String getRatingImageUrl() {
+        return ratingImageUrl;
+    }
+
+    public void setRatingImageUrl(String ratingImageUrl) {
+        this.ratingImageUrl = ratingImageUrl;
+    }
+    
 }
