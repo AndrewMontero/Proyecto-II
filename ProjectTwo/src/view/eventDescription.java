@@ -44,7 +44,7 @@ public class eventDescription extends javax.swing.JDialog {
 
         descriptionArea.setEditable(false);
         descriptionArea.setColumns(20);
-        descriptionArea.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        descriptionArea.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         descriptionArea.setRows(5);
         jScrollPane1.setViewportView(descriptionArea);
 
