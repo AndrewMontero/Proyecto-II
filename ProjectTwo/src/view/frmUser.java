@@ -146,7 +146,7 @@ public class frmUser extends javax.swing.JFrame {
         lblHeader.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeader.setText("Buscar eventos cerca de mi");
 
-        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblFilterByName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFilterByName.setText("Nombre del evento:");
@@ -298,7 +298,7 @@ public class frmUser extends javax.swing.JFrame {
         lblHeaderReservations.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeaderReservations.setText("Ver reservaciones");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblUserR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblUserR.setText("Usuario:");
@@ -321,10 +321,20 @@ public class frmUser extends javax.swing.JFrame {
         txtEventId.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
 
         btnConfirmR.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnConfirmR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/aceptar.png"))); // NOI18N
         btnConfirmR.setText("Confirmar");
+        btnConfirmR.setBorderPainted(false);
+        btnConfirmR.setContentAreaFilled(false);
+        btnConfirmR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnConfirmR.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         btnDisconfirmR.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnDisconfirmR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/cancelado.png"))); // NOI18N
         btnDisconfirmR.setText("Cancelar");
+        btnDisconfirmR.setBorderPainted(false);
+        btnDisconfirmR.setContentAreaFilled(false);
+        btnDisconfirmR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDisconfirmR.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -373,10 +383,10 @@ public class frmUser extends javax.swing.JFrame {
                     .addComponent(txtDateR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblQuantityR)
                     .addComponent(spQuantityR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDisconfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnConfirmR)
+                    .addComponent(btnDisconfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -414,7 +424,7 @@ public class frmUser extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Reservaciones", jpReservations);
