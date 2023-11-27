@@ -94,7 +94,7 @@ public class frmUser extends javax.swing.JFrame {
         setTitle("Panel para Usuario");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jpBack.setBackground(new java.awt.Color(153, 133, 250));
+        jpBack.setBackground(new java.awt.Color(0, 0, 204));
 
         btnPanel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPanel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -547,7 +547,7 @@ public class frmUser extends javax.swing.JFrame {
 
         getContentPane().add(tabPanels, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 1120, 790));
 
-        jpMenu.setBackground(new java.awt.Color(153, 133, 250));
+        jpMenu.setBackground(new java.awt.Color(0, 0, 204));
 
         btnPanel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPanel1.setForeground(new java.awt.Color(255, 255, 255));
