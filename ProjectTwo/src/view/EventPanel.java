@@ -90,23 +90,31 @@ public class EventPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 255)));
 
         lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/circulo-cruzado.png"))); // NOI18N
 
-        lblName.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
+        lblName.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
         lblName.setText("Nombre");
 
-        lblAddress.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblAddress.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        lblAddress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/ubicacion.png"))); // NOI18N
         lblAddress.setText("Direccion");
 
+        btnDetails.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/descripcion.png"))); // NOI18N
         btnDetails.setText("Descripcion");
+        btnDetails.setContentAreaFilled(false);
         btnDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDetailsActionPerformed(evt);
             }
         });
 
-        btnWeb.setText("Visit Web");
+        btnWeb.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnWeb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/globo.png"))); // NOI18N
+        btnWeb.setText("Web");
+        btnWeb.setContentAreaFilled(false);
         btnWeb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnWebActionPerformed(evt);
@@ -115,16 +123,21 @@ public class EventPanel extends javax.swing.JPanel {
 
         lblRatingImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/circulo-cruzado.png"))); // NOI18N
 
-        lblReviews.setText("Opniniones");
+        lblReviews.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        lblReviews.setText("Sin Opiniones");
 
+        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/confirmar.png"))); // NOI18N
         jButton1.setText("Reservar");
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/dolar.png"))); // NOI18N
         jLabel1.setText("Precio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -175,13 +188,12 @@ public class EventPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnWeb)
-                                    .addComponent(jButton1))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jButton1)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnDetails)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)
-                                .addGap(47, 47, 47))))))
+                                .addComponent(jLabel1)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
