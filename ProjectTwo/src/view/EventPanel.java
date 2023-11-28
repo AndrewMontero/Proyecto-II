@@ -9,12 +9,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Event;
 import model.EventAPI;
+import model.PlaceAPI;
 import model.SVGImageUtils;
 
 public class EventPanel extends javax.swing.JPanel {
 
     private Event event;
-    private EventAPI api = new EventAPI();
+    private EventAPI apiE = new EventAPI();
+    private PlaceAPI apiP = new PlaceAPI();
     private frmAdmin parent;
 
     public EventPanel(Event event, EventAPI api) {
@@ -24,7 +26,7 @@ public class EventPanel extends javax.swing.JPanel {
         lblAddress.setText("Direccion: " + event.getAddress());
 
         try {
-            Event details = api.getEventDetails(event.getId());
+            Event details = api.getEventDetails(event.getLocationId());
             event.setNumReviews(details.getNumReviews());
             lblReviews.setText("Basado en: " + event.getNumReviews() + " opiniones");
             event.setRatingImageUrl(details.getRatingImageUrl());
@@ -42,7 +44,7 @@ public class EventPanel extends javax.swing.JPanel {
 
         // Update images after getting details
         try {
-            List<String> imageUrls = api.getEventImages(event.getId());
+            List<String> imageUrls = api.getEventImages(event.getLocationId());
             event.setImageUrls(imageUrls);
             updateDetails();
         } catch (Exception e) {
@@ -199,7 +201,7 @@ public class EventPanel extends javax.swing.JPanel {
 
     private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
         try {
-            Event details = api.getEventDetails(event.getId());
+            Event details = apiE.getEventDetails(event.getLocationId());
             String formattedDescription = details.getDescription().replace("\\n", "\n");
             eventDescription detailsDialog = new eventDescription(parent, true, "Detalles del Evento", formattedDescription);
             detailsDialog.setVisible(true);
@@ -210,7 +212,7 @@ public class EventPanel extends javax.swing.JPanel {
 
     private void btnWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWebActionPerformed
         try {
-            String tripAdvisorLink = api.getPlaceDetails(event.getId()).getTripAdvisor_link();
+            String tripAdvisorLink = apiP.getPlaceDetails(event.getLocationId()).getTripAdvisor_link();
             if (tripAdvisorLink != null && !tripAdvisorLink.isEmpty()) {
                 Desktop.getDesktop().browse(new URI(tripAdvisorLink));
             } else {

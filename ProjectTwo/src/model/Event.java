@@ -9,13 +9,14 @@ public class Event {
     private int id;
     private String name;
     private String description;
-    private Date date;
+    private Date date;//falta
     private String address;
     private String city;
     private int postal_code;
-    private double price;
-    private int room;
+    private double price;//falta
+    private int room;//falta
     private int place_id;
+    private int locationId;
     private List<String> imageUrls;
     private String rating;
     private String numReviews;
@@ -166,6 +167,14 @@ public class Event {
 
     public void setRatingImageUrl(String ratingImageUrl) {
         this.ratingImageUrl = ratingImageUrl;
+    }
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
     }
     
 }
