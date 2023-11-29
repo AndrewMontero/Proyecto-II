@@ -20,7 +20,8 @@ public class CtrlUser {
     RolDAO rol = new RolDAO();
     int id;
     private static int rolId;
-
+    
+    // Get the table model and set up a TableRowSorter for sorting functionality
     public void loadDataUser(JTable table) {
 
         DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -34,6 +35,7 @@ public class CtrlUser {
         }
     }
 
+     // Create a date formatter for parsing the birth date string
     public void addUser(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -46,7 +48,8 @@ public class CtrlUser {
         }
         this.clearFields(IDNumber, name, lastName, birthDate, email, phoneNumber, password, email);
     }
-
+    
+    // Create a date formatter for parsing the updated birth date string
     public void updatedUser(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -58,11 +61,11 @@ public class CtrlUser {
         }
         this.clearFields(IDNumber, name, lastName, birthDate, email, phoneNumber, password, email);
     }
-
+    // Delete the user with the specified ID from the data source using the DAO
     public void deleteuser() {
         this.dao.delete(this.id);
     }
-
+    // Set the text content of each JTextField to an empty string
     public void clearFields(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password, JTextField rolId) {
         IDNumber.setText("");
         name.setText("");
@@ -73,7 +76,7 @@ public class CtrlUser {
         password.setText("");
         rolId.setText("");
     }
-
+    // Set the role ID to the specified value
     public static void setRolId(int id) {
         rolId = id;
     }

@@ -24,7 +24,7 @@ public class CtrlTripAdvisor {
         this.apiHandler = apiHandler;
         this.events = new ArrayList<>();
     }
-
+    // Call the API handler to search for events based on the specified criteria
     public void searchEvents(JTextField name, JTextField ubiField, JScrollPane scroll, JComboBox type) {
         try {
             events = apiHandler.searchEvents(name.getText(), ubiField.getText(), type.getSelectedItem().toString());
@@ -35,6 +35,7 @@ public class CtrlTripAdvisor {
     }
 
     public void displayEvents(JScrollPane scrollPane) {
+        // Create a main panel to hold the EventPanel components
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 

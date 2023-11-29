@@ -15,6 +15,8 @@ public class CtrlRol {
     int id;
 
     public void loadDataRol(JTable table) {
+        // Get the table model and set up a TableRowSorter for sorting functionality
+
 
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(model);
@@ -26,11 +28,11 @@ public class CtrlRol {
             model.addRow(row);
         }
     }
-
+    // Delete the event with the specified ID from the data source using the DAO
     public void deleteEvent() {
         this.dao.delete(this.id);
     }
-
+    // Set the text content of each JTextField to an empty string
     public void clearFields(JTextField IDNumber, JTextField name) {
         IDNumber.setText("");
         name.setText("");

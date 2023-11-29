@@ -22,10 +22,13 @@ public class CtrlEvent {
 
     public void loadDataEvent(JTable table) {
 
+        // Get the table model and set up a TableRowSorter for sorting functionality
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(model);
         table.setRowSorter(order);
+        // Clear existing rows in the table
         model.setRowCount(0);
+         // Retrieve a list of events from the data access object (DAO)
         List<Event> event = dao.read();
         for (Event events : event) {
             Object[] row = {events.getId(), events.getName(), events.getDescription(), events.getDate(), events.getAddress(), events.getCity(), events.getPostal_code(), events.getPrice(), events.getRoom(), this.place.getNamePlaces(events.getPlace_id())};
@@ -34,20 +37,26 @@ public class CtrlEvent {
     }
 
     public void addEvent(JTextField name, JTextField description, JTextField date, JTextField address, JTextField city, JTextField postalCode, JTextField price, JTextField room, JTextField placeId) {
+        // Create a date formatter for parsing the date string
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
+                    // Parse the date string into a Date object
             Date eventDate = dateFormat.parse(date.getText());
+            // Create a new Event object with the provided information and add it to the data source
             this.dao.create(new Event(name.getText(), description.getText(), eventDate, address.getText(), city.getText(), Integer.parseInt(postalCode.getText()), Double.parseDouble(price.getText()), Integer.parseInt(room.getText()), Integer.parseInt(placeId.getText())));
         } catch (ParseException ex) {
+            // Handle parsing errors and display an error message if the date format is incorrect
             JOptionPane.showMessageDialog(null, "Error de formato en la fecha, el formato correcto es año-mes-día (yyyy-MM-dd): " + ex.toString());
         } catch (Exception e) {
+            // Handle other exceptions and display an error message if there's an issue adding the event
             JOptionPane.showMessageDialog(null, "Error al agregar el evento: " + e.toString());
         }
+        // Clear the input fields after successfully adding the event
         this.clearFields(name, description, date, address, city, postalCode, price, room, placeId);
     }
 
     public void updatedEvent(JTextField name, JTextField description, JTextField date, JTextField address, JTextField city, JTextField postalCode, JTextField price, JTextField room, JTextField placeId) {
-
+         // Create a date formatter for parsing the date string
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date eventDate = dateFormat.parse(date.getText());
@@ -55,9 +64,10 @@ public class CtrlEvent {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Error de formato, el indicado es año-mes-día : ");
         }
+        // Clear the input fields after successfully updating the event
         this.clearFields(name, description, date, address, city, postalCode, price, room, placeId);
     }
-
+     // Delete the event with the specified ID from the data source
     public void deleteEvent() {
         this.dao.delete(this.id);
     }

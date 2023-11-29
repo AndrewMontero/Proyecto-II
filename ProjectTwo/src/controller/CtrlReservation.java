@@ -22,6 +22,7 @@ public class CtrlReservation {
     int id;
 
     public void loadDataReservation(JTable table) {
+        // Get the table model and set up a TableRowSorter for sorting functionality
 
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(model);
@@ -35,6 +36,7 @@ public class CtrlReservation {
     }
 
     public void addReservation(JTextField userName, JTextField date, JTextField quantity, JTextField eventId) {
+        // Create a date formatter for parsing the date string
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date reservationDate = dateFormat.parse(date.getText());
@@ -46,7 +48,7 @@ public class CtrlReservation {
         }
         this.clearFields(userName, date, quantity, eventId);
     }
-    
+     // Create a date formatter for parsing the date string
      public void updatedReservation(JTextField userName, JTextField date, JTextField quantity, JTextField eventId) {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -58,11 +60,11 @@ public class CtrlReservation {
         }
         this.clearFields(userName, date, quantity, eventId);
     }
-
+     // Delete the role with the specified ID from the data source
     public void deleteRol() {
         this.dao.delete(this.id);
     }
-
+     // Set the text content of each JTextField to an empty string
     public void clearFields(JTextField userName, JTextField date, JTextField quantity, JTextField eventId) {
         userName.setText("");
         date.setText("");
