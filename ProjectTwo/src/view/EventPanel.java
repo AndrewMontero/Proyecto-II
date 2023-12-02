@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Desktop;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.net.URI;
 import java.net.URL;
 import java.util.List;
@@ -25,72 +26,80 @@ public class EventPanel extends javax.swing.JPanel {
         this.event = event;
         lblName.setText(event.getName());
         lblAddress.setText("Direccion: " + event.getAddress());
-
         try {
-            Event details = api.getEventDetails(event.getLocationId());
-            event.setNumReviews(details.getNumReviews());
-            lblReviews.setText("Basado en: " + event.getNumReviews() + " opiniones");
-            event.setRatingImageUrl(details.getRatingImageUrl());
-
-            // Update description if available
-            if ("Descripcion no disponible".equals(details.getDescription()) || details.getDescription().isEmpty()) {
-                btnDetails.setEnabled(false);
-            } else {
-                event.setDescription(details.getDescription());
-            }
+            loadEventDetails();
+            loadWeatherInfo();
         } catch (Exception e) {
-            System.out.println("Error cargando detalles: " + e.getMessage());
-            btnDetails.setEnabled(false);
+            System.out.println("Error al cargar el panel de eventos: " + e.getMessage());
         }
-
-        // Update images after getting details
-        try {
-            List<String> imageUrls = api.getEventImages(event.getLocationId());
-            event.setImageUrls(imageUrls);
-            updateDetails();
-        } catch (Exception e) {
-            System.out.println("Error cargando imágenes: " + e.getMessage());
-        }
-        try {
-            String ratingImageUrl = event.getRatingImageUrl();
-            if (!ratingImageUrl.isEmpty()) {
-                ImageIcon ratingIcon = SVGImageUtils.getSVGIcon(ratingImageUrl);
-                if (ratingIcon != null) {
-                    lblRatingImage.setIcon(ratingIcon);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Error cargando imagen de clasificación: " + e.getMessage());
-        }
-         try {
-            Place details = apiP.getPlaceDetails(event.getLocationId());
-            List<Place> weatherInfo = apiP.fetchWeatherInfo(details.getLatitude(), details.getLongitude());
-            if (!weatherInfo.isEmpty()) {
-                lblDescription.setText("Pronóstico: " + weatherInfo.get(0).getDescription());
-                if (!weatherInfo.isEmpty()) {
-                    lblTemp.setText(String.valueOf(weatherInfo.get(0).getTemperature()));
-                    lblSpeed.setText("Velocidad del viento: " + weatherInfo.get(0).getSpeed());
-                    String iconUrl = apiP.getWeatherIconUrl(weatherInfo.get(0).getIcon());
-                    ImageIcon icon = new ImageIcon(new URL(iconUrl));
-                    lblIcon.setIcon(icon);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Error cargando lugares: " + e.getMessage());
-        }
-
-        this.parent = parent;
     }
 
-    private void updateDetails() {
+    private void loadEventDetails() throws Exception {
+        Event details = apiE.getEventDetails(event.getLocationId());
+        event.setNumReviews(details.getNumReviews());
+        lblReviews.setText("Basado en: " + event.getNumReviews() + " opiniones");
+        event.setRatingImageUrl(details.getRatingImageUrl());
+
+        // Update description if available
+        if ("Descripcion no disponible".equals(details.getDescription()) || details.getDescription().isEmpty()) {
+            btnDetails.setEnabled(false);
+        } else {
+            event.setDescription(details.getDescription());
+        }
+
+        List<String> imageUrls = apiE.getEventImages(event.getLocationId());
+        event.setImageUrls(imageUrls);
+        updateImages();
+        String ratingImageUrl = event.getRatingImageUrl();
+        if (!ratingImageUrl.isEmpty()) {
+            ImageIcon ratingIcon = SVGImageUtils.getSVGIcon(ratingImageUrl);
+            if (ratingIcon != null) {
+                lblRatingImage.setIcon(ratingIcon);
+            }
+        }
+    }
+
+    private void updateImages() {
         try {
             List<String> imageUrls = event.getImageUrls();
+            event.setImageUrls(imageUrls);
             if (!imageUrls.isEmpty()) {
                 String imageUrl = imageUrls.get(0);
                 lblImage.setIcon(new javax.swing.ImageIcon(new URL(imageUrl)));
             }
         } catch (Exception e) {
             System.out.println("Error cargando imagen: " + e.getMessage());
+        }
+    }
+
+    private void loadWeatherInfo() {
+        try {
+            Place details = apiP.getPlaceDetails(event.getLocationId());
+            List<Place> weatherInfo = apiP.fetchWeatherInfo(details.getLatitude(), details.getLongitude());
+            if (!weatherInfo.isEmpty()) {
+                lblDescription.setText(weatherInfo.get(0).getDescription());
+                if (!weatherInfo.isEmpty()) {
+                    lblTemp.setText(String.valueOf("Temperatura: " + weatherInfo.get(0).getTemperature() + "º"));
+                    lblSpeed.setText("Velocidad del viento: " + weatherInfo.get(0).getSpeed());
+                    updateWeatherIcon(weatherInfo.get(0).getIcon());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error cargando lugares: " + e.getMessage());
+        }
+    }
+
+    private void updateWeatherIcon(String icon) {
+        try {
+            String iconUrl = apiP.getWeatherIconUrl(icon);
+            ImageIcon originalIcon = new ImageIcon(new URL(iconUrl));
+            int width = 60;
+            int height = 60;
+            Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+            lblIcon.setIcon(scaledIcon);
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el icono meteorológico: " + e.getMessage());
         }
     }
 
@@ -163,13 +172,16 @@ public class EventPanel extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/dolar.png"))); // NOI18N
         jLabel1.setText("Precio");
 
+        lblDescription.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblDescription.setText("Clima");
 
+        lblSpeed.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblSpeed.setText("Velocidad del viento");
 
+        lblTemp.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblTemp.setText("temp");
 
-        lblIcon.setText("Icono");
+        lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/cancelado.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -181,39 +193,36 @@ public class EventPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblName)
+                                .addGap(49, 49, 49)
+                                .addComponent(lblIcon)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblDescription)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblTemp)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblSpeed))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnWeb)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnDetails)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblRatingImage, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1)
+                                    .addComponent(lblReviews))))
+                        .addGap(87, 87, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnWeb))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDetails)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblRatingImage, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblReviews)
-                            .addComponent(jButton1))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblName)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblDescription)
-                                .addGap(17, 17, 17))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblTemp)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lblSpeed)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblIcon)
-                                .addGap(16, 16, 16))
-                            .addComponent(lblAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,28 +233,22 @@ public class EventPanel extends javax.swing.JPanel {
                         .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(lblIcon)
-                                            .addComponent(lblSpeed))))
-                                .addGap(14, 14, 14)
-                                .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblDescription)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTemp)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblIcon)
+                            .addComponent(lblDescription)
+                            .addComponent(lblTemp)
+                            .addComponent(lblSpeed)
+                            .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblRatingImage)
                                     .addComponent(lblReviews))
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnWeb)
                                     .addComponent(jButton1)))

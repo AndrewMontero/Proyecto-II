@@ -4,12 +4,14 @@
  */
 package model;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,80 +23,83 @@ public class PlaceAPI {
 
     private static final String LOCATION_URL = "https://api.content.tripadvisor.com/api/v1/";
     private static final String API_KEY = "4BB0E403299542FEB3BF8DEB5EF58051";
-
     private static final String BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
     private static final String Api_KEY = "86579c590b19855998f140dcf47071b5";
+    HttpURLConnection connection = null;
 
     public Place getPlaceDetails(int id) throws Exception {
-        Place place = new Place();
         String endpoint = String.format("location/%s/details?key=%s&language=en&currency=USD", id, API_KEY);
-        URL url = new URL(LOCATION_URL + endpoint);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.connect();
-        InputStream in = connection.getInputStream();
-        String responseBody = new Scanner(in, "UTF-8").useDelimiter("\\A").next();
-        JSONObject jsonResponse = new JSONObject(responseBody);
-        place.setName(jsonResponse.getString("name"));
-        place.setAddress(jsonResponse.getJSONObject("address_obj").getString("address_string"));
-        if (jsonResponse.has("city") && !jsonResponse.isNull("city")) {
-            place.setCity(jsonResponse.getString("city"));
-        } else {
-            place.setCity("Ciudad no disponible");
-        }
-        if (jsonResponse.has("postalcode") && !jsonResponse.isNull("postalcode")) {
-            place.setPostal_code(jsonResponse.getInt("postalcode"));
-        } else {
-            place.setPostal_code(0);
-        }
-        place.setLatitude(jsonResponse.getString("latitude"));
-        place.setLongitude(jsonResponse.getString("longitude"));
-        place.setTripAdvisor_link(jsonResponse.getString("web_url"));
-        return place;
+        String jsonResponse = getJsonResponse(LOCATION_URL + endpoint);
+        return parsePlaceDetails(jsonResponse);
     }
 
     public List<Place> fetchWeatherInfo(String latitude, String longitude) throws Exception {
-        List<Place> weatherInfoList = new ArrayList<>();
-
-        // Construir la URL para la API de clima utilizando la latitud y longitud
         String weatherEndpoint = String.format("lat=%s&lon=%s&appid=%s&lang=es&units=metric", latitude, longitude, Api_KEY);
-        URL weatherUrl = new URL(BASE_URL + weatherEndpoint);
-
-        HttpURLConnection weatherConnection = (HttpURLConnection) weatherUrl.openConnection();
-        weatherConnection.setRequestMethod("GET");
-        weatherConnection.connect();
-
-        InputStream weatherInputStream = weatherConnection.getInputStream();
-        String weatherResponseBody = new Scanner(weatherInputStream, "UTF-8").useDelimiter("\\A").next();
-
-        JSONObject weatherJsonResponse = new JSONObject(weatherResponseBody);
-
-        // Extraer la información del clima del objeto JSON y crear un objeto Place para almacenarla
-        JSONArray weatherArray = weatherJsonResponse.getJSONArray("weather");
-        JSONObject weatherObject = weatherArray.getJSONObject(0);
-        String description = weatherObject.getString("description");
-        String icon = weatherObject.getString("icon");
-
-        JSONObject mainObject = weatherJsonResponse.getJSONObject("main");
-        Double temperature = mainObject.getDouble("temp");
-
-        JSONObject windObject = weatherJsonResponse.getJSONObject("wind");
-        Double speed = windObject.getDouble("speed");
-
-        // Crear un objeto Place para almacenar la información del clima
-        Place weatherPlace = new Place();
-        weatherPlace.setDescription(description);
-        weatherPlace.setIcon(icon);
-        weatherPlace.setTemperature(temperature);
-        weatherPlace.setSpeed(speed);
-
-        // Agregar el objeto Place a la lista de información del clima
-        weatherInfoList.add(weatherPlace);
-
-        return weatherInfoList;
+        String weatherResponseBody = getJsonResponse(BASE_URL + weatherEndpoint);
+        return parseWeatherInfo(weatherResponseBody);
     }
 
     public String getWeatherIconUrl(String iconId) {
         return String.format("https://openweathermap.org/img/wn/%s@2x.png", iconId);
+    }
+
+    private String getJsonResponse(String urlString) throws IOException {
+        URL url = new URL(urlString);
+        try {
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            return readInputStream(connection.getInputStream());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error obteniendo la conexion " + e, "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
+
+    private String readInputStream(InputStream inputStream) throws IOException {
+        try (Scanner scanner = new Scanner(inputStream, "UTF-8")) {
+            return scanner.useDelimiter("\\A").next();
+        }
+    }
+
+    private Place parsePlaceDetails(String jsonResponse) {
+        JSONObject jsonPlace = new JSONObject(jsonResponse);
+        Place place = new Place();
+
+        place.setName(jsonPlace.getString("name"));
+        place.setAddress(jsonPlace.getJSONObject("address_obj").getString("address_string"));
+        place.setCity(jsonPlace.optString("city", "Ciudad no disponible"));
+        place.setPostal_code(jsonPlace.optInt("postalcode", 0));
+        place.setLatitude(jsonPlace.getString("latitude"));
+        place.setLongitude(jsonPlace.getString("longitude"));
+        place.setTripAdvisor_link(jsonPlace.getString("web_url"));
+
+        return place;
+    }
+
+    private List<Place> parseWeatherInfo(String weatherResponseBody) {
+        List<Place> weatherList = new ArrayList<>();
+
+        JSONObject weatherJsonResponse = new JSONObject(weatherResponseBody);
+        JSONArray weatherArray = weatherJsonResponse.getJSONArray("weather");
+        JSONObject weatherObject = weatherArray.getJSONObject(0);
+
+        Place weatherPlace = new Place();
+        weatherPlace.setDescription(weatherObject.getString("description"));
+        weatherPlace.setIcon(weatherObject.getString("icon"));
+
+        JSONObject mainObject = weatherJsonResponse.getJSONObject("main");
+        weatherPlace.setTemperature(mainObject.getDouble("temp"));
+
+        JSONObject windObject = weatherJsonResponse.getJSONObject("wind");
+        weatherPlace.setSpeed(windObject.getDouble("speed"));
+
+        weatherList.add(weatherPlace);
+
+        return weatherList;
     }
 }
