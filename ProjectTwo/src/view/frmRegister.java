@@ -4,11 +4,15 @@
  */
 package view;
 
+import controller.CtrlUser;
+
 /**
  *
  * @author Diego
  */
 public class frmRegister extends javax.swing.JFrame {
+
+    CtrlUser cu = new CtrlUser();
 
     /**
      * Creates new form frmRegister
@@ -31,7 +35,7 @@ public class frmRegister extends javax.swing.JFrame {
         txtNameUser = new javax.swing.JTextField();
         lblNameUser = new javax.swing.JLabel();
         lblId_number = new javax.swing.JLabel();
-        txtFirst_lastnameInfoUser = new javax.swing.JTextField();
+        txtIdNumberUser = new javax.swing.JTextField();
         lblLastName = new javax.swing.JLabel();
         txtLastName = new javax.swing.JTextField();
         lblEmailUser = new javax.swing.JLabel();
@@ -119,7 +123,7 @@ public class frmRegister extends javax.swing.JFrame {
                             .addComponent(lblPhone))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFirst_lastnameInfoUser)
+                            .addComponent(txtIdNumberUser)
                             .addComponent(txtNameUser)
                             .addComponent(txtLastName)
                             .addComponent(txtEmailUser)
@@ -154,7 +158,7 @@ public class frmRegister extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId_number)
-                    .addComponent(txtFirst_lastnameInfoUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdNumberUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,7 +190,8 @@ public class frmRegister extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateInfoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoUserActionPerformed
-
+        cu.setRolId(2);
+        cu.addUserRegister(txtIdNumberUser, txtNameUser, txtLastName, txtBirthDate, txtEmailUser, txtPhone, txtPassword, this);
     }//GEN-LAST:event_btnUpdateInfoUserActionPerformed
 
     private void btnPanel5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel5ActionPerformed
@@ -198,7 +203,6 @@ public class frmRegister extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPanel5;
@@ -214,7 +218,7 @@ public class frmRegister extends javax.swing.JFrame {
     private javax.swing.JLabel lblPhone;
     private javax.swing.JTextField txtBirthDate;
     private javax.swing.JTextField txtEmailUser;
-    private javax.swing.JTextField txtFirst_lastnameInfoUser;
+    private javax.swing.JTextField txtIdNumberUser;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtNameUser;
     private javax.swing.JPasswordField txtPassword;

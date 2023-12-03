@@ -5,6 +5,8 @@
 package view;
 
 import controller.CtrlTripAdvisor;
+import controller.CtrlUser;
+import model.User;
 
 /**
  *
@@ -13,14 +15,26 @@ import controller.CtrlTripAdvisor;
 public class frmAdmin extends javax.swing.JFrame {
 
     CtrlTripAdvisor cta = new CtrlTripAdvisor();
+    CtrlUser cu = new CtrlUser();
 
     /**
      * Creates new form frmAdmin
      */
-    public frmAdmin() {
+    public frmAdmin(User user) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        setUserInfo(user);
+    }
+
+    public void setUserInfo(User user) {
+        txtNameProfile.setText(user.getName());
+        txtIdNumberProfile.setText(String.valueOf(user.getID_number()));
+        txtLastNameProfile.setText(user.getLast_name());
+        txtEmailProfile.setText(user.getEmail());
+        txtBirthDateProfile.setText(String.valueOf(user.getBirth_date()));
+        txtPasswordProfile.setText(user.getPassword());
+        txtPhoneProfile.setText(String.valueOf(user.getPhone_number()));
     }
 
     /**
@@ -77,22 +91,22 @@ public class frmAdmin extends javax.swing.JFrame {
         tblMyReservations = new javax.swing.JTable();
         jpmyProfile = new javax.swing.JPanel();
         lblLastName = new javax.swing.JLabel();
-        txtLastName = new javax.swing.JTextField();
-        txtEmailUser = new javax.swing.JTextField();
+        txtLastNameProfile = new javax.swing.JTextField();
+        txtEmailProfile = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
         lblNameUser = new javax.swing.JLabel();
         lblHeaderMyProfile = new javax.swing.JLabel();
-        txtNameUser = new javax.swing.JTextField();
-        txtFirst_lastnameInfoUser = new javax.swing.JTextField();
+        txtNameProfile = new javax.swing.JTextField();
+        txtIdNumberProfile = new javax.swing.JTextField();
         lblId_number = new javax.swing.JLabel();
         btnUpdateInfoUser = new javax.swing.JButton();
         lblEmailUser = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
+        txtPasswordProfile = new javax.swing.JPasswordField();
         lblBirthDate = new javax.swing.JLabel();
         btnBirthCalendar = new javax.swing.JButton();
-        txtBirthDate = new javax.swing.JTextField();
+        txtBirthDateProfile = new javax.swing.JTextField();
         lblPhone = new javax.swing.JLabel();
-        txtPhone = new javax.swing.JTextField();
+        txtPhoneProfile = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jpUserSettings = new javax.swing.JPanel();
         lblLastName1 = new javax.swing.JLabel();
@@ -102,7 +116,7 @@ public class frmAdmin extends javax.swing.JFrame {
         lblNameUser1 = new javax.swing.JLabel();
         lblHeaderMyProfile1 = new javax.swing.JLabel();
         txtNameUser1 = new javax.swing.JTextField();
-        txtFirst_lastnameInfoUser1 = new javax.swing.JTextField();
+        txtIdNumberUserEdit = new javax.swing.JTextField();
         lblId_number1 = new javax.swing.JLabel();
         btnUpdateInfoUser1 = new javax.swing.JButton();
         lblEmailUser1 = new javax.swing.JLabel();
@@ -238,7 +252,7 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeader1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeader1.setText("Buscar eventos cerca de mi");
 
-        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblFilterByName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFilterByName.setText("Nombre del evento:");
@@ -377,7 +391,7 @@ public class frmAdmin extends javax.swing.JFrame {
                     .addComponent(lblHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scrollAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, 996, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClearFilter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jpSearchLayout.setVerticalGroup(
             jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,7 +412,7 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeaderReservations.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeaderReservations.setText("Ver reservaciones");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblUserR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblUserR.setText("Usuario:");
@@ -487,7 +501,7 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnConfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDisconfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         tblMyReservations.setModel(new javax.swing.table.DefaultTableModel(
@@ -521,7 +535,7 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(lblHeaderReservations)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(85, Short.MAX_VALUE))
@@ -542,6 +556,12 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeaderMyProfile.setText("Editar Mi Perfil");
         lblHeaderMyProfile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblHeaderMyProfile.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        txtNameProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameProfileActionPerformed(evt);
+            }
+        });
 
         lblId_number.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblId_number.setText("Cédula:");
@@ -588,13 +608,13 @@ public class frmAdmin extends javax.swing.JFrame {
                             .addComponent(lblPhone))
                         .addGap(32, 32, 32)
                         .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFirst_lastnameInfoUser)
-                            .addComponent(txtNameUser)
-                            .addComponent(txtLastName)
-                            .addComponent(txtEmailUser)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addComponent(txtBirthDate, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addComponent(txtPhone))
+                            .addComponent(txtIdNumberProfile)
+                            .addComponent(txtNameProfile)
+                            .addComponent(txtLastNameProfile)
+                            .addComponent(txtEmailProfile)
+                            .addComponent(txtPasswordProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                            .addComponent(txtBirthDateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                            .addComponent(txtPhoneProfile))
                         .addGap(18, 18, 18)
                         .addComponent(btnBirthCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpmyProfileLayout.createSequentialGroup()
@@ -617,35 +637,35 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNameUser)
-                    .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNameProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId_number)
-                    .addComponent(txtFirst_lastnameInfoUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdNumberProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLastNameProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLastName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmailUser)
-                    .addComponent(txtEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmailProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBirthDateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblBirthDate)
                     .addComponent(btnBirthCalendar))
                 .addGap(12, 12, 12)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPasswordProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPhone)
-                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPhoneProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(btnUpdateInfoUser)
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(311, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Mi Perfil", jpmyProfile);
@@ -745,7 +765,7 @@ public class frmAdmin extends javax.swing.JFrame {
                                 .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jpUserSettingsLayout.createSequentialGroup()
                                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtFirst_lastnameInfoUser1)
+                                            .addComponent(txtIdNumberUserEdit)
                                             .addComponent(txtNameUser1)
                                             .addComponent(txtLastName1)
                                             .addComponent(txtEmailUser1)
@@ -775,7 +795,7 @@ public class frmAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblId_number1)
-                            .addComponent(txtFirst_lastnameInfoUser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtIdNumberUserEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtLastName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -837,7 +857,7 @@ public class frmAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPanel5ActionPerformed
 
     private void btnUpdateInfoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoUserActionPerformed
-
+        cu.updatedUser(txtIdNumberProfile, txtNameProfile, txtLastNameProfile, txtBirthDateProfile, txtEmailProfile, txtPhoneProfile, txtPasswordProfile);
     }//GEN-LAST:event_btnUpdateInfoUserActionPerformed
 
     private void btnUpdateInfoUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoUser1ActionPerformed
@@ -851,6 +871,10 @@ public class frmAdmin extends javax.swing.JFrame {
     private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
         this.cta.searchEvents(txtFilterByName, txtFilterByLocation, scrollAvailable, boxCategory);
     }//GEN-LAST:event_btnFilterActionPerformed
+
+    private void txtNameProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameProfileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameProfileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -921,25 +945,25 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JTable tblMyReservations;
     private javax.swing.JTable tblUsers;
     private javax.swing.JTextField txtBeginDate;
-    private javax.swing.JTextField txtBirthDate;
     private javax.swing.JTextField txtBirthDate1;
+    private javax.swing.JTextField txtBirthDateProfile;
     private javax.swing.JTextField txtDateR;
-    private javax.swing.JTextField txtEmailUser;
+    private javax.swing.JTextField txtEmailProfile;
     private javax.swing.JTextField txtEmailUser1;
     private javax.swing.JTextField txtEventId;
     private javax.swing.JTextField txtFilterByLocation;
     private javax.swing.JTextField txtFilterByName;
     private javax.swing.JTextField txtFinalDate;
-    private javax.swing.JTextField txtFirst_lastnameInfoUser;
-    private javax.swing.JTextField txtFirst_lastnameInfoUser1;
-    private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtIdNumberProfile;
+    private javax.swing.JTextField txtIdNumberUserEdit;
     private javax.swing.JTextField txtLastName1;
-    private javax.swing.JTextField txtNameUser;
+    private javax.swing.JTextField txtLastNameProfile;
+    private javax.swing.JTextField txtNameProfile;
     private javax.swing.JTextField txtNameUser1;
-    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JPasswordField txtPassword1;
-    private javax.swing.JTextField txtPhone;
+    private javax.swing.JPasswordField txtPasswordProfile;
     private javax.swing.JTextField txtPhone1;
+    private javax.swing.JTextField txtPhoneProfile;
     private javax.swing.JTextField txtUserR;
     // End of variables declaration//GEN-END:variables
 }

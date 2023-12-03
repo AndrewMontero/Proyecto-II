@@ -36,36 +36,36 @@ public class Login {
         }
         //Displays the frame if the user has been authenticated.
         if (isAuthenticated) {
-            openFrame();
+            openFrame(authenticatedUser);
         } else {
             JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     //Method to displays the frame 
-    private void openFrame() {
+    private void openFrame(User authenticatedUser) {
         //Gets the authenticated user's role identifier
         int rolId = authenticatedUser.getRol_id();
         //if the role identifier is 1, the Admin frame is displayed.
         if (rolId == 1) {
-            openAdminFrame();
+            openAdminFrame(authenticatedUser);
             //if the role identifier is 2, the user frame is displayed.
         } else if (rolId == 2) {
-            openUserFrame();
+            openUserFrame(authenticatedUser);
         }
     }
     
-    private void openAdminFrame() {
+    private void openAdminFrame(User authenticatedUser) {
         int rolId = authenticatedUser.getRol_id();
         userCtrl.setRolId(rolId);
-        frmAdmin login = new frmAdmin();
+        frmAdmin login = new frmAdmin(authenticatedUser);
         login.setVisible(true);
     }
     
-    private void openUserFrame(){
+    private void openUserFrame(User authenticatedUser){
         int rolId = authenticatedUser.getRol_id();
         userCtrl.setRolId(rolId);
-        frmUser login = new frmUser();
+        frmUser login = new frmUser(authenticatedUser);
         login.setVisible(true);
     }
 }

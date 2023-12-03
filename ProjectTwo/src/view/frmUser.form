@@ -657,13 +657,13 @@
                               </Group>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtFirst_lastnameInfoUser" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtNameUser" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtEmailUser" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtPassword" alignment="0" pref="207" max="32767" attributes="0"/>
-                                  <Component id="txtBirthDate" alignment="0" pref="207" max="32767" attributes="0"/>
-                                  <Component id="txtPhone" max="32767" attributes="0"/>
+                                  <Component id="txtIdNumberProfile" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtNameProfile" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtLastNameProfile" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtEmailProfile" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtPasswordProfile" alignment="0" pref="207" max="32767" attributes="0"/>
+                                  <Component id="txtBirthDateProfile" alignment="0" pref="207" max="32767" attributes="0"/>
+                                  <Component id="txtPhoneProfile" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnBirthCalendar" min="-2" pref="33" max="-2" attributes="0"/>
@@ -689,38 +689,38 @@
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblNameUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNameUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNameProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblId_number" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFirst_lastnameInfoUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtIdNumberProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtLastNameProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblLastName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblEmailUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtEmailUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEmailProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtBirthDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBirthDateProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblBirthDate" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnBirthCalendar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPasswordProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblPhone" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPhone" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPhoneProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="btnUpdateInfoUser" min="-2" max="-2" attributes="0"/>
@@ -738,9 +738,9 @@
                 <Property name="text" type="java.lang.String" value="Apellidos:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtLastName">
+            <Component class="javax.swing.JTextField" name="txtLastNameProfile">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtEmailUser">
+            <Component class="javax.swing.JTextField" name="txtEmailProfile">
             </Component>
             <Component class="javax.swing.JLabel" name="lblPassword">
               <Properties>
@@ -768,7 +768,7 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNameUser">
+            <Component class="javax.swing.JTextField" name="txtNameProfile">
             </Component>
             <Component class="javax.swing.JLabel" name="lblId_number">
               <Properties>
@@ -778,7 +778,7 @@
                 <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFirst_lastnameInfoUser">
+            <Component class="javax.swing.JTextField" name="txtIdNumberProfile">
             </Component>
             <Component class="javax.swing.JButton" name="btnUpdateInfoUser">
               <Properties>
@@ -803,7 +803,7 @@
                 <Property name="text" type="java.lang.String" value="Correo:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="txtPassword">
+            <Component class="javax.swing.JPasswordField" name="txtPasswordProfile">
             </Component>
             <Component class="javax.swing.JLabel" name="lblBirthDate">
               <Properties>
@@ -818,7 +818,7 @@
                 <Property name="text" type="java.lang.String" value="..."/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtBirthDate">
+            <Component class="javax.swing.JTextField" name="txtBirthDateProfile">
             </Component>
             <Component class="javax.swing.JLabel" name="lblPhone">
               <Properties>
@@ -828,7 +828,7 @@
                 <Property name="text" type="java.lang.String" value="N&#xfa;mero de Tel&#xe9;fono:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtPhone">
+            <Component class="javax.swing.JTextField" name="txtPhoneProfile">
             </Component>
           </SubComponents>
         </Container>

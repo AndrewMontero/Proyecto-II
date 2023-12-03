@@ -146,7 +146,8 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
-        
+        frmRegister regis = new frmRegister();
+        regis.setVisible(true);
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**

@@ -39,7 +39,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtFirst_lastnameInfoUser" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtIdNumberUser" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtNameUser" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtEmailUser" alignment="0" max="32767" attributes="0"/>
@@ -85,7 +85,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblId_number" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtFirst_lastnameInfoUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIdNumberUser" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -168,7 +168,7 @@
         <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtFirst_lastnameInfoUser">
+    <Component class="javax.swing.JTextField" name="txtIdNumberUser">
     </Component>
     <Component class="javax.swing.JLabel" name="lblLastName">
       <Properties>
