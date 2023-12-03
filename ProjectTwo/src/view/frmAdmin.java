@@ -6,6 +6,7 @@ package view;
 
 import controller.CtrlTripAdvisor;
 import controller.CtrlUser;
+import model.RolDAO;
 import model.User;
 
 /**
@@ -16,6 +17,7 @@ public class frmAdmin extends javax.swing.JFrame {
 
     CtrlTripAdvisor cta = new CtrlTripAdvisor();
     CtrlUser cu = new CtrlUser();
+    RolDAO rol = new RolDAO();
 
     /**
      * Creates new form frmAdmin
@@ -25,16 +27,25 @@ public class frmAdmin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         setUserInfo(user);
+        loadUsers();
+    }
+
+    private void loadUsers() {
+        cu.loadDataUser(tblUsers);
     }
 
     public void setUserInfo(User user) {
-        txtNameProfile.setText(user.getName());
         txtIdNumberProfile.setText(String.valueOf(user.getID_number()));
+        txtNameProfile.setText(user.getName());
         txtLastNameProfile.setText(user.getLast_name());
         txtEmailProfile.setText(user.getEmail());
         txtBirthDateProfile.setText(String.valueOf(user.getBirth_date()));
         txtPasswordProfile.setText(user.getPassword());
         txtPhoneProfile.setText(String.valueOf(user.getPhone_number()));
+    }
+
+    private void clearFields() {
+        cu.clearFields(txtIdNumberUser, txtNameUser, txtLastNameUser, txtBirthDateUser, txtEmailUser, txtPhoneUser, txtPasswordUser);
     }
 
     /**
@@ -96,10 +107,10 @@ public class frmAdmin extends javax.swing.JFrame {
         lblPassword = new javax.swing.JLabel();
         lblNameUser = new javax.swing.JLabel();
         lblHeaderMyProfile = new javax.swing.JLabel();
-        txtNameProfile = new javax.swing.JTextField();
         txtIdNumberProfile = new javax.swing.JTextField();
+        txtNameProfile = new javax.swing.JTextField();
         lblId_number = new javax.swing.JLabel();
-        btnUpdateInfoUser = new javax.swing.JButton();
+        btnUpdateInfoAdmin = new javax.swing.JButton();
         lblEmailUser = new javax.swing.JLabel();
         txtPasswordProfile = new javax.swing.JPasswordField();
         lblBirthDate = new javax.swing.JLabel();
@@ -110,22 +121,22 @@ public class frmAdmin extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jpUserSettings = new javax.swing.JPanel();
         lblLastName1 = new javax.swing.JLabel();
-        txtLastName1 = new javax.swing.JTextField();
-        txtEmailUser1 = new javax.swing.JTextField();
+        txtLastNameUser = new javax.swing.JTextField();
+        txtEmailUser = new javax.swing.JTextField();
         lblPassword1 = new javax.swing.JLabel();
         lblNameUser1 = new javax.swing.JLabel();
         lblHeaderMyProfile1 = new javax.swing.JLabel();
-        txtNameUser1 = new javax.swing.JTextField();
-        txtIdNumberUserEdit = new javax.swing.JTextField();
+        txtIdNumberUser = new javax.swing.JTextField();
+        txtNameUser = new javax.swing.JTextField();
         lblId_number1 = new javax.swing.JLabel();
-        btnUpdateInfoUser1 = new javax.swing.JButton();
+        btnUpdateInfoUser = new javax.swing.JButton();
         lblEmailUser1 = new javax.swing.JLabel();
-        txtPassword1 = new javax.swing.JPasswordField();
+        txtPasswordUser = new javax.swing.JPasswordField();
         lblBirthDate1 = new javax.swing.JLabel();
         btnBirthCalendar1 = new javax.swing.JButton();
-        txtBirthDate1 = new javax.swing.JTextField();
+        txtBirthDateUser = new javax.swing.JTextField();
         lblPhone1 = new javax.swing.JLabel();
-        txtPhone1 = new javax.swing.JTextField();
+        txtPhoneUser = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblUsers = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
@@ -527,7 +538,7 @@ public class frmAdmin extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(lblHeaderReservations, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         jpReservationsLayout.setVerticalGroup(
             jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -550,32 +561,32 @@ public class frmAdmin extends javax.swing.JFrame {
         lblPassword.setText("Contraseña:");
 
         lblNameUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblNameUser.setText("Nombre:");
+        lblNameUser.setText("Cedula");
 
         lblHeaderMyProfile.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblHeaderMyProfile.setText("Editar Mi Perfil");
         lblHeaderMyProfile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblHeaderMyProfile.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        txtNameProfile.addActionListener(new java.awt.event.ActionListener() {
+        txtIdNumberProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameProfileActionPerformed(evt);
+                txtIdNumberProfileActionPerformed(evt);
             }
         });
 
         lblId_number.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblId_number.setText("Cédula:");
+        lblId_number.setText("Nombre");
 
-        btnUpdateInfoUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnUpdateInfoUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/cargando.png"))); // NOI18N
-        btnUpdateInfoUser.setText("Actualizar");
-        btnUpdateInfoUser.setBorderPainted(false);
-        btnUpdateInfoUser.setContentAreaFilled(false);
-        btnUpdateInfoUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnUpdateInfoUser.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnUpdateInfoUser.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateInfoAdmin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnUpdateInfoAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/cargando.png"))); // NOI18N
+        btnUpdateInfoAdmin.setText("Actualizar");
+        btnUpdateInfoAdmin.setBorderPainted(false);
+        btnUpdateInfoAdmin.setContentAreaFilled(false);
+        btnUpdateInfoAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUpdateInfoAdmin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnUpdateInfoAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateInfoUserActionPerformed(evt);
+                btnUpdateInfoAdminActionPerformed(evt);
             }
         });
 
@@ -608,8 +619,8 @@ public class frmAdmin extends javax.swing.JFrame {
                             .addComponent(lblPhone))
                         .addGap(32, 32, 32)
                         .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdNumberProfile)
                             .addComponent(txtNameProfile)
+                            .addComponent(txtIdNumberProfile)
                             .addComponent(txtLastNameProfile)
                             .addComponent(txtEmailProfile)
                             .addComponent(txtPasswordProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
@@ -619,13 +630,13 @@ public class frmAdmin extends javax.swing.JFrame {
                         .addComponent(btnBirthCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpmyProfileLayout.createSequentialGroup()
                         .addGap(504, 504, 504)
-                        .addComponent(btnUpdateInfoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnUpdateInfoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpmyProfileLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblHeaderMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 1004, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jpmyProfileLayout.setVerticalGroup(
             jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -637,11 +648,11 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNameUser)
-                    .addComponent(txtNameProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdNumberProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId_number)
-                    .addComponent(txtIdNumberProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNameProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLastNameProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -664,7 +675,7 @@ public class frmAdmin extends javax.swing.JFrame {
                     .addComponent(lblPhone)
                     .addComponent(txtPhoneProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
-                .addComponent(btnUpdateInfoUser)
+                .addComponent(btnUpdateInfoAdmin)
                 .addContainerGap(311, Short.MAX_VALUE))
         );
 
@@ -677,7 +688,7 @@ public class frmAdmin extends javax.swing.JFrame {
         lblPassword1.setText("Contraseña:");
 
         lblNameUser1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblNameUser1.setText("Nombre:");
+        lblNameUser1.setText("Cedula");
 
         lblHeaderMyProfile1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblHeaderMyProfile1.setText("Editar Usuarios:");
@@ -685,18 +696,18 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeaderMyProfile1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         lblId_number1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblId_number1.setText("Cédula:");
+        lblId_number1.setText("Nombre");
 
-        btnUpdateInfoUser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnUpdateInfoUser1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/actUsuario.png"))); // NOI18N
-        btnUpdateInfoUser1.setText("Actualizar");
-        btnUpdateInfoUser1.setBorderPainted(false);
-        btnUpdateInfoUser1.setContentAreaFilled(false);
-        btnUpdateInfoUser1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnUpdateInfoUser1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnUpdateInfoUser1.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateInfoUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnUpdateInfoUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/actUsuario.png"))); // NOI18N
+        btnUpdateInfoUser.setText("Actualizar");
+        btnUpdateInfoUser.setBorderPainted(false);
+        btnUpdateInfoUser.setContentAreaFilled(false);
+        btnUpdateInfoUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUpdateInfoUser.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnUpdateInfoUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateInfoUser1ActionPerformed(evt);
+                btnUpdateInfoUserActionPerformed(evt);
             }
         });
 
@@ -713,15 +724,20 @@ public class frmAdmin extends javax.swing.JFrame {
 
         tblUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Cedula", "Nombre", "Apellidos", "Fecha Nacimiento", "Correo", "Telefono", "Contraseña", "Rol"
             }
         ));
+        tblUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUsersMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblUsers);
 
         btnDeleteUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -748,36 +764,38 @@ public class frmAdmin extends javax.swing.JFrame {
                         .addComponent(lblHeaderMyProfile1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpUserSettingsLayout.createSequentialGroup()
+                        .addComponent(jSeparator3)
+                        .addGap(39, 39, 39))
+                    .addGroup(jpUserSettingsLayout.createSequentialGroup()
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpUserSettingsLayout.createSequentialGroup()
-                                .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblPassword1)
-                                    .addComponent(lblEmailUser1)
-                                    .addComponent(lblId_number1)
-                                    .addComponent(lblLastName1)
-                                    .addComponent(lblNameUser1)
-                                    .addComponent(lblBirthDate1)
-                                    .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnUpdateInfoUser1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblPhone1)))
-                                .addGap(32, 32, 32)
-                                .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jpUserSettingsLayout.createSequentialGroup()
-                                        .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtIdNumberUserEdit)
-                                            .addComponent(txtNameUser1)
-                                            .addComponent(txtLastName1)
-                                            .addComponent(txtEmailUser1)
-                                            .addComponent(txtPassword1)
-                                            .addComponent(txtBirthDate1)
-                                            .addComponent(txtPhone1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnBirthCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(39, 39, 39))))
+                            .addComponent(lblId_number1)
+                            .addComponent(lblLastName1)
+                            .addComponent(lblNameUser1)
+                            .addComponent(lblBirthDate1)
+                            .addGroup(jpUserSettingsLayout.createSequentialGroup()
+                                .addComponent(btnUpdateInfoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34))
+                            .addComponent(lblEmailUser1)
+                            .addComponent(lblPhone1)
+                            .addComponent(lblPassword1))
+                        .addGap(32, 32, 32)
+                        .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPhoneUser, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jpUserSettingsLayout.createSequentialGroup()
+                                    .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtNameUser)
+                                        .addComponent(txtIdNumberUser)
+                                        .addComponent(txtLastNameUser)
+                                        .addComponent(txtBirthDateUser)
+                                        .addComponent(txtEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnBirthCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jpUserSettingsLayout.setVerticalGroup(
             jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -791,40 +809,40 @@ public class frmAdmin extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNameUser1)
-                            .addComponent(txtNameUser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtIdNumberUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblId_number1)
-                            .addComponent(txtIdNumberUserEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtLastName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLastNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblLastName1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblBirthDate1)
+                            .addComponent(txtBirthDateUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBirthCalendar1))
+                        .addGap(9, 9, 9)
+                        .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblEmailUser1)
-                            .addComponent(txtEmailUser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBirthDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblBirthDate1)
-                            .addComponent(btnBirthCalendar1))
+                            .addComponent(txtPhoneUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPhone1))
                         .addGap(12, 12, 12)
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPassword1)
-                            .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
-                        .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPhone1)
-                            .addComponent(txtPhone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(73, 73, 73)
+                            .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPassword1))
+                        .addGap(70, 70, 70)
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnUpdateInfoUser1)
+                            .addComponent(btnUpdateInfoUser)
                             .addComponent(btnDeleteUser)))
                     .addGroup(jpUserSettingsLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(136, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Gestión de usuarios", jpUserSettings);
@@ -856,25 +874,37 @@ public class frmAdmin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnPanel5ActionPerformed
 
-    private void btnUpdateInfoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoUserActionPerformed
+    private void btnUpdateInfoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoAdminActionPerformed
+        cu.setRolId(1);
         cu.updatedUser(txtIdNumberProfile, txtNameProfile, txtLastNameProfile, txtBirthDateProfile, txtEmailProfile, txtPhoneProfile, txtPasswordProfile);
+        loadUsers();
+    }//GEN-LAST:event_btnUpdateInfoAdminActionPerformed
+
+    private void btnUpdateInfoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoUserActionPerformed
+        int selectedRow = tblUsers.getSelectedRow();
+        Object rolName = tblUsers.getValueAt(selectedRow, 8);
+        cu.setRolId(rol.getIDRol((String) rolName));
+        cu.updatedUser(txtIdNumberUser, txtNameUser, txtLastNameUser, txtBirthDateUser, txtEmailUser, txtPhoneUser, txtPasswordUser);
+        loadUsers();
+        clearFields();
     }//GEN-LAST:event_btnUpdateInfoUserActionPerformed
 
-    private void btnUpdateInfoUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoUser1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateInfoUser1ActionPerformed
-
     private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
-        // TODO add your handling code here:
+        cu.deleteuser();
+        loadUsers();
     }//GEN-LAST:event_btnDeleteUserActionPerformed
 
     private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
         this.cta.searchEvents(txtFilterByName, txtFilterByLocation, scrollAvailable, boxCategory);
     }//GEN-LAST:event_btnFilterActionPerformed
 
-    private void txtNameProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameProfileActionPerformed
+    private void txtIdNumberProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdNumberProfileActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameProfileActionPerformed
+    }//GEN-LAST:event_txtIdNumberProfileActionPerformed
+
+    private void tblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsersMouseClicked
+        cu.selectedRow(tblUsers, txtIdNumberUser, txtNameUser, txtLastNameUser, txtBirthDateUser, txtEmailUser, txtPhoneUser, txtPasswordUser);
+    }//GEN-LAST:event_tblUsersMouseClicked
 
     /**
      * @param args the command line arguments
@@ -896,8 +926,8 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnPanel3;
     private javax.swing.JButton btnPanel4;
     private javax.swing.JButton btnPanel5;
+    private javax.swing.JButton btnUpdateInfoAdmin;
     private javax.swing.JButton btnUpdateInfoUser;
-    private javax.swing.JButton btnUpdateInfoUser1;
     private javax.swing.JPanel jPFilters;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -945,25 +975,25 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JTable tblMyReservations;
     private javax.swing.JTable tblUsers;
     private javax.swing.JTextField txtBeginDate;
-    private javax.swing.JTextField txtBirthDate1;
     private javax.swing.JTextField txtBirthDateProfile;
+    private javax.swing.JTextField txtBirthDateUser;
     private javax.swing.JTextField txtDateR;
     private javax.swing.JTextField txtEmailProfile;
-    private javax.swing.JTextField txtEmailUser1;
+    private javax.swing.JTextField txtEmailUser;
     private javax.swing.JTextField txtEventId;
     private javax.swing.JTextField txtFilterByLocation;
     private javax.swing.JTextField txtFilterByName;
     private javax.swing.JTextField txtFinalDate;
     private javax.swing.JTextField txtIdNumberProfile;
-    private javax.swing.JTextField txtIdNumberUserEdit;
-    private javax.swing.JTextField txtLastName1;
+    private javax.swing.JTextField txtIdNumberUser;
     private javax.swing.JTextField txtLastNameProfile;
+    private javax.swing.JTextField txtLastNameUser;
     private javax.swing.JTextField txtNameProfile;
-    private javax.swing.JTextField txtNameUser1;
-    private javax.swing.JPasswordField txtPassword1;
+    private javax.swing.JTextField txtNameUser;
     private javax.swing.JPasswordField txtPasswordProfile;
-    private javax.swing.JTextField txtPhone1;
+    private javax.swing.JPasswordField txtPasswordUser;
     private javax.swing.JTextField txtPhoneProfile;
+    private javax.swing.JTextField txtPhoneUser;
     private javax.swing.JTextField txtUserR;
     // End of variables declaration//GEN-END:variables
 }

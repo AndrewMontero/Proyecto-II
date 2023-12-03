@@ -3,19 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+
 import controller.Login;
+
 /**
  *
  * @author Diego
  */
 public class frmLogin extends javax.swing.JFrame {
+
     //Own atributes
     Login CtrlLogin = new Login();
+
     /**
      * Creates new form frnLogin
      */
     public frmLogin() {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
 
@@ -142,7 +147,7 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-      this.CtrlLogin.login(txtEmail.getText(), txtPassword.getText());
+        this.CtrlLogin.login(txtEmail.getText(), txtPassword.getText());
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
@@ -153,7 +158,6 @@ public class frmLogin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;

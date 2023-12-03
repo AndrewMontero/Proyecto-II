@@ -56,8 +56,6 @@ public class Login {
     }
     
     private void openAdminFrame(User authenticatedUser) {
-        int rolId = authenticatedUser.getRol_id();
-        userCtrl.setRolId(rolId);
         frmAdmin login = new frmAdmin(authenticatedUser);
         login.setVisible(true);
     }

@@ -47,7 +47,7 @@ public class CtrlUser {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar el usuario: " + e.toString());
         }
-        this.clearFields(IDNumber, name, lastName, birthDate, email, phoneNumber, password, email);
+        this.clearFields(IDNumber, name, lastName, birthDate, email, phoneNumber, password);
     }
     // Create a date formatter for parsing the birth date string
 
@@ -64,7 +64,7 @@ public class CtrlUser {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar el usuario: " + e.toString());
         }
-        this.clearFields(IDNumber, name, lastName, birthDate, email, phoneNumber, password, email);
+        this.clearFields(IDNumber, name, lastName, birthDate, email, phoneNumber, password);
     }
 
     // Create a date formatter for parsing the updated birth date string
@@ -79,13 +79,33 @@ public class CtrlUser {
         }
     }
 
+    public void selectedRow(JTable table, JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
+        try {
+            int row = table.getSelectedRow();
+            if (row >= 0) {
+                this.id = Integer.parseInt(table.getValueAt(row, 0).toString());
+                IDNumber.setText(table.getValueAt(row, 1).toString());
+                name.setText(table.getValueAt(row, 2).toString());
+                lastName.setText(table.getValueAt(row, 3).toString());
+                birthDate.setText(table.getValueAt(row, 4).toString());
+                email.setText(table.getValueAt(row, 5).toString());
+                phoneNumber.setText(table.getValueAt(row, 6).toString());
+                password.setText(table.getValueAt(row, 7).toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de selección, error: " + e.toString());
+        }
+    }
+
     // Delete the user with the specified ID from the data source using the DAO
     public void deleteuser() {
         this.dao.delete(this.id);
     }
 
     // Set the text content of each JTextField to an empty string
-    public void clearFields(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password, JTextField rolId) {
+    public void clearFields(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
         IDNumber.setText("");
         name.setText("");
         lastName.setText("");
@@ -93,7 +113,6 @@ public class CtrlUser {
         email.setText("");
         phoneNumber.setText("");
         password.setText("");
-        rolId.setText("");
     }
 
     // Set the role ID to the specified value

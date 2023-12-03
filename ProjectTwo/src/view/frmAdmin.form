@@ -531,7 +531,7 @@
                           <Component id="lblHeaderReservations" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
                           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="213" max="32767" attributes="0"/>
+                      <EmptySpace pref="215" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -779,8 +779,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtIdNumberProfile" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtNameProfile" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtIdNumberProfile" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtLastNameProfile" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtEmailProfile" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtPasswordProfile" alignment="0" pref="207" max="32767" attributes="0"/>
@@ -792,7 +792,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="504" max="-2" attributes="0"/>
-                              <Component id="btnUpdateInfoUser" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="btnUpdateInfoAdmin" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
@@ -802,7 +802,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -816,12 +816,12 @@
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblNameUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNameProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtIdNumberProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblId_number" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtIdNumberProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNameProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -850,7 +850,7 @@
                           <Component id="txtPhoneProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="btnUpdateInfoUser" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnUpdateInfoAdmin" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="311" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -882,7 +882,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nombre:"/>
+                <Property name="text" type="java.lang.String" value="Cedula"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblHeaderMyProfile">
@@ -895,22 +895,22 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNameProfile">
+            <Component class="javax.swing.JTextField" name="txtIdNumberProfile">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameProfileActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdNumberProfileActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtIdNumberProfile">
+            <Component class="javax.swing.JTextField" name="txtNameProfile">
             </Component>
             <Component class="javax.swing.JLabel" name="lblId_number">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
+                <Property name="text" type="java.lang.String" value="Nombre"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnUpdateInfoUser">
+            <Component class="javax.swing.JButton" name="btnUpdateInfoAdmin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -925,7 +925,7 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateInfoUserActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateInfoAdminActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblEmailUser">
@@ -987,43 +987,45 @@
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblPassword1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblEmailUser1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblId_number1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblLastName1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblNameUser1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblBirthDate1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="btnUpdateInfoUser1" min="-2" pref="111" max="-2" attributes="0"/>
-                                              <Component id="lblPhone1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtIdNumberUserEdit" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtNameUser1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtLastName1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtEmailUser1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtPassword1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtBirthDate1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtPhone1" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnBirthCalendar1" min="-2" pref="33" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="btnDeleteUser" min="-2" pref="133" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="60" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane2" min="-2" pref="499" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="jSeparator3" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblId_number1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblLastName1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNameUser1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblBirthDate1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btnUpdateInfoUser" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblEmailUser1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPhone1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPassword1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtPhoneUser" min="-2" pref="207" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtNameUser" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtIdNumberUser" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtLastNameUser" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtBirthDateUser" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtEmailUser" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnBirthCalendar1" min="-2" pref="33" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="btnDeleteUser" min="-2" pref="133" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtPasswordUser" min="-2" pref="207" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" pref="580" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1037,55 +1039,55 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblNameUser1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtNameUser1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtIdNumberUser" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblId_number1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtIdNumberUserEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNameUser" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtLastName1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtLastNameUser" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblLastName1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblBirthDate1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtBirthDateUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnBirthCalendar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblEmailUser1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtEmailUser1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtEmailUser" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtBirthDate1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblBirthDate1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnBirthCalendar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtPhoneUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPhone1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtPasswordUser" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblPassword1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtPassword1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblPhone1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtPhone1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="btnUpdateInfoUser1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnUpdateInfoUser" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnDeleteUser" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="532" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="136" max="32767" attributes="0"/>
+                      <EmptySpace pref="241" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1099,9 +1101,9 @@
                 <Property name="text" type="java.lang.String" value="Apellidos:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtLastName1">
+            <Component class="javax.swing.JTextField" name="txtLastNameUser">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtEmailUser1">
+            <Component class="javax.swing.JTextField" name="txtEmailUser">
             </Component>
             <Component class="javax.swing.JLabel" name="lblPassword1">
               <Properties>
@@ -1116,7 +1118,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nombre:"/>
+                <Property name="text" type="java.lang.String" value="Cedula"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblHeaderMyProfile1">
@@ -1129,19 +1131,19 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNameUser1">
+            <Component class="javax.swing.JTextField" name="txtIdNumberUser">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtIdNumberUserEdit">
+            <Component class="javax.swing.JTextField" name="txtNameUser">
             </Component>
             <Component class="javax.swing.JLabel" name="lblId_number1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
+                <Property name="text" type="java.lang.String" value="Nombre"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnUpdateInfoUser1">
+            <Component class="javax.swing.JButton" name="btnUpdateInfoUser">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -1156,7 +1158,7 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateInfoUser1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateInfoUserActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblEmailUser1">
@@ -1167,7 +1169,7 @@
                 <Property name="text" type="java.lang.String" value="Correo:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="txtPassword1">
+            <Component class="javax.swing.JPasswordField" name="txtPasswordUser">
             </Component>
             <Component class="javax.swing.JLabel" name="lblBirthDate1">
               <Properties>
@@ -1182,7 +1184,7 @@
                 <Property name="text" type="java.lang.String" value="..."/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtBirthDate1">
+            <Component class="javax.swing.JTextField" name="txtBirthDateUser">
             </Component>
             <Component class="javax.swing.JLabel" name="lblPhone1">
               <Properties>
@@ -1192,7 +1194,7 @@
                 <Property name="text" type="java.lang.String" value="N&#xfa;mero de Tel&#xe9;fono:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtPhone1">
+            <Component class="javax.swing.JTextField" name="txtPhoneUser">
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>
@@ -1204,14 +1206,74 @@
                 <Component class="javax.swing.JTable" name="tblUsers">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      <Table columnCount="9" rowCount="4">
+                        <Column editable="true" title="ID" type="java.lang.Object"/>
+                        <Column editable="true" title="Cedula" type="java.lang.Object"/>
+                        <Column editable="true" title="Nombre" type="java.lang.Object"/>
+                        <Column editable="true" title="Apellidos" type="java.lang.Object"/>
+                        <Column editable="true" title="Fecha Nacimiento" type="java.lang.Object"/>
+                        <Column editable="true" title="Correo" type="java.lang.Object"/>
+                        <Column editable="true" title="Telefono" type="java.lang.Object"/>
+                        <Column editable="true" title="Contrase&#xf1;a" type="java.lang.Object"/>
+                        <Column editable="true" title="Rol" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblUsersMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
