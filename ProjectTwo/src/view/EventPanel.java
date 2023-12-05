@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -213,6 +214,11 @@ public class EventPanel extends javax.swing.JPanel {
         btnPrevImage.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPrevImage.setText("<-");
         btnPrevImage.setContentAreaFilled(false);
+        btnPrevImage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPrevImageMouseEntered(evt);
+            }
+        });
         btnPrevImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrevImageActionPerformed(evt);
@@ -237,7 +243,7 @@ public class EventPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPrevImage)
+                        .addComponent(btnPrevImage, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnNextImage)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -350,6 +356,13 @@ public class EventPanel extends javax.swing.JPanel {
     private void btnNextImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextImageActionPerformed
         showNextImage();
     }//GEN-LAST:event_btnNextImageActionPerformed
+
+    private void btnPrevImageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrevImageMouseEntered
+        // TODO add your handling code here:
+         btnPrevImage.setBackground(Color.BLUE);
+        btnPrevImage.setForeground(Color.WHITE);
+        
+    }//GEN-LAST:event_btnPrevImageMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,6 +6,7 @@ package view;
 
 import controller.CtrlTripAdvisor;
 import controller.CtrlUser;
+import java.awt.Color;
 import model.RolDAO;
 import model.User;
 
@@ -263,7 +264,7 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeader1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeader1.setText("Buscar eventos cerca de mi");
 
-        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblFilterByName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFilterByName.setText("Nombre del evento:");
@@ -276,6 +277,11 @@ public class frmAdmin extends javax.swing.JFrame {
         txtBeginDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         btnCalendarBegin.setText("...");
+        btnCalendarBegin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCalendarBeginMouseEntered(evt);
+            }
+        });
 
         lblFinalDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFinalDate.setText("Categoria:");
@@ -423,7 +429,7 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeaderReservations.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeaderReservations.setText("Ver reservaciones");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblUserR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblUserR.setText("Usuario:");
@@ -905,6 +911,12 @@ public class frmAdmin extends javax.swing.JFrame {
     private void tblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsersMouseClicked
         cu.selectedRow(tblUsers, txtIdNumberUser, txtNameUser, txtLastNameUser, txtBirthDateUser, txtEmailUser, txtPhoneUser, txtPasswordUser);
     }//GEN-LAST:event_tblUsersMouseClicked
+
+    private void btnCalendarBeginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalendarBeginMouseEntered
+        // TODO add your handling code here:
+          btnCalendarBegin.setBackground(Color.BLUE);
+        btnCalendarBegin.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btnCalendarBeginMouseEntered
 
     /**
      * @param args the command line arguments
