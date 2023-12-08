@@ -17,6 +17,7 @@ import model.User;
 
 public class CtrlReservation {
 
+    Validation vali = new Validation();
     ReservationDAO dao = new ReservationDAO();
     EventDAO event = new EventDAO();
     int id;
@@ -36,7 +37,9 @@ public class CtrlReservation {
     }
 
     public void addReservation(JTextField userName, JTextField date, JTextField quantity, JTextField eventId) {
-        // Create a date formatter for parsing the date string
+        if (!validateName(userName) || !validateQuantity(quantity)) {
+            return;
+        }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date reservationDate = dateFormat.parse(date.getText());
@@ -48,9 +51,12 @@ public class CtrlReservation {
         }
         this.clearFields(userName, date, quantity, eventId);
     }
-     // Create a date formatter for parsing the date string
-     public void updatedReservation(JTextField userName, JTextField date, JTextField quantity, JTextField eventId) {
+    // Create a date formatter for parsing the date string
 
+    public void updatedReservation(JTextField userName, JTextField date, JTextField quantity, JTextField eventId) {
+        if (!validateName(userName) || !validateQuantity(quantity)) {
+            return;
+        }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date reservationDate = dateFormat.parse(date.getText());
@@ -60,15 +66,34 @@ public class CtrlReservation {
         }
         this.clearFields(userName, date, quantity, eventId);
     }
-     // Delete the role with the specified ID from the data source
+    // Delete the role with the specified ID from the data source
+
     public void deleteRol() {
         this.dao.delete(this.id);
     }
-     // Set the text content of each JTextField to an empty string
+    // Set the text content of each JTextField to an empty string
+
     public void clearFields(JTextField userName, JTextField date, JTextField quantity, JTextField eventId) {
         userName.setText("");
         date.setText("");
         quantity.setText("");
         eventId.setText("");
     }
+
+    public boolean validateName(JTextField userName) {
+        if (!vali.validateLettersSpaces(userName.getText())) {
+            JOptionPane.showMessageDialog(null, "El nombre que ingresaste no cumple con el formato");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateQuantity(JTextField valor) {
+        if (!vali.validateNumber(valor.getText())) {
+            JOptionPane.showMessageDialog(null, "La canitidad que ingresaste no cumple con el formato");
+            return false;
+        }
+        return true;
+    }
+
 }

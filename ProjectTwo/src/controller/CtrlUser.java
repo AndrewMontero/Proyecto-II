@@ -17,6 +17,7 @@ import model.UserDAO;
 
 public class CtrlUser {
 
+    Validation vali = new Validation();
     UserDAO dao = new UserDAO();
     RolDAO rol = new RolDAO();
     int id;
@@ -38,6 +39,9 @@ public class CtrlUser {
 
     // Create a date formatter for parsing the birth date string
     public void addUser(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
+        if (!validateName(name) || !validateLastName(lastName) || !validateIDNumber(IDNumber) || !validateEmail(email) || !validatePhone(phoneNumber) || !validatePassword(password)) {
+            return;
+        }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date userBirthDate = dateFormat.parse(birthDate.getText());
@@ -52,6 +56,9 @@ public class CtrlUser {
     // Create a date formatter for parsing the birth date string
 
     public void addUserRegister(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password, JFrame frame) {
+        if (!validateName(name) || !validateLastName(lastName) || !validateIDNumber(IDNumber) || !validateEmail(email) || !validatePhone(phoneNumber) || !validatePassword(password)) {
+            return;
+        }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date userBirthDate = dateFormat.parse(birthDate.getText());
@@ -69,7 +76,9 @@ public class CtrlUser {
 
     // Create a date formatter for parsing the updated birth date string
     public void updatedUser(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
-
+        if (!validateName(name) || !validateLastName(lastName) || !validateIDNumber(IDNumber) || !validateEmail(email) || !validatePhone(phoneNumber) || !validatePassword(password)) {
+            return;
+        }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date userBirthDate = dateFormat.parse(birthDate.getText());
@@ -118,5 +127,53 @@ public class CtrlUser {
     // Set the role ID to the specified value
     public static void setRolId(int id) {
         rolId = id;
+    }
+
+    public boolean validateIDNumber(JTextField IDNumber) {
+        if (!vali.validateIdNumber(IDNumber.getText())) {
+            JOptionPane.showMessageDialog(null, "La cedula que ingresaste no cumple con el formato");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateName(JTextField name) {
+        if (!vali.validateLettersSpaces(name.getText())) {
+            JOptionPane.showMessageDialog(null, "El nombre que ingresaste no cumple con el formato");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateLastName(JTextField LastnName) {
+        if (!vali.validateLettersSpaces(LastnName.getText())) {
+            JOptionPane.showMessageDialog(null, "El apellido que ingresaste no cumple con el formato");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateEmail(JTextField correo) {
+        if (!vali.validateEmail(correo.getText())) {
+            JOptionPane.showMessageDialog(null, "El email que ingresaste no cumple con el formato");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validatePhone(JTextField phoneNumber) {
+        if (!vali.validatePhoneNumber(phoneNumber.getText())) {
+            JOptionPane.showMessageDialog(null, "El numero de telefono que ingresaste no cumple con el formato");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validatePassword(JTextField valor) {
+        if (!vali.validateAlphanumeric(valor.getText())) {
+            JOptionPane.showMessageDialog(null, "La contraseña que ingresaste no cumple con el formato");
+            return false;
+        }
+        return true;
     }
 }
