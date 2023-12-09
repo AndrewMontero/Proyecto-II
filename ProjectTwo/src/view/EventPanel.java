@@ -129,7 +129,7 @@ public class EventPanel extends javax.swing.JPanel {
             System.out.println("Error al actualizar el icono meteorológico: " + e.getMessage());
         }
     }
-    
+
     public Event getSelectedEvent() {
         return event;
     }
@@ -165,16 +165,20 @@ public class EventPanel extends javax.swing.JPanel {
         btnNextImage = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 255)));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/circulo-cruzado.png"))); // NOI18N
+        add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, 165, 150));
 
         lblName.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
         lblName.setText("Nombre");
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, 38));
 
         lblAddress.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblAddress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/ubicacion.png"))); // NOI18N
         lblAddress.setText("Direccion");
+        add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 490, 24));
 
         btnDetails.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/descripcion.png"))); // NOI18N
@@ -185,6 +189,7 @@ public class EventPanel extends javax.swing.JPanel {
                 btnDetailsActionPerformed(evt);
             }
         });
+        add(btnDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         btnWeb.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnWeb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/globo.png"))); // NOI18N
@@ -195,11 +200,14 @@ public class EventPanel extends javax.swing.JPanel {
                 btnWebActionPerformed(evt);
             }
         });
+        add(btnWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 140, -1, -1));
 
         lblRatingImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/circulo-cruzado.png"))); // NOI18N
+        add(lblRatingImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 104, 110, -1));
 
         lblReviews.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblReviews.setText("Sin Opiniones");
+        add(lblReviews, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 112, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/confirmar.png"))); // NOI18N
@@ -210,21 +218,27 @@ public class EventPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 140, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/dolar.png"))); // NOI18N
         jLabel1.setText("Precio");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 133, -1, -1));
 
         lblDescription.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblDescription.setText("Clima");
+        add(lblDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, -1, -1));
 
         lblSpeed.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblSpeed.setText("Velocidad del viento");
+        add(lblSpeed, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, -1, -1));
 
         lblTemp.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblTemp.setText("temp");
+        add(lblTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, -1, -1));
 
         lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/cancelado.png"))); // NOI18N
+        add(lblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
 
         btnPrevImage.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPrevImage.setText("<-");
@@ -233,12 +247,16 @@ public class EventPanel extends javax.swing.JPanel {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnPrevImageMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPrevImageMouseExited(evt);
+            }
         });
         btnPrevImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrevImageActionPerformed(evt);
             }
         });
+        add(btnPrevImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 50, -1));
 
         btnNextImage.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnNextImage.setText("->");
@@ -248,92 +266,7 @@ public class EventPanel extends javax.swing.JPanel {
                 btnNextImageActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPrevImage, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnNextImage)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblName)
-                                .addGap(49, 49, 49)
-                                .addComponent(lblIcon)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblDescription)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblTemp)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblSpeed))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnWeb)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnDetails)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(lblRatingImage, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addComponent(lblReviews))))
-                        .addGap(87, 87, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnNextImage)
-                            .addComponent(btnPrevImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblIcon)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblDescription)
-                                .addComponent(lblTemp)
-                                .addComponent(lblSpeed)
-                                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblRatingImage)
-                                    .addComponent(lblReviews))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnWeb)
-                                    .addComponent(jButton1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDetails)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+        add(btnNextImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
@@ -384,11 +317,14 @@ public class EventPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNextImageActionPerformed
 
     private void btnPrevImageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrevImageMouseEntered
-        // TODO add your handling code here:
-         btnPrevImage.setBackground(Color.BLUE);
-        btnPrevImage.setForeground(Color.WHITE);
-        
+
+
+
     }//GEN-LAST:event_btnPrevImageMouseEntered
+
+    private void btnPrevImageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrevImageMouseExited
+
+    }//GEN-LAST:event_btnPrevImageMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

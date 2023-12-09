@@ -54,6 +54,19 @@ public class CtrlPlace {
         this.clearFields(name, address, city, postalCode, latitude, longitude, tripAdvisorLink);
     }
 
+    public void selectedRow(JTable table) {
+        try {
+            int row = table.getSelectedRow();
+            if (row >= 0) {
+                this.id = Integer.parseInt(table.getValueAt(row, 0).toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de selección, error: " + e.toString());
+        }
+    }
+
     // Delete the place with the specified ID from the data source
     public void deletePlace() {
         this.dao.delete(this.id);

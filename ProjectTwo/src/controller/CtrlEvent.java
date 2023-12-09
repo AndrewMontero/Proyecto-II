@@ -31,7 +31,7 @@ public class CtrlEvent {
          // Retrieve a list of events from the data access object (DAO)
         List<Event> event = dao.read();
         for (Event events : event) {
-            Object[] row = {events.getId(), events.getName(), events.getDescription(), events.getDate(), events.getAddress(), events.getCity(), events.getPostal_code(), events.getPrice(), events.getRoom(), this.place.getNamePlaces(events.getPlace_id())};
+            Object[] row = {events.getId(), events.getName(), events.getDescription(), events.getDate(), events.getAddress(), events.getCity(), events.getPostal_code(),/* events.getPrice(), events.getRoom(),*/ this.place.getNamePlaces(events.getPlace_id())};
             model.addRow(row);
         }
     }
@@ -67,6 +67,19 @@ public class CtrlEvent {
         // Clear the input fields after successfully updating the event
         this.clearFields(name, description, date, address, city, postalCode, price, room, placeId);
     }
+    public void selectedRow(JTable table) {
+        try {
+            int row = table.getSelectedRow();
+            if (row >= 0) {
+                this.id = Integer.parseInt(table.getValueAt(row, 0).toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de selección, error: " + e.toString());
+        }
+    }
+
      // Delete the event with the specified ID from the data source
     public void deleteEvent() {
         this.dao.delete(this.id);

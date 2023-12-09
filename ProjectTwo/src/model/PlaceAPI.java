@@ -72,8 +72,8 @@ public class PlaceAPI {
 
         place.setName(jsonPlace.getString("name"));
         place.setAddress(jsonPlace.getJSONObject("address_obj").getString("address_string"));
-        place.setCity(jsonPlace.optString("city", "Ciudad no disponible"));
-        place.setPostal_code(jsonPlace.optInt("postalcode", 0));
+        place.setCity(jsonPlace.getJSONObject("address_obj").optString("city", "Ciudad no disponible"));
+        place.setPostal_code(jsonPlace.getJSONObject("address_obj").optInt("postalcode", 0));
         place.setLatitude(jsonPlace.getString("latitude"));
         place.setLongitude(jsonPlace.getString("longitude"));
         place.setTripAdvisor_link(jsonPlace.getString("web_url"));

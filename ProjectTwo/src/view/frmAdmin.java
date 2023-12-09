@@ -4,6 +4,9 @@
  */
 package view;
 
+import controller.CtrlEvent;
+import controller.CtrlPlace;
+import controller.CtrlReservation;
 import controller.CtrlTripAdvisor;
 import controller.CtrlUser;
 import java.awt.Color;
@@ -15,9 +18,12 @@ import model.User;
  * @author Diego
  */
 public class frmAdmin extends javax.swing.JFrame {
-
+    
     CtrlTripAdvisor cta = new CtrlTripAdvisor();
+    CtrlEvent ce = new CtrlEvent();
+    CtrlReservation cr = new CtrlReservation();
     CtrlUser cu = new CtrlUser();
+    CtrlPlace cp = new CtrlPlace();
     RolDAO rol = new RolDAO();
 
     /**
@@ -29,12 +35,27 @@ public class frmAdmin extends javax.swing.JFrame {
         this.setResizable(false);
         setUserInfo(user);
         loadUsers();
+        loadEvent();
+        loadReservation();
+        loadPlace();
     }
-
+    
     private void loadUsers() {
         cu.loadDataUser(tblUsers);
     }
 
+    private void loadEvent() {
+        ce.loadDataEvent(tblEvents);
+    }
+    
+    private void loadReservation() {
+        cr.loadDataReservation(tblReservations);
+    }
+    
+    private void loadPlace() {
+        cp.loadDataPlace(tblPlaces);
+    }
+    
     public void setUserInfo(User user) {
         txtIdNumberProfile.setText(String.valueOf(user.getID_number()));
         txtNameProfile.setText(user.getName());
@@ -44,7 +65,7 @@ public class frmAdmin extends javax.swing.JFrame {
         txtPasswordProfile.setText(user.getPassword());
         txtPhoneProfile.setText(String.valueOf(user.getPhone_number()));
     }
-
+    
     private void clearFields() {
         cu.clearFields(txtIdNumberUser, txtNameUser, txtLastNameUser, txtBirthDateUser, txtEmailUser, txtPhoneUser, txtPasswordUser);
     }
@@ -72,14 +93,12 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeader1 = new javax.swing.JLabel();
         btnClearFilter = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnUpdateEvent = new javax.swing.JButton();
+        tblEvents = new javax.swing.JTable();
         btnDeleteEvent = new javax.swing.JButton();
         jpReservations = new javax.swing.JPanel();
         lblHeaderReservations = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblMyReservations = new javax.swing.JTable();
-        btnUpdateReserv = new javax.swing.JButton();
+        tblReservations = new javax.swing.JTable();
         btnDeleteReserv = new javax.swing.JButton();
         jpmyProfile = new javax.swing.JPanel();
         lblLastName = new javax.swing.JLabel();
@@ -122,10 +141,9 @@ public class frmAdmin extends javax.swing.JFrame {
         tblUsers = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         btnDeleteUser = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jpPlace = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        btnUpdatePlace = new javax.swing.JButton();
+        tblPlaces = new javax.swing.JTable();
         btnDeletePlace = new javax.swing.JButton();
         lblHeaderMyProfile2 = new javax.swing.JLabel();
 
@@ -252,31 +270,23 @@ public class frmAdmin extends javax.swing.JFrame {
         btnClearFilter.setText("Limpiar mi búsqueda anterior");
         btnClearFilter.setContentAreaFilled(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEvents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Nombre", "Descripcion", "Fecha", "Direccion", "Ciudad", "Codigo postal", "Place"
             }
         ));
-        jScrollPane3.setViewportView(jTable1);
-
-        btnUpdateEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnUpdateEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/actUsuario.png"))); // NOI18N
-        btnUpdateEvent.setText("Actualizar");
-        btnUpdateEvent.setBorderPainted(false);
-        btnUpdateEvent.setContentAreaFilled(false);
-        btnUpdateEvent.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnUpdateEvent.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnUpdateEvent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateEventActionPerformed(evt);
+        tblEvents.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblEventsMouseClicked(evt);
             }
         });
+        jScrollPane3.setViewportView(tblEvents);
 
         btnDeleteEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnDeleteEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/borrar-usuario.png"))); // NOI18N
@@ -298,18 +308,16 @@ public class frmAdmin extends javax.swing.JFrame {
             .addGroup(jpSearchLayout.createSequentialGroup()
                 .addGroup(jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpSearchLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jpSearchLayout.createSequentialGroup()
                         .addGap(694, 694, 694)
                         .addComponent(btnClearFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpSearchLayout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(btnUpdateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109)
-                        .addComponent(btnDeleteEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(32, 32, 32)
+                        .addGroup(jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpSearchLayout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDeleteEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         jpSearchLayout.setVerticalGroup(
@@ -318,13 +326,12 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblHeader1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
                 .addGroup(jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDeleteEvent)
-                    .addComponent(btnUpdateEvent))
-                .addGap(241, 241, 241)
-                .addComponent(btnClearFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpSearchLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(327, 327, 327)
+                        .addComponent(btnClearFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDeleteEvent))
                 .addGap(18, 18, 18))
         );
 
@@ -333,31 +340,23 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeaderReservations.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeaderReservations.setText("Reservaciones");
 
-        tblMyReservations.setModel(new javax.swing.table.DefaultTableModel(
+        tblReservations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "Nombre Usuario", "Fecha", "Entradas", "Evento"
             }
         ));
-        jScrollPane1.setViewportView(tblMyReservations);
-
-        btnUpdateReserv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnUpdateReserv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/actUsuario.png"))); // NOI18N
-        btnUpdateReserv.setText("Actualizar");
-        btnUpdateReserv.setBorderPainted(false);
-        btnUpdateReserv.setContentAreaFilled(false);
-        btnUpdateReserv.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnUpdateReserv.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnUpdateReserv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateReservActionPerformed(evt);
+        tblReservations.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblReservationsMouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(tblReservations);
 
         btnDeleteReserv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnDeleteReserv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/borrar-usuario.png"))); // NOI18N
@@ -377,18 +376,14 @@ public class frmAdmin extends javax.swing.JFrame {
         jpReservationsLayout.setHorizontalGroup(
             jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpReservationsLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addGroup(jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblHeaderReservations, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpReservationsLayout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(btnUpdateReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(btnDeleteReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpReservationsLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHeaderReservations, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(246, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnDeleteReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jpReservationsLayout.setVerticalGroup(
             jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,12 +391,10 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(lblHeaderReservations)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUpdateReserv)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeleteReserv))
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Reservaciones", jpReservations);
@@ -699,31 +692,23 @@ public class frmAdmin extends javax.swing.JFrame {
 
         tabPanels.addTab("Gestión de usuarios", jpUserSettings);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblPlaces.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "Nombre", "Direccion", "Ciudad", "Codigo Postal", "Latitud", "Longitud", "WebLink"
             }
         ));
-        jScrollPane4.setViewportView(jTable2);
-
-        btnUpdatePlace.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnUpdatePlace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/actUsuario.png"))); // NOI18N
-        btnUpdatePlace.setText("Actualizar");
-        btnUpdatePlace.setBorderPainted(false);
-        btnUpdatePlace.setContentAreaFilled(false);
-        btnUpdatePlace.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnUpdatePlace.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnUpdatePlace.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdatePlaceActionPerformed(evt);
+        tblPlaces.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPlacesMouseClicked(evt);
             }
         });
+        jScrollPane4.setViewportView(tblPlaces);
 
         btnDeletePlace.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnDeletePlace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/borrar-usuario.png"))); // NOI18N
@@ -743,41 +728,34 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeaderMyProfile2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblHeaderMyProfile2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblHeaderMyProfile2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(btnUpdatePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95)
-                        .addComponent(btnDeletePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(247, Short.MAX_VALUE))
+        javax.swing.GroupLayout jpPlaceLayout = new javax.swing.GroupLayout(jpPlace);
+        jpPlace.setLayout(jpPlaceLayout);
+        jpPlaceLayout.setHorizontalGroup(
+            jpPlaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpPlaceLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jpPlaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpPlaceLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeletePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblHeaderMyProfile2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jpPlaceLayout.setVerticalGroup(
+            jpPlaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpPlaceLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lblHeaderMyProfile2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDeletePlace)
-                    .addComponent(btnUpdatePlace))
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addGroup(jpPlaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeletePlace))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
 
-        tabPanels.addTab("Lugares", jPanel2);
+        tabPanels.addTab("Lugares", jpPlace);
 
         getContentPane().add(tabPanels, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 1080, 790));
 
@@ -838,29 +816,32 @@ public class frmAdmin extends javax.swing.JFrame {
         tabPanels.setSelectedIndex(4);
     }//GEN-LAST:event_btnPanel6ActionPerformed
 
-    private void btnUpdateReservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateReservActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateReservActionPerformed
-
     private void btnDeleteReservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteReservActionPerformed
-        // TODO add your handling code here:
+        cr.deleteReserv();
+        loadReservation();
     }//GEN-LAST:event_btnDeleteReservActionPerformed
 
-    private void btnUpdateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateEventActionPerformed
-
     private void btnDeleteEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEventActionPerformed
-        // TODO add your handling code here:
+        ce.deleteEvent();
+        loadEvent();
     }//GEN-LAST:event_btnDeleteEventActionPerformed
 
-    private void btnUpdatePlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePlaceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdatePlaceActionPerformed
-
     private void btnDeletePlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePlaceActionPerformed
-        // TODO add your handling code here:
+        cp.deletePlace();
+        loadPlace();
     }//GEN-LAST:event_btnDeletePlaceActionPerformed
+
+    private void tblReservationsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReservationsMouseClicked
+        cr.selectedRow(tblReservations);
+    }//GEN-LAST:event_tblReservationsMouseClicked
+
+    private void tblEventsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEventsMouseClicked
+        ce.selectedRow(tblEvents);
+    }//GEN-LAST:event_tblEventsMouseClicked
+
+    private void tblPlacesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlacesMouseClicked
+        cp.selectedRow(tblPlaces);
+    }//GEN-LAST:event_tblPlacesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -880,23 +861,18 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnPanel4;
     private javax.swing.JButton btnPanel5;
     private javax.swing.JButton btnPanel6;
-    private javax.swing.JButton btnUpdateEvent;
     private javax.swing.JButton btnUpdateInfoAdmin;
     private javax.swing.JButton btnUpdateInfoUser;
-    private javax.swing.JButton btnUpdatePlace;
-    private javax.swing.JButton btnUpdateReserv;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JPanel jpBack;
     private javax.swing.JPanel jpMenu;
+    private javax.swing.JPanel jpPlace;
     private javax.swing.JPanel jpReservations;
     private javax.swing.JPanel jpSearch;
     private javax.swing.JPanel jpUserSettings;
@@ -921,7 +897,9 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblPhone1;
     private javax.swing.JTabbedPane tabPanels;
-    private javax.swing.JTable tblMyReservations;
+    private javax.swing.JTable tblEvents;
+    private javax.swing.JTable tblPlaces;
+    private javax.swing.JTable tblReservations;
     private javax.swing.JTable tblUsers;
     private javax.swing.JTextField txtBirthDateProfile;
     private javax.swing.JTextField txtBirthDateUser;

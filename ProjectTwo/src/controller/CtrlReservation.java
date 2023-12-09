@@ -65,9 +65,22 @@ public class CtrlReservation {
         }
         this.clearFields(userName, date);
     }
-    // Delete the role with the specified ID from the data source
 
-    public void deleteRol() {
+    public void selectedRow(JTable table) {
+        try {
+            int row = table.getSelectedRow();
+            if (row >= 0) {
+                this.id = Integer.parseInt(table.getValueAt(row, 0).toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de selección, error: " + e.toString());
+        }
+    }
+
+    // Delete the role with the specified ID from the data source
+    public void deleteReserv() {
         this.dao.delete(this.id);
     }
     // Set the text content of each JTextField to an empty string
