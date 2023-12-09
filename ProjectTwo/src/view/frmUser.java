@@ -4,9 +4,17 @@
  */
 package view;
 
+import controller.CtrlReservation;
 import controller.CtrlTripAdvisor;
 import controller.CtrlUser;
 import java.awt.Color;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import model.Event;
+import model.EventDAO;
+import model.Place;
+import model.PlaceDAO;
 import model.User;
 
 /**
@@ -17,6 +25,11 @@ public class frmUser extends javax.swing.JFrame {
 
     CtrlTripAdvisor cta = new CtrlTripAdvisor();
     CtrlUser cu = new CtrlUser();
+    CtrlReservation cr = new CtrlReservation();
+    EventDAO eventDAO = new EventDAO();
+    PlaceDAO placeDAO = new PlaceDAO();
+    private EventPanel eventPanel;
+    private User user;
 
     /**
      * Creates new form frmUser
@@ -26,6 +39,11 @@ public class frmUser extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         setUserInfo(user);
+        this.user = user;
+    }
+
+    public void setEventPanel(EventPanel eventPanel) {
+        this.eventPanel = eventPanel;
     }
 
     public void setUserInfo(User user) {
@@ -36,6 +54,38 @@ public class frmUser extends javax.swing.JFrame {
         txtBirthDateProfile.setText(String.valueOf(user.getBirth_date()));
         txtPasswordProfile.setText(user.getPassword());
         txtPhoneProfile.setText(String.valueOf(user.getPhone_number()));
+    }
+
+    public void actualizarFecha(int idEvent) {
+        // Get the current date and time
+        LocalDateTime fechaActual = LocalDateTime.now();
+
+        // Format the date as a string in the desired format
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String fechaFormateada = fechaActual.format(formato);
+        txtDateR.setText(fechaFormateada);
+        txtEventId.setText(String.valueOf(idEvent));
+        txtUserR.setText(user.getName());
+    }
+
+    public void getJpReservations() {
+        tabPanels.setSelectedIndex(1);
+    }
+
+    public void setEventDetails(Event event) {
+        try {
+            eventDAO.create(event);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al insertar el evento en la base de datos: " + e.toString());
+        }
+    }
+
+    public void setPlaceDetails(Place place) {
+        try {
+            placeDAO.create(place);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al insertar el lugar en la base de datos: " + e.toString());
+        }
     }
 
     /**
@@ -105,7 +155,6 @@ public class frmUser extends javax.swing.JFrame {
         txtPhoneProfile = new javax.swing.JTextField();
         jpMenu = new javax.swing.JPanel();
         btnPanel1 = new javax.swing.JButton();
-        btnPanel2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -164,7 +213,7 @@ public class frmUser extends javax.swing.JFrame {
         lblHeader.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeader.setText("Buscar eventos cerca de mi");
 
-        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblFilterByName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFilterByName.setText("Nombre del evento:");
@@ -319,9 +368,9 @@ public class frmUser extends javax.swing.JFrame {
         tabPanels.addTab("Eventos Disponibles", jpSearch);
 
         lblHeaderReservations.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        lblHeaderReservations.setText("Ver reservaciones");
+        lblHeaderReservations.setText("Reservar");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblUserR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblUserR.setText("Usuario:");
@@ -337,6 +386,7 @@ public class frmUser extends javax.swing.JFrame {
         lblQuantityR.setText("Cantidad de personas:");
 
         spQuantityR.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        spQuantityR.setModel(new javax.swing.SpinnerNumberModel(1, null, 10, 1));
 
         lblEventId.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblEventId.setText("Código del evento:");
@@ -350,6 +400,11 @@ public class frmUser extends javax.swing.JFrame {
         btnConfirmR.setContentAreaFilled(false);
         btnConfirmR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnConfirmR.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnConfirmR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmRActionPerformed(evt);
+            }
+        });
 
         btnDisconfirmR.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         btnDisconfirmR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/cancelado.png"))); // NOI18N
@@ -358,6 +413,11 @@ public class frmUser extends javax.swing.JFrame {
         btnDisconfirmR.setContentAreaFilled(false);
         btnDisconfirmR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDisconfirmR.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDisconfirmR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisconfirmRActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -387,7 +447,7 @@ public class frmUser extends javax.swing.JFrame {
                                 .addGap(28, 28, 28)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spQuantityR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spQuantityR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEventId, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -586,20 +646,6 @@ public class frmUser extends javax.swing.JFrame {
         });
         jpMenu.add(btnPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 102, 190, 37));
 
-        btnPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        btnPanel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnPanel2.setForeground(new java.awt.Color(255, 255, 255));
-        btnPanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/billete-de-avion.png"))); // NOI18N
-        btnPanel2.setText("Ver reservaciones");
-        btnPanel2.setBorderPainted(false);
-        btnPanel2.setContentAreaFilled(false);
-        btnPanel2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPanel2ActionPerformed(evt);
-            }
-        });
-        jpMenu.add(btnPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 167, 190, 41));
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/lago_oscuro_1270_x_720.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jpMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -612,10 +658,6 @@ public class frmUser extends javax.swing.JFrame {
     private void btnPanel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel1ActionPerformed
         tabPanels.setSelectedIndex(0);
     }//GEN-LAST:event_btnPanel1ActionPerformed
-
-    private void btnPanel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel2ActionPerformed
-        tabPanels.setSelectedIndex(1);
-    }//GEN-LAST:event_btnPanel2ActionPerformed
 
     private void btnPanel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel3ActionPerformed
         tabPanels.setSelectedIndex(2);
@@ -632,7 +674,7 @@ public class frmUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPanel4ActionPerformed
 
     private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
-        this.cta.searchEvents(txtFilterByName, txtFilterByLocation, scrollAvailable, boxCategory);
+        this.cta.searchEvents(txtFilterByName, txtFilterByLocation, scrollAvailable, boxCategory, this);
     }//GEN-LAST:event_btnFilterActionPerformed
 
     private void btnClearFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearFilterActionPerformed
@@ -641,9 +683,32 @@ public class frmUser extends javax.swing.JFrame {
 
     private void btnCalendarBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalendarBeginActionPerformed
         // TODO add your handling code here:
-          btnCalendarBegin.setBackground(Color.BLUE);
+        btnCalendarBegin.setBackground(Color.BLUE);
         btnCalendarBegin.setForeground(Color.WHITE);
     }//GEN-LAST:event_btnCalendarBeginActionPerformed
+
+    private void btnConfirmRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmRActionPerformed
+        Event selectedEvent = eventPanel.getSelectedEvent();
+        Place selectedPlace = eventPanel.getSelectedPlace();
+        int option = JOptionPane.showConfirmDialog(this, "¿Deseas reservar el evento '" + selectedEvent.getName() + "'?", "Confirmar Reserva", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            // Set event and venue details in the database
+            setPlaceDetails(selectedPlace);
+            int generatedPlaceId = placeDAO.getIDPlaces(selectedPlace.getName());
+            selectedEvent.setPlace_id(generatedPlaceId);
+
+            setEventDetails(selectedEvent);
+            int generatedEventId = eventDAO.getIDEvents(selectedEvent.getName());
+
+            Integer quantity = (Integer) spQuantityR.getValue();
+            cr.addReservation(txtUserR, txtDateR, quantity, generatedEventId);
+        } else {
+        }
+    }//GEN-LAST:event_btnConfirmRActionPerformed
+
+    private void btnDisconfirmRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisconfirmRActionPerformed
+        tabPanels.setSelectedIndex(0);
+    }//GEN-LAST:event_btnDisconfirmRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -659,7 +724,6 @@ public class frmUser extends javax.swing.JFrame {
     private javax.swing.JButton btnDisconfirmR;
     private javax.swing.JButton btnFilter;
     private javax.swing.JButton btnPanel1;
-    private javax.swing.JButton btnPanel2;
     private javax.swing.JButton btnPanel3;
     private javax.swing.JButton btnPanel4;
     private javax.swing.JButton btnUpdateInfoUser;

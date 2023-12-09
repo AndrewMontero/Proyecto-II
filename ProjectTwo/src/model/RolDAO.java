@@ -20,7 +20,7 @@ public class RolDAO {
     public void create(Rol rol) {
 
         DBConnection db = new DBConnection();
-        String consultaSQL = "INSERT INTO rol ( name) VALUES (?)";
+        String consultaSQL = "INSERT INTO roles ( name) VALUES (?)";
         try {
             PreparedStatement ps = db.getConnection().prepareStatement(consultaSQL);
             ps.setString(1, rol.getName());
@@ -37,7 +37,7 @@ public class RolDAO {
 
         DBConnection db = new DBConnection();
         List<Rol> rol = new ArrayList<>();
-        String sql = "SELECT * FROM rol";
+        String sql = "SELECT * FROM roles";
 
         try {
             PreparedStatement ps = db.getConnection().prepareStatement(sql);
@@ -58,7 +58,7 @@ public class RolDAO {
     public void update(Rol rol) {
 
         DBConnection db = new DBConnection();
-        String consultaSQL = "UPDATE rol SET name=? WHERE id=?";
+        String consultaSQL = "UPDATE roles SET name=? WHERE id=?";
 
         try {
             PreparedStatement ps = db.getConnection().prepareStatement(consultaSQL);
@@ -78,7 +78,7 @@ public class RolDAO {
 
         DBConnection db = new DBConnection();
 
-        String consultaSQL = "DELETE FROM rol WHERE id=?";
+        String consultaSQL = "DELETE FROM roles WHERE id=?";
 
         try {
             PreparedStatement ps = db.getConnection().prepareStatement(consultaSQL);
@@ -97,7 +97,7 @@ public class RolDAO {
      public int getIDRol(String name) {
         int ID = 0;
         DBConnection db = new DBConnection();
-        String sql = "SELECT id FROM rol WHERE name = ?";
+        String sql = "SELECT id FROM roles WHERE name = ?";
         try {
             PreparedStatement ps = db.getConnection().prepareStatement(sql);
             ps.setString(1, name);
@@ -116,7 +116,7 @@ public class RolDAO {
     public String getNameRol(int id) {
         String name = "";
         DBConnection db = new DBConnection();
-        String sql = "SELECT name FROM rol WHERE id = ?";
+        String sql = "SELECT name FROM roles WHERE id = ?";
         try {
             PreparedStatement ps = db.getConnection().prepareStatement(sql);
             ps.setInt(1, id);

@@ -20,13 +20,14 @@ public class EventPanel extends javax.swing.JPanel {
     private Event event;
     private EventAPI apiE = new EventAPI();
     private PlaceAPI apiP = new PlaceAPI();
-    private frmAdmin parent;
+    private frmUser parent;
     private int currentIndex;
     private List<String> imageUrls;
 
-    public EventPanel(Event event, EventAPI api) {
+    public EventPanel(Event event, EventAPI api, frmUser parent) {
         initComponents();
         this.imageUrls = imageUrls;
+        this.parent = parent;
         this.currentIndex = 0;
         this.event = event;
         lblName.setText(event.getName());
@@ -126,6 +127,20 @@ public class EventPanel extends javax.swing.JPanel {
             lblIcon.setIcon(scaledIcon);
         } catch (Exception e) {
             System.out.println("Error al actualizar el icono meteorológico: " + e.getMessage());
+        }
+    }
+    
+    public Event getSelectedEvent() {
+        return event;
+    }
+
+    public Place getSelectedPlace() {
+        try {
+            int selectedEventId = event.getLocationId();
+            return apiP.getPlaceDetails(selectedEventId);
+        } catch (Exception e) {
+            System.out.println("Error obteniendo detalles del lugar: " + e.getMessage());
+            return null;
         }
     }
 
@@ -346,7 +361,18 @@ public class EventPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnWebActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        int selectedEventId = event.getLocationId();
+        String eventName = event.getName();
+
+        // Show a confirmation dialog
+        int option = JOptionPane.showConfirmDialog(this, "¿Serás dirigido a la pagina de reservas del evento '" + eventName + "'?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        // Check the user response
+        if (option == JOptionPane.YES_OPTION) {
+            parent.setEventPanel(this);
+            parent.getJpReservations();
+            parent.actualizarFecha(selectedEventId);
+        } else {
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnPrevImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevImageActionPerformed

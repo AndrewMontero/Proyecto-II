@@ -109,8 +109,8 @@ public class EventAPI {
         event.setLocationId(eventObj.getInt("location_id"));
         event.setName(eventObj.getString("name"));
         event.setAddress(eventObj.getJSONObject("address_obj").getString("address_string"));
-        event.setCity(eventObj.optString("city", "Ciudad no disponible"));
-        event.setPostal_code(eventObj.optInt("postalcode", 0));
+        event.setCity(eventObj.getJSONObject("address_obj").optString("city","Ciudad no disponible"));
+        event.setPostal_code(eventObj.getJSONObject("address_obj").optInt("postalcode",0));
         return event;
     }
 }

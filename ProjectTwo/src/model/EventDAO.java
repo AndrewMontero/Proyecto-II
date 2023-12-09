@@ -20,12 +20,16 @@ public class EventDAO {
 
     public void create(Event event) {
         DBConnection db = new DBConnection();
-        String consultaSQL = "INSERT INTO events (name, description, date, address, city, postal_code , price, room, place_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String consultaSQL = "INSERT INTO events (name, description, date, address, city, postal_code, price, room, place_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = db.getConnection().prepareStatement(consultaSQL);
             ps.setString(1, event.getName());
             ps.setString(2, event.getDescription());
-            ps.setDate(3, new java.sql.Date(event.getDate().getTime()));
+            if (event.getDate() != null) {
+                ps.setDate(3, new java.sql.Date(event.getDate().getTime()));
+            } else {
+                ps.setDate(3, new java.sql.Date(System.currentTimeMillis()));
+            }
             ps.setString(4, event.getAddress());
             ps.setString(5, event.getCity());
             ps.setInt(6, event.getPostal_code());

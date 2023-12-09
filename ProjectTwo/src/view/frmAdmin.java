@@ -65,43 +65,22 @@ public class frmAdmin extends javax.swing.JFrame {
         btnPanel1 = new javax.swing.JButton();
         btnPanel2 = new javax.swing.JButton();
         btnPanel4 = new javax.swing.JButton();
+        btnPanel6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         tabPanels = new javax.swing.JTabbedPane();
         jpSearch = new javax.swing.JPanel();
         lblHeader1 = new javax.swing.JLabel();
-        jPFilters = new javax.swing.JPanel();
-        lblFilterByName = new javax.swing.JLabel();
-        txtFilterByName = new javax.swing.JTextField();
-        lblBeginDate = new javax.swing.JLabel();
-        txtBeginDate = new javax.swing.JTextField();
-        btnCalendarBegin = new javax.swing.JButton();
-        lblFinalDate = new javax.swing.JLabel();
-        txtFinalDate = new javax.swing.JTextField();
-        btnCalendarFinal = new javax.swing.JButton();
-        lblFilterByLocation = new javax.swing.JLabel();
-        txtFilterByLocation = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        btnFilter = new javax.swing.JButton();
-        lblFinalDate1 = new javax.swing.JLabel();
-        boxCategory = new javax.swing.JComboBox<>();
-        scrollAvailable = new javax.swing.JScrollPane();
         btnClearFilter = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnUpdateEvent = new javax.swing.JButton();
+        btnDeleteEvent = new javax.swing.JButton();
         jpReservations = new javax.swing.JPanel();
         lblHeaderReservations = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        lblUserR = new javax.swing.JLabel();
-        txtUserR = new javax.swing.JTextField();
-        lblDateR = new javax.swing.JLabel();
-        txtDateR = new javax.swing.JTextField();
-        lblQuantityR = new javax.swing.JLabel();
-        spQuantityR = new javax.swing.JSpinner();
-        lblEventId = new javax.swing.JLabel();
-        txtEventId = new javax.swing.JTextField();
-        btnConfirmR = new javax.swing.JButton();
-        btnDisconfirmR = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMyReservations = new javax.swing.JTable();
+        btnUpdateReserv = new javax.swing.JButton();
+        btnDeleteReserv = new javax.swing.JButton();
         jpmyProfile = new javax.swing.JPanel();
         lblLastName = new javax.swing.JLabel();
         txtLastNameProfile = new javax.swing.JTextField();
@@ -143,6 +122,12 @@ public class frmAdmin extends javax.swing.JFrame {
         tblUsers = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         btnDeleteUser = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        btnUpdatePlace = new javax.swing.JButton();
+        btnDeletePlace = new javax.swing.JButton();
+        lblHeaderMyProfile2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Eventos - Modo Administrador - v1.0");
@@ -203,7 +188,7 @@ public class frmAdmin extends javax.swing.JFrame {
         btnPanel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPanel1.setForeground(new java.awt.Color(255, 255, 255));
         btnPanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/plano-alt.png"))); // NOI18N
-        btnPanel1.setText("Buscar eventos");
+        btnPanel1.setText("Eventos");
         btnPanel1.setBorderPainted(false);
         btnPanel1.setContentAreaFilled(false);
         btnPanel1.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +196,7 @@ public class frmAdmin extends javax.swing.JFrame {
                 btnPanel1ActionPerformed(evt);
             }
         });
-        jpMenu.add(btnPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 100, 198, 37));
+        jpMenu.add(btnPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 198, 37));
 
         btnPanel2.setBackground(new java.awt.Color(255, 255, 255));
         btnPanel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -225,7 +210,7 @@ public class frmAdmin extends javax.swing.JFrame {
                 btnPanel2ActionPerformed(evt);
             }
         });
-        jpMenu.add(btnPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 167, 198, 41));
+        jpMenu.add(btnPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 198, 41));
 
         btnPanel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPanel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,171 +225,105 @@ public class frmAdmin extends javax.swing.JFrame {
         });
         jpMenu.add(btnPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 240, 198, 41));
 
+        btnPanel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnPanel6.setForeground(new java.awt.Color(255, 255, 255));
+        btnPanel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/plano-alt.png"))); // NOI18N
+        btnPanel6.setText("Lugares");
+        btnPanel6.setBorderPainted(false);
+        btnPanel6.setContentAreaFilled(false);
+        btnPanel6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPanel6ActionPerformed(evt);
+            }
+        });
+        jpMenu.add(btnPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 198, 37));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/bosque_tropical_1270_x_720.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        jpMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
+        jpMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, -1));
 
         getContentPane().add(jpMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 850));
 
         lblHeader1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        lblHeader1.setText("Buscar eventos cerca de mi");
-
-        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
-
-        lblFilterByName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblFilterByName.setText("Nombre del evento:");
-
-        txtFilterByName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-
-        lblBeginDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblBeginDate.setText("Fecha de inicio:");
-
-        txtBeginDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-
-        btnCalendarBegin.setText("...");
-        btnCalendarBegin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCalendarBeginMouseEntered(evt);
-            }
-        });
-
-        lblFinalDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblFinalDate.setText("Categoria:");
-
-        txtFinalDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-
-        btnCalendarFinal.setText("...");
-
-        lblFilterByLocation.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblFilterByLocation.setText("Ubicación del evento:");
-
-        txtFilterByLocation.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-
-        btnFilter.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        btnFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/filtrar.png"))); // NOI18N
-        btnFilter.setText("FILTRAR");
-        btnFilter.setContentAreaFilled(false);
-        btnFilter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFilterActionPerformed(evt);
-            }
-        });
-
-        lblFinalDate1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblFinalDate1.setText("Fecha final:");
-
-        boxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hotels", "attractions ", "restaurants", "geos" }));
-
-        javax.swing.GroupLayout jPFiltersLayout = new javax.swing.GroupLayout(jPFilters);
-        jPFilters.setLayout(jPFiltersLayout);
-        jPFiltersLayout.setHorizontalGroup(
-            jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPFiltersLayout.createSequentialGroup()
-                .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPFiltersLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPFiltersLayout.createSequentialGroup()
-                                .addGap(707, 707, 707)
-                                .addComponent(btnFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPFiltersLayout.createSequentialGroup()
-                                .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPFiltersLayout.createSequentialGroup()
-                                        .addComponent(lblFilterByName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtFilterByName, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPFiltersLayout.createSequentialGroup()
-                                        .addComponent(lblFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(lblFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPFiltersLayout.createSequentialGroup()
-                                        .addComponent(lblBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnCalendarBegin)
-                                        .addGap(124, 124, 124)
-                                        .addComponent(txtFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnCalendarFinal)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPFiltersLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 938, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 938, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(42, 42, 42))
-            .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPFiltersLayout.createSequentialGroup()
-                    .addGap(348, 348, 348)
-                    .addComponent(lblFinalDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(549, Short.MAX_VALUE)))
-        );
-        jPFiltersLayout.setVerticalGroup(
-            jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPFiltersLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFilterByName)
-                    .addComponent(txtFilterByName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFilterByLocation)
-                    .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFinalDate)
-                    .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBeginDate)
-                    .addComponent(txtBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCalendarBegin)
-                    .addComponent(txtFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCalendarFinal)
-                    .addComponent(btnFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
-            .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFiltersLayout.createSequentialGroup()
-                    .addContainerGap(124, Short.MAX_VALUE)
-                    .addComponent(lblFinalDate1)
-                    .addGap(34, 34, 34)))
-        );
+        lblHeader1.setText("Eventos");
 
         btnClearFilter.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         btnClearFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/escoba.png"))); // NOI18N
         btnClearFilter.setText("Limpiar mi búsqueda anterior");
         btnClearFilter.setContentAreaFilled(false);
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
+
+        btnUpdateEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnUpdateEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/actUsuario.png"))); // NOI18N
+        btnUpdateEvent.setText("Actualizar");
+        btnUpdateEvent.setBorderPainted(false);
+        btnUpdateEvent.setContentAreaFilled(false);
+        btnUpdateEvent.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUpdateEvent.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnUpdateEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateEventActionPerformed(evt);
+            }
+        });
+
+        btnDeleteEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnDeleteEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/borrar-usuario.png"))); // NOI18N
+        btnDeleteEvent.setText("Eliminar");
+        btnDeleteEvent.setBorderPainted(false);
+        btnDeleteEvent.setContentAreaFilled(false);
+        btnDeleteEvent.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDeleteEvent.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDeleteEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteEventActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpSearchLayout = new javax.swing.GroupLayout(jpSearch);
         jpSearch.setLayout(jpSearchLayout);
         jpSearchLayout.setHorizontalGroup(
             jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpSearchLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPFilters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrollAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, 996, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClearFilter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpSearchLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblHeader1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpSearchLayout.createSequentialGroup()
+                        .addGap(694, 694, 694)
+                        .addComponent(btnClearFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpSearchLayout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(btnUpdateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109)
+                        .addComponent(btnDeleteEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         jpSearchLayout.setVerticalGroup(
             jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpSearchLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblHeader1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPFilters, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(scrollAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(jpSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDeleteEvent)
+                    .addComponent(btnUpdateEvent))
+                .addGap(241, 241, 241)
                 .addComponent(btnClearFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -412,99 +331,7 @@ public class frmAdmin extends javax.swing.JFrame {
         tabPanels.addTab("Eventos Disponibles", jpSearch);
 
         lblHeaderReservations.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        lblHeaderReservations.setText("Ver reservaciones");
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
-
-        lblUserR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblUserR.setText("Usuario:");
-
-        txtUserR.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-
-        lblDateR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblDateR.setText("Fecha de mi reservación:");
-
-        txtDateR.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-
-        lblQuantityR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblQuantityR.setText("Cantidad de personas:");
-
-        spQuantityR.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-
-        lblEventId.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblEventId.setText("Código del evento:");
-
-        txtEventId.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-
-        btnConfirmR.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        btnConfirmR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/aceptar.png"))); // NOI18N
-        btnConfirmR.setText("Confirmar");
-        btnConfirmR.setBorderPainted(false);
-        btnConfirmR.setContentAreaFilled(false);
-        btnConfirmR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnConfirmR.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-
-        btnDisconfirmR.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        btnDisconfirmR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/cancelado.png"))); // NOI18N
-        btnDisconfirmR.setText("Cancelar");
-        btnDisconfirmR.setBorderPainted(false);
-        btnDisconfirmR.setContentAreaFilled(false);
-        btnDisconfirmR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDisconfirmR.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnDisconfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnConfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblDateR, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtDateR, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblQuantityR, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblUserR, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtUserR, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67)
-                                .addComponent(lblEventId, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spQuantityR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEventId, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUserR)
-                    .addComponent(txtUserR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEventId)
-                    .addComponent(txtEventId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDateR)
-                    .addComponent(txtDateR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQuantityR)
-                    .addComponent(spQuantityR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnConfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDisconfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
+        lblHeaderReservations.setText("Reservaciones");
 
         tblMyReservations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -519,28 +346,62 @@ public class frmAdmin extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblMyReservations);
 
+        btnUpdateReserv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnUpdateReserv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/actUsuario.png"))); // NOI18N
+        btnUpdateReserv.setText("Actualizar");
+        btnUpdateReserv.setBorderPainted(false);
+        btnUpdateReserv.setContentAreaFilled(false);
+        btnUpdateReserv.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUpdateReserv.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnUpdateReserv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateReservActionPerformed(evt);
+            }
+        });
+
+        btnDeleteReserv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnDeleteReserv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/borrar-usuario.png"))); // NOI18N
+        btnDeleteReserv.setText("Eliminar");
+        btnDeleteReserv.setBorderPainted(false);
+        btnDeleteReserv.setContentAreaFilled(false);
+        btnDeleteReserv.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDeleteReserv.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDeleteReserv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteReservActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpReservationsLayout = new javax.swing.GroupLayout(jpReservations);
         jpReservations.setLayout(jpReservationsLayout);
         jpReservationsLayout.setHorizontalGroup(
             jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpReservationsLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(lblHeaderReservations, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addGroup(jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpReservationsLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(btnUpdateReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(btnDeleteReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpReservationsLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblHeaderReservations, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
         jpReservationsLayout.setVerticalGroup(
             jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpReservationsLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(19, 19, 19)
                 .addComponent(lblHeaderReservations)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUpdateReserv)
+                    .addComponent(btnDeleteReserv))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Reservaciones", jpReservations);
@@ -667,7 +528,7 @@ public class frmAdmin extends javax.swing.JFrame {
                     .addComponent(txtPhoneProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(btnUpdateInfoAdmin)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Mi Perfil", jpmyProfile);
@@ -833,10 +694,90 @@ public class frmAdmin extends javax.swing.JFrame {
                     .addGroup(jpUserSettingsLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Gestión de usuarios", jpUserSettings);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable2);
+
+        btnUpdatePlace.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnUpdatePlace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/actUsuario.png"))); // NOI18N
+        btnUpdatePlace.setText("Actualizar");
+        btnUpdatePlace.setBorderPainted(false);
+        btnUpdatePlace.setContentAreaFilled(false);
+        btnUpdatePlace.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnUpdatePlace.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnUpdatePlace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdatePlaceActionPerformed(evt);
+            }
+        });
+
+        btnDeletePlace.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnDeletePlace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/borrar-usuario.png"))); // NOI18N
+        btnDeletePlace.setText("Eliminar");
+        btnDeletePlace.setBorderPainted(false);
+        btnDeletePlace.setContentAreaFilled(false);
+        btnDeletePlace.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDeletePlace.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDeletePlace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletePlaceActionPerformed(evt);
+            }
+        });
+
+        lblHeaderMyProfile2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblHeaderMyProfile2.setText("Lugares");
+        lblHeaderMyProfile2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblHeaderMyProfile2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblHeaderMyProfile2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(btnUpdatePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95)
+                        .addComponent(btnDeletePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(247, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(lblHeaderMyProfile2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDeletePlace)
+                    .addComponent(btnUpdatePlace))
+                .addContainerGap(271, Short.MAX_VALUE))
+        );
+
+        tabPanels.addTab("Lugares", jPanel2);
 
         getContentPane().add(tabPanels, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 1080, 790));
 
@@ -885,10 +826,6 @@ public class frmAdmin extends javax.swing.JFrame {
         loadUsers();
     }//GEN-LAST:event_btnDeleteUserActionPerformed
 
-    private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
-        this.cta.searchEvents(txtFilterByName, txtFilterByLocation, scrollAvailable, boxCategory);
-    }//GEN-LAST:event_btnFilterActionPerformed
-
     private void txtIdNumberProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdNumberProfileActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdNumberProfileActionPerformed
@@ -897,63 +834,81 @@ public class frmAdmin extends javax.swing.JFrame {
         cu.selectedRow(tblUsers, txtIdNumberUser, txtNameUser, txtLastNameUser, txtBirthDateUser, txtEmailUser, txtPhoneUser, txtPasswordUser);
     }//GEN-LAST:event_tblUsersMouseClicked
 
-    private void btnCalendarBeginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalendarBeginMouseEntered
+    private void btnPanel6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel6ActionPerformed
+        tabPanels.setSelectedIndex(4);
+    }//GEN-LAST:event_btnPanel6ActionPerformed
+
+    private void btnUpdateReservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateReservActionPerformed
         // TODO add your handling code here:
-          btnCalendarBegin.setBackground(Color.BLUE);
-        btnCalendarBegin.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnCalendarBeginMouseEntered
+    }//GEN-LAST:event_btnUpdateReservActionPerformed
+
+    private void btnDeleteReservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteReservActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteReservActionPerformed
+
+    private void btnUpdateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateEventActionPerformed
+
+    private void btnDeleteEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteEventActionPerformed
+
+    private void btnUpdatePlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePlaceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdatePlaceActionPerformed
+
+    private void btnDeletePlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePlaceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeletePlaceActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> boxCategory;
     private javax.swing.JButton btnBirthCalendar;
     private javax.swing.JButton btnBirthCalendar1;
-    private javax.swing.JButton btnCalendarBegin;
-    private javax.swing.JButton btnCalendarFinal;
     private javax.swing.JButton btnClearFilter;
-    private javax.swing.JButton btnConfirmR;
+    private javax.swing.JButton btnDeleteEvent;
+    private javax.swing.JButton btnDeletePlace;
+    private javax.swing.JButton btnDeleteReserv;
     private javax.swing.JButton btnDeleteUser;
-    private javax.swing.JButton btnDisconfirmR;
-    private javax.swing.JButton btnFilter;
     private javax.swing.JButton btnPanel1;
     private javax.swing.JButton btnPanel2;
     private javax.swing.JButton btnPanel3;
     private javax.swing.JButton btnPanel4;
     private javax.swing.JButton btnPanel5;
+    private javax.swing.JButton btnPanel6;
+    private javax.swing.JButton btnUpdateEvent;
     private javax.swing.JButton btnUpdateInfoAdmin;
     private javax.swing.JButton btnUpdateInfoUser;
+    private javax.swing.JButton btnUpdatePlace;
+    private javax.swing.JButton btnUpdateReserv;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPFilters;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JPanel jpBack;
     private javax.swing.JPanel jpMenu;
     private javax.swing.JPanel jpReservations;
     private javax.swing.JPanel jpSearch;
     private javax.swing.JPanel jpUserSettings;
     private javax.swing.JPanel jpmyProfile;
-    private javax.swing.JLabel lblBeginDate;
     private javax.swing.JLabel lblBirthDate;
     private javax.swing.JLabel lblBirthDate1;
-    private javax.swing.JLabel lblDateR;
     private javax.swing.JLabel lblEmailUser;
     private javax.swing.JLabel lblEmailUser1;
-    private javax.swing.JLabel lblEventId;
-    private javax.swing.JLabel lblFilterByLocation;
-    private javax.swing.JLabel lblFilterByName;
-    private javax.swing.JLabel lblFinalDate;
-    private javax.swing.JLabel lblFinalDate1;
     private javax.swing.JLabel lblHeader1;
     private javax.swing.JLabel lblHeaderMyProfile;
     private javax.swing.JLabel lblHeaderMyProfile1;
+    private javax.swing.JLabel lblHeaderMyProfile2;
     private javax.swing.JLabel lblHeaderReservations;
     private javax.swing.JLabel lblId_number;
     private javax.swing.JLabel lblId_number1;
@@ -965,23 +920,13 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel lblPassword1;
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblPhone1;
-    private javax.swing.JLabel lblQuantityR;
-    private javax.swing.JLabel lblUserR;
-    private javax.swing.JScrollPane scrollAvailable;
-    private javax.swing.JSpinner spQuantityR;
     private javax.swing.JTabbedPane tabPanels;
     private javax.swing.JTable tblMyReservations;
     private javax.swing.JTable tblUsers;
-    private javax.swing.JTextField txtBeginDate;
     private javax.swing.JTextField txtBirthDateProfile;
     private javax.swing.JTextField txtBirthDateUser;
-    private javax.swing.JTextField txtDateR;
     private javax.swing.JTextField txtEmailProfile;
     private javax.swing.JTextField txtEmailUser;
-    private javax.swing.JTextField txtEventId;
-    private javax.swing.JTextField txtFilterByLocation;
-    private javax.swing.JTextField txtFilterByName;
-    private javax.swing.JTextField txtFinalDate;
     private javax.swing.JTextField txtIdNumberProfile;
     private javax.swing.JTextField txtIdNumberUser;
     private javax.swing.JTextField txtLastNameProfile;
@@ -992,6 +937,5 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPasswordUser;
     private javax.swing.JTextField txtPhoneProfile;
     private javax.swing.JTextField txtPhoneUser;
-    private javax.swing.JTextField txtUserR;
     // End of variables declaration//GEN-END:variables
 }
