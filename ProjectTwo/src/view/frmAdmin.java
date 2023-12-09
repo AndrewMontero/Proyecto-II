@@ -65,6 +65,7 @@ public class frmAdmin extends javax.swing.JFrame {
         btnPanel1 = new javax.swing.JButton();
         btnPanel2 = new javax.swing.JButton();
         btnPanel4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         tabPanels = new javax.swing.JTabbedPane();
         jpSearch = new javax.swing.JPanel();
         lblHeader1 = new javax.swing.JLabel();
@@ -147,7 +148,7 @@ public class frmAdmin extends javax.swing.JFrame {
         setTitle("Sistema de Eventos - Modo Administrador - v1.0");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jpBack.setBackground(new java.awt.Color(224, 35, 52));
+        jpBack.setBackground(new java.awt.Color(0, 0, 69));
 
         btnPanel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPanel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -178,8 +179,8 @@ public class frmAdmin extends javax.swing.JFrame {
         jpBackLayout.setHorizontalGroup(
             jpBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBackLayout.createSequentialGroup()
-                .addGap(881, 881, 881)
-                .addComponent(btnPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                .addGap(789, 789, 789)
+                .addComponent(btnPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -194,9 +195,10 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 1150, 70));
+        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 1080, 70));
 
         jpMenu.setBackground(new java.awt.Color(224, 35, 52));
+        jpMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnPanel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,6 +211,7 @@ public class frmAdmin extends javax.swing.JFrame {
                 btnPanel1ActionPerformed(evt);
             }
         });
+        jpMenu.add(btnPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 100, 198, 37));
 
         btnPanel2.setBackground(new java.awt.Color(255, 255, 255));
         btnPanel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -222,6 +225,7 @@ public class frmAdmin extends javax.swing.JFrame {
                 btnPanel2ActionPerformed(evt);
             }
         });
+        jpMenu.add(btnPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 167, 198, 41));
 
         btnPanel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPanel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,30 +238,11 @@ public class frmAdmin extends javax.swing.JFrame {
                 btnPanel4ActionPerformed(evt);
             }
         });
+        jpMenu.add(btnPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 240, 198, 41));
 
-        javax.swing.GroupLayout jpMenuLayout = new javax.swing.GroupLayout(jpMenu);
-        jpMenu.setLayout(jpMenuLayout);
-        jpMenuLayout.setHorizontalGroup(
-            jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                    .addComponent(btnPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jpMenuLayout.setVerticalGroup(
-            jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpMenuLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(btnPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(btnPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(569, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/bosque_tropical_1270_x_720.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jpMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
 
         getContentPane().add(jpMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 850));
 
@@ -940,6 +925,7 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnPanel5;
     private javax.swing.JButton btnUpdateInfoAdmin;
     private javax.swing.JButton btnUpdateInfoUser;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPFilters;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

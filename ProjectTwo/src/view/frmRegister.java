@@ -48,8 +48,10 @@ public class frmRegister extends javax.swing.JFrame {
         txtPhone = new javax.swing.JTextField();
         btnUpdateInfoUser = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnPanel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPanel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -61,34 +63,59 @@ public class frmRegister extends javax.swing.JFrame {
                 btnPanel5ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 26, 136, -1));
 
         lblHeaderMyProfile.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblHeaderMyProfile.setForeground(new java.awt.Color(255, 255, 255));
         lblHeaderMyProfile.setText("Registro de nuevo usuario");
         lblHeaderMyProfile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblHeaderMyProfile.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lblHeaderMyProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 64, 246, -1));
+        getContentPane().add(txtNameUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 144, 207, -1));
 
         lblNameUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblNameUser.setForeground(new java.awt.Color(255, 255, 255));
         lblNameUser.setText("Nombre:");
+        getContentPane().add(lblNameUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 145, -1, -1));
 
         lblId_number.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblId_number.setForeground(new java.awt.Color(255, 255, 255));
         lblId_number.setText("Cédula:");
+        getContentPane().add(lblId_number, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 181, -1, -1));
+        getContentPane().add(txtIdNumberUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 180, 207, -1));
 
         lblLastName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblLastName.setForeground(new java.awt.Color(255, 255, 255));
         lblLastName.setText("Apellidos:");
+        getContentPane().add(lblLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 217, -1, -1));
+        getContentPane().add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 216, 207, -1));
 
         lblEmailUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEmailUser.setForeground(new java.awt.Color(255, 255, 255));
         lblEmailUser.setText("Correo:");
+        getContentPane().add(lblEmailUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 253, -1, -1));
+        getContentPane().add(txtEmailUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 252, 207, -1));
 
         lblBirthDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblBirthDate.setForeground(new java.awt.Color(255, 255, 255));
         lblBirthDate.setText("Fecha de Nacimiento:");
+        getContentPane().add(lblBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 289, -1, -1));
+        getContentPane().add(txtBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 288, 207, -1));
 
         lblPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Contraseña*:");
+        getContentPane().add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 324, -1, -1));
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 324, 207, -1));
 
         lblPhone.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPhone.setForeground(new java.awt.Color(255, 255, 255));
         lblPhone.setText("Número de Teléfono:");
+        getContentPane().add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 358, -1, -1));
+        getContentPane().add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 357, 207, -1));
 
         btnUpdateInfoUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnUpdateInfoUser.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdateInfoUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/caja.png"))); // NOI18N
         btnUpdateInfoUser.setText("Registrarme");
         btnUpdateInfoUser.setBorderPainted(false);
@@ -100,91 +127,16 @@ public class frmRegister extends javax.swing.JFrame {
                 btnUpdateInfoUserActionPerformed(evt);
             }
         });
+        getContentPane().add(btnUpdateInfoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 434, 111, -1));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("* La contraseña debe de ser de al menos 8 caracteres, incluir mayúsculas y minúsculas, así como un número.");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 524, 686, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblHeaderMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPassword)
-                            .addComponent(lblEmailUser)
-                            .addComponent(lblId_number)
-                            .addComponent(lblLastName)
-                            .addComponent(lblNameUser)
-                            .addComponent(lblBirthDate)
-                            .addComponent(lblPhone))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdNumberUser)
-                            .addComponent(txtNameUser)
-                            .addComponent(txtLastName)
-                            .addComponent(txtEmailUser)
-                            .addComponent(txtPassword)
-                            .addComponent(txtBirthDate)
-                            .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnUpdateInfoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(283, 283, 283))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblHeaderMyProfile)
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNameUser)
-                    .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblId_number)
-                    .addComponent(txtIdNumberUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLastName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmailUser)
-                    .addComponent(txtEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBirthDate))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPhone)
-                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addComponent(btnUpdateInfoUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(20, 20, 20))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/bosque_tropical_1270_x_720 (1).jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -208,6 +160,7 @@ public class frmRegister extends javax.swing.JFrame {
     private javax.swing.JButton btnPanel5;
     private javax.swing.JButton btnUpdateInfoUser;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblBirthDate;
     private javax.swing.JLabel lblEmailUser;
     private javax.swing.JLabel lblHeaderMyProfile;

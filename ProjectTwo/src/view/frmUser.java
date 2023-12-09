@@ -106,12 +106,13 @@ public class frmUser extends javax.swing.JFrame {
         jpMenu = new javax.swing.JPanel();
         btnPanel1 = new javax.swing.JButton();
         btnPanel2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel para Usuario");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jpBack.setBackground(new java.awt.Color(0, 0, 204));
+        jpBack.setBackground(new java.awt.Color(0, 0, 0));
 
         btnPanel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPanel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,8 +143,8 @@ public class frmUser extends javax.swing.JFrame {
         jpBackLayout.setHorizontalGroup(
             jpBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBackLayout.createSequentialGroup()
-                .addGap(892, 892, 892)
-                .addComponent(btnPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                .addGap(832, 832, 832)
+                .addComponent(btnPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(34, 34, 34)
                 .addComponent(btnPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
@@ -158,7 +159,7 @@ public class frmUser extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 1170, 70));
+        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1120, 70));
 
         lblHeader.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeader.setText("Buscar eventos cerca de mi");
@@ -570,6 +571,7 @@ public class frmUser extends javax.swing.JFrame {
         getContentPane().add(tabPanels, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 1120, 790));
 
         jpMenu.setBackground(new java.awt.Color(0, 0, 204));
+        jpMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnPanel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -582,6 +584,7 @@ public class frmUser extends javax.swing.JFrame {
                 btnPanel1ActionPerformed(evt);
             }
         });
+        jpMenu.add(btnPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 102, 190, 37));
 
         btnPanel2.setBackground(new java.awt.Color(255, 255, 255));
         btnPanel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -595,23 +598,11 @@ public class frmUser extends javax.swing.JFrame {
                 btnPanel2ActionPerformed(evt);
             }
         });
+        jpMenu.add(btnPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 167, 190, 41));
 
-        javax.swing.GroupLayout jpMenuLayout = new javax.swing.GroupLayout(jpMenu);
-        jpMenu.setLayout(jpMenuLayout);
-        jpMenuLayout.setHorizontalGroup(
-            jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-        );
-        jpMenuLayout.setVerticalGroup(
-            jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpMenuLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(btnPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(btnPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(642, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/lago_oscuro_1270_x_720.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jpMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jpMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 850));
 
@@ -672,6 +663,7 @@ public class frmUser extends javax.swing.JFrame {
     private javax.swing.JButton btnPanel3;
     private javax.swing.JButton btnPanel4;
     private javax.swing.JButton btnUpdateInfoUser;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPFilters;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
