@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Sistema de Eventos - Modo Administrador - v1.0"/>
+    <Property name="title" type="java.lang.String" value="Panel para Administrador -  Sistema de Eventos 1.0"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -204,7 +204,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/view/assets/plano-alt.png"/>
+              <Image iconType="3" name="/view/assets/isla-tropical.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Lugares"/>
             <Property name="borderPainted" type="boolean" value="false"/>

@@ -44,6 +44,7 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio de Sesión - Sistema de Eventos v1.0");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblLoginHeader.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -51,12 +52,16 @@ public class frmLogin extends javax.swing.JFrame {
         lblLoginHeader.setText("Sistema de Eventos");
         getContentPane().add(lblLoginHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 24, 215, -1));
 
-        jpLoginContainer.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Ingrese sus credenciales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        jpLoginContainer.setBackground(new java.awt.Color(60, 63, 66));
+        jpLoginContainer.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Ingrese sus credenciales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jpLoginContainer.setOpaque(false);
 
         lblUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
         lblUsername.setText("Correo:");
 
         lblPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Contraseña:");
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N

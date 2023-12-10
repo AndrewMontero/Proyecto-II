@@ -51,6 +51,7 @@ public class frmRegister extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registrar nuevo usuario - Sistema de Eventos 1.0");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnPanel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N

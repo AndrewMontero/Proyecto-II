@@ -161,7 +161,7 @@ public class frmUser extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Panel para Usuario");
+        setTitle("Panel para Usuario - Sistema de Eventos 1.0");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpBack.setBackground(new java.awt.Color(0, 0, 0));
@@ -216,7 +216,7 @@ public class frmUser extends javax.swing.JFrame {
         lblHeader.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeader.setText("Buscar eventos cerca de mi");
 
-        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblFilterByName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFilterByName.setText("Nombre del evento:");
@@ -358,7 +358,7 @@ public class frmUser extends javax.swing.JFrame {
         lblHeaderReservations.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeaderReservations.setText("Reservar");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblUserR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblUserR.setText("Usuario:");
@@ -533,6 +533,7 @@ public class frmUser extends javax.swing.JFrame {
         lblId_number.setText("Cédula:");
 
         btnUpdateInfoUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnUpdateInfoUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/actUsuario.png"))); // NOI18N
         btnUpdateInfoUser.setText("Actualizar");
         btnUpdateInfoUser.setBorderPainted(false);
         btnUpdateInfoUser.setContentAreaFilled(false);
@@ -621,7 +622,7 @@ public class frmUser extends javax.swing.JFrame {
                     .addComponent(txtPhoneProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(btnUpdateInfoUser)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Mi Perfil", jpmyProfile);

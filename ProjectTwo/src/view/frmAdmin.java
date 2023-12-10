@@ -147,7 +147,7 @@ public class frmAdmin extends javax.swing.JFrame {
         lblHeaderMyProfile2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema de Eventos - Modo Administrador - v1.0");
+        setTitle("Panel para Administrador -  Sistema de Eventos 1.0");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpBack.setBackground(new java.awt.Color(0, 0, 69));
@@ -244,7 +244,7 @@ public class frmAdmin extends javax.swing.JFrame {
 
         btnPanel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPanel6.setForeground(new java.awt.Color(255, 255, 255));
-        btnPanel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/plano-alt.png"))); // NOI18N
+        btnPanel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/isla-tropical.png"))); // NOI18N
         btnPanel6.setText("Lugares");
         btnPanel6.setBorderPainted(false);
         btnPanel6.setContentAreaFilled(false);
