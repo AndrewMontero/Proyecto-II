@@ -10,6 +10,7 @@ import controller.CtrlReservation;
 import controller.CtrlTripAdvisor;
 import controller.CtrlUser;
 import java.awt.Color;
+import java.util.Date;
 import model.RolDAO;
 import model.User;
 
@@ -56,18 +57,25 @@ public class frmAdmin extends javax.swing.JFrame {
         cp.loadDataPlace(tblPlaces);
     }
     
-    public void setUserInfo(User user) {
+   public void setUserInfo(User user) {
+        cu.setId(user.getId());
         txtIdNumberProfile.setText(String.valueOf(user.getID_number()));
         txtNameProfile.setText(user.getName());
         txtLastNameProfile.setText(user.getLast_name());
         txtEmailProfile.setText(user.getEmail());
-        txtBirthDateProfile.setText(String.valueOf(user.getBirth_date()));
+        Date birthDate = user.getBirth_date();
+        if (birthDate != null) {
+            jdcDateAdmin.setDate(birthDate);
+        } else {
+            jdcDateAdmin.setDate(null);
+        }
         txtPasswordProfile.setText(user.getPassword());
         txtPhoneProfile.setText(String.valueOf(user.getPhone_number()));
     }
+
     
     private void clearFields() {
-        cu.clearFields(txtIdNumberUser, txtNameUser, txtLastNameUser, txtBirthDateUser, txtEmailUser, txtPhoneUser, txtPasswordUser);
+        cu.clearFields(txtIdNumberUser, txtNameUser, txtLastNameUser, jdcDateAdmin, txtEmailUser, txtPhoneUser, txtPasswordUser);
     }
 
     /**
@@ -114,10 +122,10 @@ public class frmAdmin extends javax.swing.JFrame {
         lblEmailUser = new javax.swing.JLabel();
         txtPasswordProfile = new javax.swing.JPasswordField();
         lblBirthDate = new javax.swing.JLabel();
-        txtBirthDateProfile = new javax.swing.JTextField();
         lblPhone = new javax.swing.JLabel();
         txtPhoneProfile = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
+        jdcDateAdmin = new com.toedter.calendar.JDateChooser();
         jpUserSettings = new javax.swing.JPanel();
         lblLastName1 = new javax.swing.JLabel();
         txtLastNameUser = new javax.swing.JTextField();
@@ -133,13 +141,13 @@ public class frmAdmin extends javax.swing.JFrame {
         txtPasswordUser = new javax.swing.JPasswordField();
         lblBirthDate1 = new javax.swing.JLabel();
         btnBirthCalendar1 = new javax.swing.JButton();
-        txtBirthDateUser = new javax.swing.JTextField();
         lblPhone1 = new javax.swing.JLabel();
         txtPhoneUser = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblUsers = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         btnDeleteUser = new javax.swing.JButton();
+        jdcUserAdmin = new com.toedter.calendar.JDateChooser();
         jpPlace = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblPlaces = new javax.swing.JTable();
@@ -194,10 +202,10 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addGroup(jpBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 1080, 70));
+        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 1080, 40));
 
         jpMenu.setBackground(new java.awt.Color(224, 35, 52));
         jpMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -215,7 +223,6 @@ public class frmAdmin extends javax.swing.JFrame {
         });
         jpMenu.add(btnPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 198, 37));
 
-        btnPanel2.setBackground(new java.awt.Color(255, 255, 255));
         btnPanel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPanel2.setForeground(new java.awt.Color(255, 255, 255));
         btnPanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/billete-de-avion.png"))); // NOI18N
@@ -466,8 +473,8 @@ public class frmAdmin extends javax.swing.JFrame {
                             .addComponent(txtLastNameProfile)
                             .addComponent(txtEmailProfile)
                             .addComponent(txtPasswordProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addComponent(txtBirthDateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addComponent(txtPhoneProfile)))
+                            .addComponent(txtPhoneProfile)
+                            .addComponent(jdcDateAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jpmyProfileLayout.createSequentialGroup()
                         .addGap(504, 504, 504)
                         .addComponent(btnUpdateInfoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -502,19 +509,20 @@ public class frmAdmin extends javax.swing.JFrame {
                     .addComponent(lblEmailUser)
                     .addComponent(txtEmailProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBirthDateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBirthDate))
-                .addGap(13, 13, 13)
-                .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPassword)
-                    .addComponent(txtPasswordProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPhone)
-                    .addComponent(txtPhoneProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addComponent(btnUpdateInfoAdmin)
+                .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpmyProfileLayout.createSequentialGroup()
+                        .addComponent(lblBirthDate)
+                        .addGap(15, 15, 15)
+                        .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPassword)
+                            .addComponent(txtPasswordProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPhone)
+                            .addComponent(txtPhoneProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addComponent(btnUpdateInfoAdmin))
+                    .addComponent(jdcDateAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(306, Short.MAX_VALUE))
         );
 
@@ -626,8 +634,8 @@ public class frmAdmin extends javax.swing.JFrame {
                                         .addComponent(txtNameUser)
                                         .addComponent(txtIdNumberUser)
                                         .addComponent(txtLastNameUser)
-                                        .addComponent(txtBirthDateUser)
-                                        .addComponent(txtEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtEmailUser, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                        .addComponent(jdcUserAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGap(18, 18, 18)
                                     .addComponent(btnBirthCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -658,10 +666,11 @@ public class frmAdmin extends javax.swing.JFrame {
                             .addComponent(txtLastNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblLastName1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblBirthDate1)
-                            .addComponent(txtBirthDateUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBirthCalendar1))
+                        .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblBirthDate1)
+                                .addComponent(btnBirthCalendar1))
+                            .addComponent(jdcUserAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9)
                         .addGroup(jpUserSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblEmailUser1)
@@ -779,7 +788,7 @@ public class frmAdmin extends javax.swing.JFrame {
 
     private void btnUpdateInfoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoAdminActionPerformed
         cu.setRolId(1);
-        cu.updatedUser(txtIdNumberProfile, txtNameProfile, txtLastNameProfile, txtBirthDateProfile, txtEmailProfile, txtPhoneProfile, txtPasswordProfile);
+        cu.updatedUser(txtIdNumberProfile, txtNameProfile, txtLastNameProfile, jdcDateAdmin, txtEmailProfile, txtPhoneProfile, txtPasswordProfile);
         loadUsers();
     }//GEN-LAST:event_btnUpdateInfoAdminActionPerformed
 
@@ -787,7 +796,7 @@ public class frmAdmin extends javax.swing.JFrame {
         int selectedRow = tblUsers.getSelectedRow();
         Object rolName = tblUsers.getValueAt(selectedRow, 8);
         cu.setRolId(rol.getIDRol((String) rolName));
-        cu.updatedUser(txtIdNumberUser, txtNameUser, txtLastNameUser, txtBirthDateUser, txtEmailUser, txtPhoneUser, txtPasswordUser);
+        cu.updatedUser(txtIdNumberUser, txtNameUser, txtLastNameUser, jdcUserAdmin, txtEmailUser, txtPhoneUser, txtPasswordUser);
         loadUsers();
         clearFields();
     }//GEN-LAST:event_btnUpdateInfoUserActionPerformed
@@ -802,7 +811,7 @@ public class frmAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdNumberProfileActionPerformed
 
     private void tblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsersMouseClicked
-        cu.selectedRow(tblUsers, txtIdNumberUser, txtNameUser, txtLastNameUser, txtBirthDateUser, txtEmailUser, txtPhoneUser, txtPasswordUser);
+        cu.selectedRow(tblUsers, txtIdNumberUser, txtNameUser, txtLastNameUser, jdcUserAdmin, txtEmailUser, txtPhoneUser, txtPasswordUser);
     }//GEN-LAST:event_tblUsersMouseClicked
 
     private void btnPanel6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel6ActionPerformed
@@ -862,6 +871,8 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private com.toedter.calendar.JDateChooser jdcDateAdmin;
+    private com.toedter.calendar.JDateChooser jdcUserAdmin;
     private javax.swing.JPanel jpBack;
     private javax.swing.JPanel jpMenu;
     private javax.swing.JPanel jpPlace;
@@ -893,8 +904,6 @@ public class frmAdmin extends javax.swing.JFrame {
     private javax.swing.JTable tblPlaces;
     private javax.swing.JTable tblReservations;
     private javax.swing.JTable tblUsers;
-    private javax.swing.JTextField txtBirthDateProfile;
-    private javax.swing.JTextField txtBirthDateUser;
     private javax.swing.JTextField txtEmailProfile;
     private javax.swing.JTextField txtEmailUser;
     private javax.swing.JTextField txtIdNumberProfile;

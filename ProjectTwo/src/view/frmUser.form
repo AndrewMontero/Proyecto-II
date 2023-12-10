@@ -34,7 +34,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="190" y="0" width="1120" height="70"/>
+          <AbsoluteConstraints x="190" y="0" width="1120" height="40"/>
         </Constraint>
       </Constraints>
 
@@ -58,7 +58,7 @@
                       <Component id="btnPanel3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="btnPanel4" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -199,14 +199,14 @@
                                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                                   <Component id="boxCategory" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
                                                   <Component id="lblBeginDate" min="-2" pref="101" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="txtBeginDate" min="-2" pref="140" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                                                  <Component id="lblFinalDate" min="-2" pref="89" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="txtFinalDate" min="-2" pref="140" max="-2" attributes="0"/>
+                                                  <Component id="jdcStar" min="-2" pref="152" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                                  <Component id="lblFinalDate" min="-2" pref="89" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jdcFinish" min="-2" pref="143" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -227,29 +227,38 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblFilterByName" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtFilterByName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblFilterByLocation" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtFilterByLocation" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="boxCategory" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblBeginDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtBeginDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblFinalDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtFinalDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnFilter" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jdcFinish" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblFilterByName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFilterByName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblFilterByLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFilterByLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="boxCategory" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblBeginDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblFinalDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnFilter" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jdcStar" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
@@ -280,26 +289,12 @@
                     <Property name="text" type="java.lang.String" value="Fecha de inicio:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtBeginDate">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Century Gothic" size="12" style="0"/>
-                    </Property>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="lblFinalDate">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Century Gothic" size="12" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Fecha final:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtFinalDate">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Century Gothic" size="12" style="0"/>
-                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblFilterByLocation">
@@ -350,6 +345,10 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="jdcStar">
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="jdcFinish">
                 </Component>
               </SubComponents>
             </Container>
@@ -678,8 +677,8 @@
                                   <Component id="txtLastNameProfile" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtEmailProfile" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtPasswordProfile" alignment="0" pref="207" max="32767" attributes="0"/>
-                                  <Component id="txtBirthDateProfile" alignment="0" pref="207" max="32767" attributes="0"/>
                                   <Component id="txtPhoneProfile" max="32767" attributes="0"/>
+                                  <Component id="jdcUser" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -701,31 +700,33 @@
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="lblHeaderMyProfile" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblNameUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNameProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblNameUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNameProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblId_number" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtIdNumberProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtLastNameProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblEmailUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtEmailProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblBirthDate" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jdcUser" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblId_number" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtIdNumberProfile" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtLastNameProfile" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblEmailUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtEmailProfile" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtBirthDateProfile" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblBirthDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtPasswordProfile" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -737,7 +738,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="btnUpdateInfoUser" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="298" max="32767" attributes="0"/>
+                      <EmptySpace pref="306" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -829,8 +830,6 @@
                 <Property name="text" type="java.lang.String" value="Fecha de Nacimiento:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtBirthDateProfile">
-            </Component>
             <Component class="javax.swing.JLabel" name="lblPhone">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -840,6 +839,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPhoneProfile">
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="jdcUser">
             </Component>
           </SubComponents>
         </Container>

@@ -34,7 +34,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="210" y="0" width="1080" height="70"/>
+          <AbsoluteConstraints x="210" y="0" width="1080" height="40"/>
         </Constraint>
       </Constraints>
 
@@ -58,7 +58,7 @@
                       <Component id="btnPanel3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="btnPanel5" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -146,9 +146,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnPanel2">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="1"/>
             </Property>
@@ -571,8 +568,8 @@
                                   <Component id="txtLastNameProfile" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtEmailProfile" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtPasswordProfile" alignment="0" pref="207" max="32767" attributes="0"/>
-                                  <Component id="txtBirthDateProfile" alignment="0" pref="207" max="32767" attributes="0"/>
                                   <Component id="txtPhoneProfile" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jdcDateAdmin" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -619,22 +616,24 @@
                           <Component id="txtEmailProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtBirthDateProfile" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblBirthDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblBirthDate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtPasswordProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblPhone" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtPhoneProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="btnUpdateInfoAdmin" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jdcDateAdmin" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPasswordProfile" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblPhone" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPhoneProfile" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="btnUpdateInfoAdmin" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="306" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -730,8 +729,6 @@
                 <Property name="text" type="java.lang.String" value="Fecha de Nacimiento:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtBirthDateProfile">
-            </Component>
             <Component class="javax.swing.JLabel" name="lblPhone">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -743,6 +740,8 @@
             <Component class="javax.swing.JTextField" name="txtPhoneProfile">
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator4">
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="jdcDateAdmin">
             </Component>
           </SubComponents>
         </Container>
@@ -792,8 +791,8 @@
                                               <Component id="txtNameUser" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtIdNumberUser" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtLastNameUser" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtBirthDateUser" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtEmailUser" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                                              <Component id="txtEmailUser" alignment="0" pref="207" max="32767" attributes="0"/>
+                                              <Component id="jdcUserAdmin" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnBirthCalendar1" min="-2" pref="33" max="-2" attributes="0"/>
@@ -835,10 +834,12 @@
                                   <Component id="lblLastName1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblBirthDate1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtBirthDateUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnBirthCalendar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblBirthDate1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnBirthCalendar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jdcUserAdmin" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -963,8 +964,6 @@
                 <Property name="text" type="java.lang.String" value="..."/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtBirthDateUser">
-            </Component>
             <Component class="javax.swing.JLabel" name="lblPhone1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1075,6 +1074,8 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteUserActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="jdcUserAdmin">
             </Component>
           </SubComponents>
         </Container>

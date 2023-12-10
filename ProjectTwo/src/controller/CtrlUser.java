@@ -1,5 +1,6 @@
 package controller;
 
+import com.toedter.calendar.JDateChooser;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,16 +39,13 @@ public class CtrlUser {
     }
 
     // Create a date formatter for parsing the birth date string
-    public void addUser(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
+    public void addUser(JTextField IDNumber, JTextField name, JTextField lastName, JDateChooser birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
         if (!validateName(name) || !validateLastName(lastName) || !validateIDNumber(IDNumber) || !validateEmail(email) || !validatePhone(phoneNumber) || !validatePassword(password)) {
             return;
         }
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date userBirthDate = dateFormat.parse(birthDate.getText());
+            Date userBirthDate = birthDate.getDate();
             this.dao.create(new User(Integer.parseInt(IDNumber.getText()), name.getText(), lastName.getText(), userBirthDate, email.getText(), Integer.parseInt(phoneNumber.getText()), password.getText(), rolId));
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Error de formato en la fecha, el formato correcto es año-mes-día (yyyy-MM-dd): " + ex.toString());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar el usuario: " + e.toString());
         }
@@ -55,40 +53,37 @@ public class CtrlUser {
     }
     // Create a date formatter for parsing the birth date string
 
-    public void addUserRegister(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password, JFrame frame) {
+    public void addUserRegister(JTextField IDNumber, JTextField name, JTextField lastName, JDateChooser birthDate, JTextField email, JTextField phoneNumber, JTextField password, JFrame frame) {
         if (!validateName(name) || !validateLastName(lastName) || !validateIDNumber(IDNumber) || !validateEmail(email) || !validatePhone(phoneNumber) || !validatePassword(password)) {
             return;
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date userBirthDate = dateFormat.parse(birthDate.getText());
+            Date userBirthDate = birthDate.getDate();
             this.dao.create(new User(Integer.parseInt(IDNumber.getText()), name.getText(), lastName.getText(), userBirthDate, email.getText(), Integer.parseInt(phoneNumber.getText()), password.getText(), rolId));
             if (rolId == 2) {
                 frame.dispose();
             }
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Error de formato en la fecha, el formato correcto es año-mes-día (yyyy-MM-dd): " + ex.toString());
+            this.clearFields(IDNumber, name, lastName, birthDate, email, phoneNumber, password);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar el usuario: " + e.toString());
         }
-        this.clearFields(IDNumber, name, lastName, birthDate, email, phoneNumber, password);
     }
 
     // Create a date formatter for parsing the updated birth date string
-    public void updatedUser(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
+    public void updatedUser(JTextField IDNumber, JTextField name, JTextField lastName, JDateChooser birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
         if (!validateName(name) || !validateLastName(lastName) || !validateIDNumber(IDNumber) || !validateEmail(email) || !validatePhone(phoneNumber) || !validatePassword(password)) {
             return;
         }
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date userBirthDate = dateFormat.parse(birthDate.getText());
+            Date userBirthDate = birthDate.getDate();
             this.dao.update(new User(this.id, Integer.parseInt(IDNumber.getText()), name.getText(), lastName.getText(), userBirthDate, email.getText(), Integer.parseInt(phoneNumber.getText()), password.getText(), rolId));
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Error de formato, el indicado es año-mes-día : ");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar el usuario: " + e.toString());
         }
     }
 
-    public void selectedRow(JTable table, JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
+    public void selectedRow(JTable table, JTextField IDNumber, JTextField name, JTextField lastName, JDateChooser birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
         try {
             int row = table.getSelectedRow();
             if (row >= 0) {
@@ -96,7 +91,8 @@ public class CtrlUser {
                 IDNumber.setText(table.getValueAt(row, 1).toString());
                 name.setText(table.getValueAt(row, 2).toString());
                 lastName.setText(table.getValueAt(row, 3).toString());
-                birthDate.setText(table.getValueAt(row, 4).toString());
+                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(table.getValueAt(row, 4).toString());
+                birthDate.setDate(date);
                 email.setText(table.getValueAt(row, 5).toString());
                 phoneNumber.setText(table.getValueAt(row, 6).toString());
                 password.setText(table.getValueAt(row, 7).toString());
@@ -114,18 +110,23 @@ public class CtrlUser {
     }
 
     // Set the text content of each JTextField to an empty string
-    public void clearFields(JTextField IDNumber, JTextField name, JTextField lastName, JTextField birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
+    public void clearFields(JTextField IDNumber, JTextField name, JTextField lastName, JDateChooser birthDate, JTextField email, JTextField phoneNumber, JTextField password) {
         IDNumber.setText("");
         name.setText("");
         lastName.setText("");
-        birthDate.setText("");
+        birthDate.setDate(null);
         email.setText("");
         phoneNumber.setText("");
         password.setText("");
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     // Set the role ID to the specified value
-    public static void setRolId(int id) {
+    public  static void setRolId(int id) {
+        rolId=0;
         rolId = id;
     }
 

@@ -31,7 +31,7 @@ public class Validation {
 
     public boolean validatePhoneNumber(String phoneNumber) {
         // El patrón acepta solo dígitos y el formato "xxxx-xxxx"
-        Pattern pat = Pattern.compile("^\\d{4}-\\d{4}$");
+        Pattern pat = Pattern.compile("^\\d{4}\\d{4}$");
         Matcher mat = pat.matcher(phoneNumber);
         return mat.matches();
     }

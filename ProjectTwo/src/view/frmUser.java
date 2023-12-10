@@ -10,6 +10,7 @@ import controller.CtrlUser;
 import java.awt.Color;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import model.Event;
 import model.EventDAO;
@@ -47,12 +48,18 @@ public class frmUser extends javax.swing.JFrame {
         this.eventPanel = eventPanel;
     }
 
-    public void setUserInfo(User user) {
+     public void setUserInfo(User user) {
+        cu.setId(user.getId());
         txtNameProfile.setText(user.getName());
         txtIdNumberProfile.setText(String.valueOf(user.getID_number()));
         txtLastNameProfile.setText(user.getLast_name());
         txtEmailProfile.setText(user.getEmail());
-        txtBirthDateProfile.setText(String.valueOf(user.getBirth_date()));
+        Date birthDate = user.getBirth_date();
+        if (birthDate != null) {
+            jdcUser.setDate(birthDate);
+        } else {
+            jdcUser.setDate(null);
+        }
         txtPasswordProfile.setText(user.getPassword());
         txtPhoneProfile.setText(String.valueOf(user.getPhone_number()));
     }
@@ -112,15 +119,15 @@ public class frmUser extends javax.swing.JFrame {
         lblFilterByName = new javax.swing.JLabel();
         txtFilterByName = new javax.swing.JTextField();
         lblBeginDate = new javax.swing.JLabel();
-        txtBeginDate = new javax.swing.JTextField();
         lblFinalDate = new javax.swing.JLabel();
-        txtFinalDate = new javax.swing.JTextField();
         lblFilterByLocation = new javax.swing.JLabel();
         txtFilterByLocation = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         btnFilter = new javax.swing.JButton();
         boxCategory = new javax.swing.JComboBox<>();
+        jdcStar = new com.toedter.calendar.JDateChooser();
+        jdcFinish = new com.toedter.calendar.JDateChooser();
         scrollAvailable = new javax.swing.JScrollPane();
         btnClearFilter = new javax.swing.JButton();
         jpReservations = new javax.swing.JPanel();
@@ -153,9 +160,9 @@ public class frmUser extends javax.swing.JFrame {
         lblEmailUser = new javax.swing.JLabel();
         txtPasswordProfile = new javax.swing.JPasswordField();
         lblBirthDate = new javax.swing.JLabel();
-        txtBirthDateProfile = new javax.swing.JTextField();
         lblPhone = new javax.swing.JLabel();
         txtPhoneProfile = new javax.swing.JTextField();
+        jdcUser = new com.toedter.calendar.JDateChooser();
         jpMenu = new javax.swing.JPanel();
         btnPanel1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -208,15 +215,15 @@ public class frmUser extends javax.swing.JFrame {
                 .addGroup(jpBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1120, 70));
+        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1120, 40));
 
         lblHeader.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeader.setText("Buscar eventos cerca de mi");
 
-        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPFilters.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones de Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblFilterByName.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFilterByName.setText("Nombre del evento:");
@@ -226,12 +233,8 @@ public class frmUser extends javax.swing.JFrame {
         lblBeginDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblBeginDate.setText("Fecha de inicio:");
 
-        txtBeginDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-
         lblFinalDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFinalDate.setText("Fecha final:");
-
-        txtFinalDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         lblFilterByLocation.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFilterByLocation.setText("Ubicación del evento:");
@@ -276,12 +279,12 @@ public class frmUser extends javax.swing.JFrame {
                                         .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPFiltersLayout.createSequentialGroup()
                                         .addComponent(lblBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(70, 70, 70)
-                                        .addComponent(lblFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jdcStar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(64, 64, 64)
+                                        .addComponent(lblFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jdcFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPFiltersLayout.createSequentialGroup()
                         .addContainerGap()
@@ -292,27 +295,32 @@ public class frmUser extends javax.swing.JFrame {
         );
         jPFiltersLayout.setVerticalGroup(
             jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPFiltersLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFilterByName)
-                    .addComponent(txtFilterByName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFilterByLocation)
-                    .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBeginDate)
-                    .addComponent(txtBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFinalDate)
-                    .addComponent(txtFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFiltersLayout.createSequentialGroup()
+                .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPFiltersLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jdcFinish, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPFiltersLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblFilterByName)
+                            .addComponent(txtFilterByName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblFilterByLocation)
+                            .addComponent(txtFilterByLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblBeginDate)
+                                .addComponent(lblFinalDate)
+                                .addComponent(btnFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jdcStar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(34, 34, 34))
         );
 
@@ -358,7 +366,7 @@ public class frmUser extends javax.swing.JFrame {
         lblHeaderReservations.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeaderReservations.setText("Reservar");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mi reservación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 12))); // NOI18N
 
         lblUserR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblUserR.setText("Usuario:");
@@ -577,8 +585,8 @@ public class frmUser extends javax.swing.JFrame {
                             .addComponent(txtLastNameProfile)
                             .addComponent(txtEmailProfile)
                             .addComponent(txtPasswordProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addComponent(txtBirthDateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addComponent(txtPhoneProfile)))
+                            .addComponent(txtPhoneProfile)
+                            .addComponent(jdcUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jpmyProfileLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(lblHeaderMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -593,26 +601,27 @@ public class frmUser extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addComponent(lblHeaderMyProfile)
                 .addGap(49, 49, 49)
-                .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNameUser)
-                    .addComponent(txtNameProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblId_number)
-                    .addComponent(txtIdNumberProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLastNameProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLastName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmailUser)
-                    .addComponent(txtEmailProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBirthDateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBirthDate))
-                .addGap(13, 13, 13)
+                .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpmyProfileLayout.createSequentialGroup()
+                        .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNameUser)
+                            .addComponent(txtNameProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblId_number)
+                            .addComponent(txtIdNumberProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtLastNameProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLastName))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEmailUser)
+                            .addComponent(txtEmailProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblBirthDate))
+                    .addComponent(jdcUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(txtPasswordProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -622,7 +631,7 @@ public class frmUser extends javax.swing.JFrame {
                     .addComponent(txtPhoneProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(btnUpdateInfoUser)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Mi Perfil", jpmyProfile);
@@ -663,7 +672,7 @@ public class frmUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPanel3ActionPerformed
 
     private void btnUpdateInfoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoUserActionPerformed
-        cu.updatedUser(txtIdNumberProfile, txtNameProfile, txtLastNameProfile, txtBirthDateProfile, txtEmailProfile, txtPhoneProfile, txtPasswordProfile);
+        cu.updatedUser(txtIdNumberProfile, txtNameProfile, txtLastNameProfile, jdcUser, txtEmailProfile, txtPhoneProfile, txtPasswordProfile);
     }//GEN-LAST:event_btnUpdateInfoUserActionPerformed
 
     private void btnPanel4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel4ActionPerformed
@@ -728,6 +737,9 @@ public class frmUser extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private com.toedter.calendar.JDateChooser jdcFinish;
+    private com.toedter.calendar.JDateChooser jdcStar;
+    private com.toedter.calendar.JDateChooser jdcUser;
     private javax.swing.JPanel jpBack;
     private javax.swing.JPanel jpMenu;
     private javax.swing.JPanel jpReservations;
@@ -756,14 +768,11 @@ public class frmUser extends javax.swing.JFrame {
     private javax.swing.JSpinner spQuantityR;
     private javax.swing.JTabbedPane tabPanels;
     private javax.swing.JTable tblReservations;
-    private javax.swing.JTextField txtBeginDate;
-    private javax.swing.JTextField txtBirthDateProfile;
     private javax.swing.JTextField txtDateR;
     private javax.swing.JTextField txtEmailProfile;
     private javax.swing.JTextField txtEventId;
     private javax.swing.JTextField txtFilterByLocation;
     private javax.swing.JTextField txtFilterByName;
-    private javax.swing.JTextField txtFinalDate;
     private javax.swing.JTextField txtIdNumberProfile;
     private javax.swing.JTextField txtLastNameProfile;
     private javax.swing.JTextField txtNameProfile;

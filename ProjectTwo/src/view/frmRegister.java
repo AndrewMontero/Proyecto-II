@@ -41,13 +41,13 @@ public class frmRegister extends javax.swing.JFrame {
         lblEmailUser = new javax.swing.JLabel();
         txtEmailUser = new javax.swing.JTextField();
         lblBirthDate = new javax.swing.JLabel();
-        txtBirthDate = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         lblPhone = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
         btnUpdateInfoUser = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jdcRegister = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,7 +101,6 @@ public class frmRegister extends javax.swing.JFrame {
         lblBirthDate.setForeground(new java.awt.Color(255, 255, 255));
         lblBirthDate.setText("Fecha de Nacimiento:");
         getContentPane().add(lblBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 289, -1, -1));
-        getContentPane().add(txtBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 288, 207, -1));
 
         lblPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -134,6 +133,7 @@ public class frmRegister extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("* La contraseña debe de ser de al menos 8 caracteres, incluir mayúsculas y minúsculas, así como un número.");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 524, 686, -1));
+        getContentPane().add(jdcRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 200, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/bosque_tropical_1270_x_720 (1).jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -144,7 +144,7 @@ public class frmRegister extends javax.swing.JFrame {
 
     private void btnUpdateInfoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoUserActionPerformed
         cu.setRolId(2);
-        cu.addUserRegister(txtIdNumberUser, txtNameUser, txtLastName, txtBirthDate, txtEmailUser, txtPhone, txtPassword, this);
+        cu.addUserRegister(txtIdNumberUser, txtNameUser, txtLastName, jdcRegister, txtEmailUser, txtPhone, txtPassword, this);
     }//GEN-LAST:event_btnUpdateInfoUserActionPerformed
 
     private void btnPanel5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPanel5ActionPerformed
@@ -162,6 +162,7 @@ public class frmRegister extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdateInfoUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private com.toedter.calendar.JDateChooser jdcRegister;
     private javax.swing.JLabel lblBirthDate;
     private javax.swing.JLabel lblEmailUser;
     private javax.swing.JLabel lblHeaderMyProfile;
@@ -170,7 +171,6 @@ public class frmRegister extends javax.swing.JFrame {
     private javax.swing.JLabel lblNameUser;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPhone;
-    private javax.swing.JTextField txtBirthDate;
     private javax.swing.JTextField txtEmailUser;
     private javax.swing.JTextField txtIdNumberUser;
     private javax.swing.JTextField txtLastName;
