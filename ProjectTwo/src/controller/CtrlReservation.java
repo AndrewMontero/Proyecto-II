@@ -35,6 +35,22 @@ public class CtrlReservation {
         }
     }
 
+    public void loadDataReservationByName(JTable table, String name) {
+        // Get the table model and set up a TableRowSorter for sorting functionality
+
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(model);
+        table.setRowSorter(order);
+        model.setRowCount(0);
+        List<Reservation> reservation = dao.read();
+        for (Reservation reservations : reservation) {
+            if (reservations.getUser_name().equals(name)) {
+                Object[] row = {reservations.getId(), reservations.getUser_name(), reservations.getDate(), reservations.getQuantity(), this.event.getNameEvents(reservations.getEvent_id())};
+                model.addRow(row);
+            }
+        }
+    }
+
     public void addReservation(JTextField userName, JTextField date, int quantity, int eventId) {
         if (!validateName(userName)) {
             return;

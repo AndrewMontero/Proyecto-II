@@ -40,6 +40,7 @@ public class frmUser extends javax.swing.JFrame {
         this.setResizable(false);
         setUserInfo(user);
         this.user = user;
+        loadReservation();
     }
 
     public void setEventPanel(EventPanel eventPanel) {
@@ -56,7 +57,7 @@ public class frmUser extends javax.swing.JFrame {
         txtPhoneProfile.setText(String.valueOf(user.getPhone_number()));
     }
 
-    public void actualizarFecha(int idEvent) {
+    public void actualizarFecha(String name) {
         // Get the current date and time
         LocalDateTime fechaActual = LocalDateTime.now();
 
@@ -64,7 +65,7 @@ public class frmUser extends javax.swing.JFrame {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String fechaFormateada = fechaActual.format(formato);
         txtDateR.setText(fechaFormateada);
-        txtEventId.setText(String.valueOf(idEvent));
+        txtEventId.setText(name);
         txtUserR.setText(user.getName());
     }
 
@@ -88,6 +89,10 @@ public class frmUser extends javax.swing.JFrame {
         }
     }
 
+    private void loadReservation() {
+        cr.loadDataReservationByName(tblReservations, user.getName());
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,10 +113,8 @@ public class frmUser extends javax.swing.JFrame {
         txtFilterByName = new javax.swing.JTextField();
         lblBeginDate = new javax.swing.JLabel();
         txtBeginDate = new javax.swing.JTextField();
-        btnCalendarBegin = new javax.swing.JButton();
         lblFinalDate = new javax.swing.JLabel();
         txtFinalDate = new javax.swing.JTextField();
-        btnCalendarFinal = new javax.swing.JButton();
         lblFilterByLocation = new javax.swing.JLabel();
         txtFilterByLocation = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -133,8 +136,9 @@ public class frmUser extends javax.swing.JFrame {
         txtEventId = new javax.swing.JTextField();
         btnConfirmR = new javax.swing.JButton();
         btnDisconfirmR = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblMyReservations = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblReservations = new javax.swing.JTable();
+        lblHeaderReservations1 = new javax.swing.JLabel();
         jpmyProfile = new javax.swing.JPanel();
         lblLastName = new javax.swing.JLabel();
         txtLastNameProfile = new javax.swing.JTextField();
@@ -149,7 +153,6 @@ public class frmUser extends javax.swing.JFrame {
         lblEmailUser = new javax.swing.JLabel();
         txtPasswordProfile = new javax.swing.JPasswordField();
         lblBirthDate = new javax.swing.JLabel();
-        btnBirthCalendar = new javax.swing.JButton();
         txtBirthDateProfile = new javax.swing.JTextField();
         lblPhone = new javax.swing.JLabel();
         txtPhoneProfile = new javax.swing.JTextField();
@@ -225,19 +228,10 @@ public class frmUser extends javax.swing.JFrame {
 
         txtBeginDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
-        btnCalendarBegin.setText("...");
-        btnCalendarBegin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCalendarBeginActionPerformed(evt);
-            }
-        });
-
         lblFinalDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFinalDate.setText("Fecha final:");
 
         txtFinalDate.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-
-        btnCalendarFinal.setText("...");
 
         lblFilterByLocation.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblFilterByLocation.setText("Ubicación del evento:");
@@ -284,14 +278,10 @@ public class frmUser extends javax.swing.JFrame {
                                         .addComponent(lblBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnCalendarBegin)
-                                        .addGap(29, 29, 29)
+                                        .addGap(70, 70, 70)
                                         .addComponent(lblFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnCalendarFinal)))
+                                        .addComponent(txtFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPFiltersLayout.createSequentialGroup()
                         .addContainerGap()
@@ -320,10 +310,8 @@ public class frmUser extends javax.swing.JFrame {
                 .addGroup(jPFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBeginDate)
                     .addComponent(txtBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCalendarBegin)
                     .addComponent(lblFinalDate)
                     .addComponent(txtFinalDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCalendarFinal)
                     .addComponent(btnFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
@@ -375,22 +363,25 @@ public class frmUser extends javax.swing.JFrame {
         lblUserR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblUserR.setText("Usuario:");
 
+        txtUserR.setEditable(false);
         txtUserR.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
 
         lblDateR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblDateR.setText("Fecha de mi reservación:");
 
+        txtDateR.setEditable(false);
         txtDateR.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
 
         lblQuantityR.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblQuantityR.setText("Cantidad de personas:");
+        lblQuantityR.setText("Cantidad de personas/entradas:");
 
         spQuantityR.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         spQuantityR.setModel(new javax.swing.SpinnerNumberModel(1, null, 10, 1));
 
         lblEventId.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        lblEventId.setText("Código del evento:");
+        lblEventId.setText("Evento:");
 
+        txtEventId.setEditable(false);
         txtEventId.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
 
         btnConfirmR.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -430,25 +421,26 @@ public class frmUser extends javax.swing.JFrame {
                         .addComponent(btnDisconfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnConfirmR, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblDateR, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtDateR, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblQuantityR, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblUserR, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtUserR, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67)
-                                .addComponent(lblEventId, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDateR)
+                            .addComponent(lblUserR, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtDateR, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                            .addComponent(txtUserR))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spQuantityR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEventId, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblQuantityR)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(spQuantityR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblEventId)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtEventId, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -473,18 +465,26 @@ public class frmUser extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tblMyReservations.setModel(new javax.swing.table.DefaultTableModel(
+        tblReservations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "Nombre Usuario", "Fecha", "Entradas", "Evento"
             }
         ));
-        jScrollPane1.setViewportView(tblMyReservations);
+        tblReservations.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblReservationsMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblReservations);
+
+        lblHeaderReservations1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lblHeaderReservations1.setText("Historial de reservaciones:");
 
         javax.swing.GroupLayout jpReservationsLayout = new javax.swing.GroupLayout(jpReservations);
         jpReservations.setLayout(jpReservationsLayout);
@@ -493,10 +493,11 @@ public class frmUser extends javax.swing.JFrame {
             .addGroup(jpReservationsLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
                     .addComponent(lblHeaderReservations, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(253, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblHeaderReservations1)
+                    .addComponent(jScrollPane2))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
         jpReservationsLayout.setVerticalGroup(
             jpReservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,9 +506,11 @@ public class frmUser extends javax.swing.JFrame {
                 .addComponent(lblHeaderReservations)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblHeaderReservations1)
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Reservaciones", jpReservations);
@@ -547,8 +550,6 @@ public class frmUser extends javax.swing.JFrame {
         lblBirthDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblBirthDate.setText("Fecha de Nacimiento:");
 
-        btnBirthCalendar.setText("...");
-
         lblPhone.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPhone.setText("Número de Teléfono:");
 
@@ -576,16 +577,14 @@ public class frmUser extends javax.swing.JFrame {
                             .addComponent(txtEmailProfile)
                             .addComponent(txtPasswordProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                             .addComponent(txtBirthDateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addComponent(txtPhoneProfile))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBirthCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPhoneProfile)))
                     .addGroup(jpmyProfileLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(lblHeaderMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpmyProfileLayout.createSequentialGroup()
                         .addGap(504, 504, 504)
                         .addComponent(btnUpdateInfoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addContainerGap(448, Short.MAX_VALUE))
         );
         jpmyProfileLayout.setVerticalGroup(
             jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -611,9 +610,8 @@ public class frmUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBirthDateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBirthDate)
-                    .addComponent(btnBirthCalendar))
-                .addGap(12, 12, 12)
+                    .addComponent(lblBirthDate))
+                .addGap(13, 13, 13)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(txtPasswordProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -623,7 +621,7 @@ public class frmUser extends javax.swing.JFrame {
                     .addComponent(txtPhoneProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(btnUpdateInfoUser)
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         tabPanels.addTab("Mi Perfil", jpmyProfile);
@@ -681,12 +679,6 @@ public class frmUser extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnClearFilterActionPerformed
 
-    private void btnCalendarBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalendarBeginActionPerformed
-        // TODO add your handling code here:
-        btnCalendarBegin.setBackground(Color.BLUE);
-        btnCalendarBegin.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnCalendarBeginActionPerformed
-
     private void btnConfirmRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmRActionPerformed
         Event selectedEvent = eventPanel.getSelectedEvent();
         Place selectedPlace = eventPanel.getSelectedPlace();
@@ -702,6 +694,7 @@ public class frmUser extends javax.swing.JFrame {
 
             Integer quantity = (Integer) spQuantityR.getValue();
             cr.addReservation(txtUserR, txtDateR, quantity, generatedEventId);
+            loadReservation();
         } else {
         }
     }//GEN-LAST:event_btnConfirmRActionPerformed
@@ -710,15 +703,16 @@ public class frmUser extends javax.swing.JFrame {
         tabPanels.setSelectedIndex(0);
     }//GEN-LAST:event_btnDisconfirmRActionPerformed
 
+    private void tblReservationsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReservationsMouseClicked
+        cr.selectedRow(tblReservations);
+    }//GEN-LAST:event_tblReservationsMouseClicked
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxCategory;
-    private javax.swing.JButton btnBirthCalendar;
-    private javax.swing.JButton btnCalendarBegin;
-    private javax.swing.JButton btnCalendarFinal;
     private javax.swing.JButton btnClearFilter;
     private javax.swing.JButton btnConfirmR;
     private javax.swing.JButton btnDisconfirmR;
@@ -730,7 +724,7 @@ public class frmUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPFilters;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel jpBack;
@@ -749,6 +743,7 @@ public class frmUser extends javax.swing.JFrame {
     private javax.swing.JLabel lblHeader;
     private javax.swing.JLabel lblHeaderMyProfile;
     private javax.swing.JLabel lblHeaderReservations;
+    private javax.swing.JLabel lblHeaderReservations1;
     private javax.swing.JLabel lblId_number;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblNameUser;
@@ -759,7 +754,7 @@ public class frmUser extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollAvailable;
     private javax.swing.JSpinner spQuantityR;
     private javax.swing.JTabbedPane tabPanels;
-    private javax.swing.JTable tblMyReservations;
+    private javax.swing.JTable tblReservations;
     private javax.swing.JTextField txtBeginDate;
     private javax.swing.JTextField txtBirthDateProfile;
     private javax.swing.JTextField txtDateR;

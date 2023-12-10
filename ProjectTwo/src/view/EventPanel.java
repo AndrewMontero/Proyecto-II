@@ -294,7 +294,6 @@ public class EventPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnWebActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int selectedEventId = event.getLocationId();
         String eventName = event.getName();
 
         // Show a confirmation dialog
@@ -303,7 +302,7 @@ public class EventPanel extends javax.swing.JPanel {
         if (option == JOptionPane.YES_OPTION) {
             parent.setEventPanel(this);
             parent.getJpReservations();
-            parent.actualizarFecha(selectedEventId);
+            parent.actualizarFecha(eventName);
         } else {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -317,7 +316,6 @@ public class EventPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNextImageActionPerformed
 
     private void btnPrevImageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrevImageMouseEntered
-
 
 
     }//GEN-LAST:event_btnPrevImageMouseEntered

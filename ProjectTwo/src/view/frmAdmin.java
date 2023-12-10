@@ -114,7 +114,6 @@ public class frmAdmin extends javax.swing.JFrame {
         lblEmailUser = new javax.swing.JLabel();
         txtPasswordProfile = new javax.swing.JPasswordField();
         lblBirthDate = new javax.swing.JLabel();
-        btnBirthCalendar = new javax.swing.JButton();
         txtBirthDateProfile = new javax.swing.JTextField();
         lblPhone = new javax.swing.JLabel();
         txtPhoneProfile = new javax.swing.JTextField();
@@ -441,8 +440,6 @@ public class frmAdmin extends javax.swing.JFrame {
         lblBirthDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblBirthDate.setText("Fecha de Nacimiento:");
 
-        btnBirthCalendar.setText("...");
-
         lblPhone.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPhone.setText("Número de Teléfono:");
 
@@ -470,9 +467,7 @@ public class frmAdmin extends javax.swing.JFrame {
                             .addComponent(txtEmailProfile)
                             .addComponent(txtPasswordProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                             .addComponent(txtBirthDateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addComponent(txtPhoneProfile))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBirthCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPhoneProfile)))
                     .addGroup(jpmyProfileLayout.createSequentialGroup()
                         .addGap(504, 504, 504)
                         .addComponent(btnUpdateInfoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -509,9 +504,8 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBirthDateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBirthDate)
-                    .addComponent(btnBirthCalendar))
-                .addGap(12, 12, 12)
+                    .addComponent(lblBirthDate))
+                .addGap(13, 13, 13)
                 .addGroup(jpmyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(txtPasswordProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -733,22 +727,21 @@ public class frmAdmin extends javax.swing.JFrame {
         jpPlaceLayout.setHorizontalGroup(
             jpPlaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPlaceLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(33, 33, 33)
                 .addGroup(jpPlaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblHeaderMyProfile2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpPlaceLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnDeletePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblHeaderMyProfile2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnDeletePlace, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
         jpPlaceLayout.setVerticalGroup(
             jpPlaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPlaceLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap()
                 .addComponent(lblHeaderMyProfile2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addGroup(jpPlaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeletePlace))
@@ -848,7 +841,6 @@ public class frmAdmin extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBirthCalendar;
     private javax.swing.JButton btnBirthCalendar1;
     private javax.swing.JButton btnClearFilter;
     private javax.swing.JButton btnDeleteEvent;
