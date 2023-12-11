@@ -17,7 +17,8 @@ import org.json.JSONObject;
 
 /**
  *
- * @author Bravo
+ * @author Bravo This class interacts with external APIs to retrieve details
+ * about places and weather information.
  */
 public class PlaceAPI {
 
@@ -27,22 +28,26 @@ public class PlaceAPI {
     private static final String Api_KEY = "86579c590b19855998f140dcf47071b5";
     HttpURLConnection connection = null;
 
+    //Retrieves detailed information about a place using its ID.
     public Place getPlaceDetails(int id) throws Exception {
         String endpoint = String.format("location/%s/details?key=%s&language=en&currency=USD", id, API_KEY);
         String jsonResponse = getJsonResponse(LOCATION_URL + endpoint);
         return parsePlaceDetails(jsonResponse);
     }
 
+    //Fetches weather information for a specific latitude and longitude.
     public List<Place> fetchWeatherInfo(String latitude, String longitude) throws Exception {
         String weatherEndpoint = String.format("lat=%s&lon=%s&appid=%s&lang=es&units=metric", latitude, longitude, Api_KEY);
         String weatherResponseBody = getJsonResponse(BASE_URL + weatherEndpoint);
         return parseWeatherInfo(weatherResponseBody);
     }
 
+    //Retrieves the URL for the weather icon based on the provided icon ID.
     public String getWeatherIconUrl(String iconId) {
         return String.format("https://openweathermap.org/img/wn/%s@2x.png", iconId);
     }
 
+    //Retrieves the JSON response from the specified URL.
     private String getJsonResponse(String urlString) throws IOException {
         URL url = new URL(urlString);
         try {
@@ -60,12 +65,14 @@ public class PlaceAPI {
         }
     }
 
+    //Reads input from the specified InputStream.
     private String readInputStream(InputStream inputStream) throws IOException {
         try (Scanner scanner = new Scanner(inputStream, "UTF-8")) {
             return scanner.useDelimiter("\\A").next();
         }
     }
 
+    //Parses the JSON response to extract place details.
     private Place parsePlaceDetails(String jsonResponse) {
         JSONObject jsonPlace = new JSONObject(jsonResponse);
         Place place = new Place();
@@ -80,7 +87,7 @@ public class PlaceAPI {
 
         return place;
     }
-
+    //Parses the JSON response to extract weather information.
     private List<Place> parseWeatherInfo(String weatherResponseBody) {
         List<Place> weatherList = new ArrayList<>();
 

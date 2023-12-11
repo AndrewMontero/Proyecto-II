@@ -7,7 +7,6 @@ package view;
 import controller.CtrlReservation;
 import controller.CtrlTripAdvisor;
 import controller.CtrlUser;
-import java.awt.Color;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -48,7 +47,7 @@ public class frmUser extends javax.swing.JFrame {
         this.eventPanel = eventPanel;
     }
 
-     public void setUserInfo(User user) {
+    public void setUserInfo(User user) {
         cu.setId(user.getId());
         txtNameProfile.setText(user.getName());
         txtIdNumberProfile.setText(String.valueOf(user.getID_number()));
@@ -218,7 +217,7 @@ public class frmUser extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1120, 40));
+        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1120, 70));
 
         lblHeader.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         lblHeader.setText("Buscar eventos cerca de mi");
@@ -690,6 +689,7 @@ public class frmUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearFilterActionPerformed
 
     private void btnConfirmRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmRActionPerformed
+        //Event handler for the "Confirm Reservation" button, prompting the user to confirm the reservation.
         Event selectedEvent = eventPanel.getSelectedEvent();
         Place selectedPlace = eventPanel.getSelectedPlace();
         int option = JOptionPane.showConfirmDialog(this, "¿Deseas reservar el evento '" + selectedEvent.getName() + "'?", "Confirmar Reserva", JOptionPane.YES_NO_OPTION);

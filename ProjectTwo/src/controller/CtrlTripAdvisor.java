@@ -19,11 +19,13 @@ import view.frmUser;
 public class CtrlTripAdvisor {
 
     private EventAPI apiHandler = new EventAPI();
-    private List<Event> events;;
+    private List<Event> events;
+
     public CtrlTripAdvisor() {
         this.apiHandler = apiHandler;
         this.events = new ArrayList<>();
     }
+
     // Call the API handler to search for events based on the specified criteria
     public void searchEvents(JTextField name, JTextField ubiField, JScrollPane scroll, JComboBox type, frmUser user) {
         try {
@@ -33,7 +35,8 @@ public class CtrlTripAdvisor {
             JOptionPane.showMessageDialog(null, "Error buscando eventos: " + e.getMessage());
         }
     }
-
+    
+    //Displays the fetched events in the specified JScrollPane.
     public void displayEvents(JScrollPane scrollPane, frmUser user) {
         // Create a main panel to hold the EventPanel components
         JPanel mainPanel = new JPanel();

@@ -4,12 +4,8 @@
  */
 package view;
 
-import controller.CtrlEvent;
-import controller.CtrlPlace;
-import controller.CtrlReservation;
-import controller.CtrlTripAdvisor;
-import controller.CtrlUser;
-import java.awt.Color;
+
+import controller.*;
 import java.util.Date;
 import model.RolDAO;
 import model.User;
@@ -205,7 +201,7 @@ public class frmAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 1080, 40));
+        getContentPane().add(jpBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 1080, 70));
 
         jpMenu.setBackground(new java.awt.Color(224, 35, 52));
         jpMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

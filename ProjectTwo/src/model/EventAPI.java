@@ -26,7 +26,8 @@ public class EventAPI {
     private static final String LOCATION_URL = "https://api.content.tripadvisor.com/api/v1/";
     private static final String API_KEY = "4BB0E403299542FEB3BF8DEB5EF58051";
     HttpURLConnection connection = null;
-
+    
+    //Searches for events based on the specified criteria.
     public List<Event> searchEvents(String name, String location, String category) throws Exception {
         String encodedLocation = URLEncoder.encode(location, "UTF-8");
         String encodedname = URLEncoder.encode(name, "UTF-8");
@@ -34,6 +35,7 @@ public class EventAPI {
         return fetchEvents(endpoint);
     }
 
+    //Fetches events from the specified endpoint.
     private List<Event> fetchEvents(String endpoint) throws Exception {
         List<Event> events = new ArrayList<>();
         String jsonResponse = getJsonResponse(SEARCH_URL + endpoint);
@@ -49,6 +51,7 @@ public class EventAPI {
         return events;
     }
 
+    //Gets image URLs for the specified event ID.
     public List<String> getEventImages(int id) throws Exception {
         List<String> imageUrls = new ArrayList<>();
         String endpoint = "location/" + id + "/photos?key=4BB0E403299542FEB3BF8DEB5EF58051&language=en";
@@ -68,6 +71,7 @@ public class EventAPI {
         return imageUrls;
     }
 
+    // Gets details for the specified event ID.
     public Event getEventDetails(int id) throws Exception {
         Event event = new Event();
         String endpoint = String.format("location/%s/details?key=%s&language=en&currency=USD", id, API_KEY);
@@ -81,6 +85,7 @@ public class EventAPI {
         return event;
     }
 
+    // Retrieves JSON response from the specified URL.
     private String getJsonResponse(String urlString) throws IOException {
         URL url = new URL(urlString);
         try {
@@ -98,19 +103,21 @@ public class EventAPI {
         }
     }
 
+    //Reads input from the specified InputStream.
     private String readInput(InputStream input) throws IOException {
         try (Scanner scanner = new Scanner(input, "UTF-8")) {
             return scanner.useDelimiter("\\A").next();
         }
     }
 
+    //Parses the JSON object representing an event.
     private Event parseEvent(JSONObject eventObj) {
         Event event = new Event();
         event.setLocationId(eventObj.getInt("location_id"));
         event.setName(eventObj.getString("name"));
         event.setAddress(eventObj.getJSONObject("address_obj").getString("address_string"));
-        event.setCity(eventObj.getJSONObject("address_obj").optString("city","Ciudad no disponible"));
-        event.setPostal_code(eventObj.getJSONObject("address_obj").optInt("postalcode",0));
+        event.setCity(eventObj.getJSONObject("address_obj").optString("city", "Ciudad no disponible"));
+        event.setPostal_code(eventObj.getJSONObject("address_obj").optInt("postalcode", 0));
         return event;
     }
 }

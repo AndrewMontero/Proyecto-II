@@ -1,20 +1,20 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Desktop;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.net.URI;
 import java.net.URL;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import model.Event;
 import model.EventAPI;
 import model.Place;
 import model.PlaceAPI;
 import model.SVGImageUtils;
 
+//Represents a panel for displaying detailed information about an event, including images and weather information.
 public class EventPanel extends javax.swing.JPanel {
 
     private Event event;
@@ -24,6 +24,13 @@ public class EventPanel extends javax.swing.JPanel {
     private int currentIndex;
     private List<String> imageUrls;
 
+    /**
+     * Creates a new EventPanel instance.
+     *
+     * @param event The Event object to display details for.
+     * @param api The EventAPI instance to use for fetching event details.
+     * @param parent The parent frame.
+     */
     public EventPanel(Event event, EventAPI api, frmUser parent) {
         initComponents();
         this.imageUrls = imageUrls;
@@ -40,6 +47,7 @@ public class EventPanel extends javax.swing.JPanel {
         }
     }
 
+    //Loads additional details about the event, such as reviews, rating, and images.
     private void loadEventDetails() throws Exception {
         Event details = apiE.getEventDetails(event.getLocationId());
         event.setNumReviews(details.getNumReviews());
@@ -52,7 +60,6 @@ public class EventPanel extends javax.swing.JPanel {
         } else {
             event.setDescription(details.getDescription());
         }
-
         imageUrls = apiE.getEventImages(event.getLocationId());
         event.setImageUrls(imageUrls);
         updateImages();
@@ -65,6 +72,7 @@ public class EventPanel extends javax.swing.JPanel {
         }
     }
 
+    //Updates the displayed images.
     private void updateImages() {
         if (!imageUrls.isEmpty()) {
             String imageUrl = imageUrls.get(currentIndex);
@@ -79,6 +87,7 @@ public class EventPanel extends javax.swing.JPanel {
         }
     }
 
+    //Displays the previous image in the image list.
     private void showPreviousImage() {
         if (!imageUrls.isEmpty()) {
             currentIndex = (currentIndex - 1 + imageUrls.size()) % imageUrls.size();
@@ -86,6 +95,7 @@ public class EventPanel extends javax.swing.JPanel {
         }
     }
 
+    // Shows the next image in the image gallery.
     private void showNextImage() {
         if (!imageUrls.isEmpty()) {
             currentIndex = (currentIndex + 1) % imageUrls.size();
@@ -93,12 +103,21 @@ public class EventPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Gets a scaled image from the specified URL.
+     *
+     * @param url The URL of the image.
+     * @param width The desired width of the scaled image.
+     * @param height The desired height of the scaled image.
+     * @return The scaled Image object.
+     */
     private Image getScaledImage(URL url, int width, int height) throws Exception {
         ImageIcon originalIcon = new ImageIcon(url);
         Image image = originalIcon.getImage();
         return image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
     }
 
+    //Loads weather information for the event's location and updates the weather display.
     private void loadWeatherInfo() {
         try {
             Place details = apiP.getPlaceDetails(event.getLocationId());
@@ -116,6 +135,11 @@ public class EventPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Updates the weather icon based on the specified icon code.
+     *
+     * @param icon The icon code representing the weather condition.
+     */
     private void updateWeatherIcon(String icon) {
         try {
             String iconUrl = apiP.getWeatherIconUrl(icon);
@@ -130,10 +154,12 @@ public class EventPanel extends javax.swing.JPanel {
         }
     }
 
+    // Retrieves the selected event.
     public Event getSelectedEvent() {
         return event;
     }
 
+    //Retrieves detailed information about the selected place.
     public Place getSelectedPlace() {
         try {
             int selectedEventId = event.getLocationId();
@@ -144,6 +170,14 @@ public class EventPanel extends javax.swing.JPanel {
         }
     }
 
+    private void panelColor(JPanel panel) {
+        panel.setBackground(new java.awt.Color(153, 236, 234));
+    }
+
+    private void resetPanelColor(JPanel panel) {
+        panel.setBackground(new java.awt.Color(10, 186, 181));
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -151,11 +185,8 @@ public class EventPanel extends javax.swing.JPanel {
         lblImage = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
-        btnDetails = new javax.swing.JButton();
-        btnWeb = new javax.swing.JButton();
         lblRatingImage = new javax.swing.JLabel();
         lblReviews = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblDescription = new javax.swing.JLabel();
         lblSpeed = new javax.swing.JLabel();
@@ -163,6 +194,9 @@ public class EventPanel extends javax.swing.JPanel {
         lblIcon = new javax.swing.JLabel();
         btnPrevImage = new javax.swing.JButton();
         btnNextImage = new javax.swing.JButton();
+        btnDetails = new javax.swing.JButton();
+        btnWeb = new javax.swing.JButton();
+        btnReservation = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
@@ -180,45 +214,12 @@ public class EventPanel extends javax.swing.JPanel {
         lblAddress.setText("Direccion");
         add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 490, 24));
 
-        btnDetails.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/descripcion.png"))); // NOI18N
-        btnDetails.setText("Descripcion");
-        btnDetails.setContentAreaFilled(false);
-        btnDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetailsActionPerformed(evt);
-            }
-        });
-        add(btnDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
-
-        btnWeb.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnWeb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/globo.png"))); // NOI18N
-        btnWeb.setText("Web");
-        btnWeb.setContentAreaFilled(false);
-        btnWeb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnWebActionPerformed(evt);
-            }
-        });
-        add(btnWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 140, -1, -1));
-
         lblRatingImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/circulo-cruzado.png"))); // NOI18N
         add(lblRatingImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 104, 110, -1));
 
         lblReviews.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblReviews.setText("Sin Opiniones");
         add(lblReviews, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 112, -1, -1));
-
-        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/confirmar.png"))); // NOI18N
-        jButton1.setText("Reservar");
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 140, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/dolar.png"))); // NOI18N
@@ -267,45 +268,40 @@ public class EventPanel extends javax.swing.JPanel {
             }
         });
         add(btnNextImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
-        try {
-            Event details = apiE.getEventDetails(event.getLocationId());
-            String formattedDescription = details.getDescription().replace("\\n", "\n");
-            eventDescription detailsDialog = new eventDescription(parent, true, "Detalles del Evento", formattedDescription);
-            detailsDialog.setVisible(true);
-        } catch (Exception e) {
-            System.out.println("Error fetching event details: " + e.getMessage());
-        }
-    }//GEN-LAST:event_btnDetailsActionPerformed
-
-    private void btnWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWebActionPerformed
-        try {
-            String tripAdvisorLink = apiP.getPlaceDetails(event.getLocationId()).getTripAdvisor_link();
-            if (tripAdvisorLink != null && !tripAdvisorLink.isEmpty()) {
-                Desktop.getDesktop().browse(new URI(tripAdvisorLink));
-            } else {
-                JOptionPane.showMessageDialog(this, "No hay enlace de TripAdvisor disponible.", "Error", JOptionPane.ERROR_MESSAGE);
+        btnDetails.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/descripcion.png"))); // NOI18N
+        btnDetails.setText("Descripcion");
+        btnDetails.setContentAreaFilled(false);
+        btnDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailsActionPerformed(evt);
             }
-        } catch (Exception e) {
-            System.out.println("Error opening TripAdvisor link: " + e.getMessage());
-        }
-    }//GEN-LAST:event_btnWebActionPerformed
+        });
+        add(btnDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, 30));
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String eventName = event.getName();
+        btnWeb.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnWeb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/globo.png"))); // NOI18N
+        btnWeb.setText("Web");
+        btnWeb.setContentAreaFilled(false);
+        btnWeb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWebActionPerformed(evt);
+            }
+        });
+        add(btnWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, 30));
 
-        // Show a confirmation dialog
-        int option = JOptionPane.showConfirmDialog(this, "¿Serás dirigido a la pagina de reservas del evento '" + eventName + "'?", "Confirmar", JOptionPane.YES_NO_OPTION);
-        // Check the user response
-        if (option == JOptionPane.YES_OPTION) {
-            parent.setEventPanel(this);
-            parent.getJpReservations();
-            parent.actualizarFecha(eventName);
-        } else {
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        btnReservation.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnReservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/confirmar.png"))); // NOI18N
+        btnReservation.setText("Reservar");
+        btnReservation.setContentAreaFilled(false);
+        btnReservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservationActionPerformed(evt);
+            }
+        });
+        add(btnReservation, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, 30));
+    }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrevImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevImageActionPerformed
         showPreviousImage();
@@ -324,13 +320,54 @@ public class EventPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnPrevImageMouseExited
 
+    private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
+        //Event handler for the "Details" button, displaying additional details about the event.
+        try {
+            Event details = apiE.getEventDetails(event.getLocationId());
+            String formattedDescription = details.getDescription().replace("\\n", "\n");
+            eventDescription detailsDialog = new eventDescription(parent, true, "Detalles del Evento", formattedDescription);
+            detailsDialog.setVisible(true);
+        } catch (Exception e) {
+            System.out.println("Error fetching event details: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnDetailsActionPerformed
+
+    private void btnWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWebActionPerformed
+        //Event handler for the "Web" button, opening the TripAdvisor link associated with the event.
+        try {
+            String tripAdvisorLink = apiP.getPlaceDetails(event.getLocationId()).getTripAdvisor_link();
+            if (tripAdvisorLink != null && !tripAdvisorLink.isEmpty()) {
+                Desktop.getDesktop().browse(new URI(tripAdvisorLink));
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay enlace de TripAdvisor disponible.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.out.println("Error opening TripAdvisor link: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnWebActionPerformed
+
+    private void btnReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservationActionPerformed
+        //Event handler for the "Reserve" button, prompting the user to confirm redirection to the reservation page.
+        String eventName = event.getName();
+
+        // Show a confirmation dialog
+        int option = JOptionPane.showConfirmDialog(this, "¿Serás dirigido a la pagina de reservas del evento '" + eventName + "'?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        // Check the user response
+        if (option == JOptionPane.YES_OPTION) {
+            parent.setEventPanel(this);
+            parent.getJpReservations();
+            parent.actualizarFecha(eventName);
+        } else {
+        }
+    }//GEN-LAST:event_btnReservationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDetails;
     private javax.swing.JButton btnNextImage;
     private javax.swing.JButton btnPrevImage;
+    private javax.swing.JButton btnReservation;
     private javax.swing.JButton btnWeb;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblDescription;
