@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.net.URI;
 import java.net.URL;
 import java.util.List;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -63,6 +64,8 @@ public class EventPanel extends javax.swing.JPanel {
         imageUrls = apiE.getEventImages(event.getLocationId());
         event.setImageUrls(imageUrls);
         updateImages();
+        setRandomPrice();
+        setRandomRoom();
         String ratingImageUrl = event.getRatingImageUrl();
         if (!ratingImageUrl.isEmpty()) {
             ImageIcon ratingIcon = SVGImageUtils.getSVGIcon(ratingImageUrl);
@@ -154,6 +157,19 @@ public class EventPanel extends javax.swing.JPanel {
         }
     }
 
+    //Sets a random price for the event and updates the corresponding label.
+    private void setRandomPrice() {
+        double randomPrice = 10 + (new Random().nextDouble() * (200 - 10));
+        lblPrice.setText(String.format("$%.2f", randomPrice));
+        event.setPrice(randomPrice);
+    }
+
+    // Sets a random room number for the event and updates the corresponding label.
+    private void setRandomRoom() {
+        int randomRoom = 1 + new Random().nextInt(20);
+        event.setRoom(randomRoom);
+    }
+
     // Retrieves the selected event.
     public Event getSelectedEvent() {
         return event;
@@ -187,7 +203,7 @@ public class EventPanel extends javax.swing.JPanel {
         lblAddress = new javax.swing.JLabel();
         lblRatingImage = new javax.swing.JLabel();
         lblReviews = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblPrice = new javax.swing.JLabel();
         lblDescription = new javax.swing.JLabel();
         lblSpeed = new javax.swing.JLabel();
         lblTemp = new javax.swing.JLabel();
@@ -221,10 +237,9 @@ public class EventPanel extends javax.swing.JPanel {
         lblReviews.setText("Sin Opiniones");
         add(lblReviews, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 112, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/dolar.png"))); // NOI18N
-        jLabel1.setText("Precio");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 133, -1, -1));
+        lblPrice.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lblPrice.setText("Precio");
+        add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 133, -1, -1));
 
         lblDescription.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblDescription.setText("Clima");
@@ -239,7 +254,7 @@ public class EventPanel extends javax.swing.JPanel {
         add(lblTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, -1, -1));
 
         lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/cancelado.png"))); // NOI18N
-        add(lblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
+        add(lblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
 
         btnPrevImage.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPrevImage.setText("<-");
@@ -278,7 +293,7 @@ public class EventPanel extends javax.swing.JPanel {
                 btnDetailsActionPerformed(evt);
             }
         });
-        add(btnDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, 30));
+        add(btnDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, 30));
 
         btnWeb.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnWeb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/globo.png"))); // NOI18N
@@ -368,12 +383,12 @@ public class EventPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnPrevImage;
     private javax.swing.JButton btnReservation;
     private javax.swing.JButton btnWeb;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblRatingImage;
     private javax.swing.JLabel lblReviews;
     private javax.swing.JLabel lblSpeed;
