@@ -57,7 +57,7 @@ public class EventPanel extends javax.swing.JPanel {
 
         // Update description if available
         if ("Descripcion no disponible".equals(details.getDescription()) || details.getDescription().isEmpty()) {
-            btnDetails.setEnabled(false);
+            btnDescription.setEnabled(false);
         } else {
             event.setDescription(details.getDescription());
         }
@@ -160,7 +160,7 @@ public class EventPanel extends javax.swing.JPanel {
     //Sets a random price for the event and updates the corresponding label.
     private void setRandomPrice() {
         double randomPrice = 10 + (new Random().nextDouble() * (200 - 10));
-        lblPrice.setText(String.format("$%.2f", randomPrice));
+        jLabel1.setText(String.format("$%.2f", randomPrice));
         event.setPrice(randomPrice);
     }
 
@@ -203,16 +203,22 @@ public class EventPanel extends javax.swing.JPanel {
         lblAddress = new javax.swing.JLabel();
         lblRatingImage = new javax.swing.JLabel();
         lblReviews = new javax.swing.JLabel();
-        lblPrice = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         lblDescription = new javax.swing.JLabel();
         lblSpeed = new javax.swing.JLabel();
         lblTemp = new javax.swing.JLabel();
         lblIcon = new javax.swing.JLabel();
         btnPrevImage = new javax.swing.JButton();
         btnNextImage = new javax.swing.JButton();
-        btnDetails = new javax.swing.JButton();
-        btnWeb = new javax.swing.JButton();
-        btnReservation = new javax.swing.JButton();
+        btnDescription = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btnWeb = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnBooking = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
@@ -237,9 +243,10 @@ public class EventPanel extends javax.swing.JPanel {
         lblReviews.setText("Sin Opiniones");
         add(lblReviews, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 112, -1, -1));
 
-        lblPrice.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        lblPrice.setText("Precio");
-        add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 133, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/dolar.png"))); // NOI18N
+        jLabel1.setText("Precio");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 133, -1, -1));
 
         lblDescription.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         lblDescription.setText("Clima");
@@ -254,7 +261,7 @@ public class EventPanel extends javax.swing.JPanel {
         add(lblTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, -1, -1));
 
         lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/cancelado.png"))); // NOI18N
-        add(lblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
+        add(lblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
 
         btnPrevImage.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnPrevImage.setText("<-");
@@ -284,38 +291,78 @@ public class EventPanel extends javax.swing.JPanel {
         });
         add(btnNextImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
 
-        btnDetails.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/descripcion.png"))); // NOI18N
-        btnDetails.setText("Descripcion");
-        btnDetails.setContentAreaFilled(false);
-        btnDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetailsActionPerformed(evt);
+        btnDescription.setBackground(new java.awt.Color(58, 203, 199));
+        btnDescription.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDescriptionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnDescriptionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnDescriptionMouseExited(evt);
             }
         });
-        add(btnDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, 30));
+        btnDescription.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnWeb.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnWeb.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/globo.png"))); // NOI18N
-        btnWeb.setText("Web");
-        btnWeb.setContentAreaFilled(false);
-        btnWeb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnWebActionPerformed(evt);
-            }
-        });
-        add(btnWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, 30));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/descripcion.png"))); // NOI18N
+        btnDescription.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 35, 30));
 
-        btnReservation.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnReservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/confirmar.png"))); // NOI18N
-        btnReservation.setText("Reservar");
-        btnReservation.setContentAreaFilled(false);
-        btnReservation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReservationActionPerformed(evt);
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Descripcion");
+        btnDescription.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 7, 90, 20));
+
+        add(btnDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 140, 30));
+
+        btnWeb.setBackground(new java.awt.Color(58, 203, 199));
+        btnWeb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnWebMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnWebMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnWebMouseExited(evt);
             }
         });
-        add(btnReservation, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, 30));
+        btnWeb.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/web.png"))); // NOI18N
+        btnWeb.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Web");
+        btnWeb.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 40, 30));
+
+        add(btnWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 90, 30));
+
+        btnBooking.setBackground(new java.awt.Color(58, 203, 199));
+        btnBooking.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBookingMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBookingMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBookingMouseExited(evt);
+            }
+        });
+        btnBooking.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/assets/confirmar.png"))); // NOI18N
+        btnBooking.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Reservar");
+        btnBooking.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 60, 30));
+
+        add(btnBooking, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 100, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrevImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevImageActionPerformed
@@ -335,7 +382,7 @@ public class EventPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnPrevImageMouseExited
 
-    private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
+    private void btnDescriptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDescriptionMouseClicked
         //Event handler for the "Details" button, displaying additional details about the event.
         try {
             Event details = apiE.getEventDetails(event.getLocationId());
@@ -345,9 +392,17 @@ public class EventPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             System.out.println("Error fetching event details: " + e.getMessage());
         }
-    }//GEN-LAST:event_btnDetailsActionPerformed
+    }//GEN-LAST:event_btnDescriptionMouseClicked
 
-    private void btnWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWebActionPerformed
+    private void btnDescriptionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDescriptionMouseEntered
+        panelColor(btnDescription);
+    }//GEN-LAST:event_btnDescriptionMouseEntered
+
+    private void btnDescriptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDescriptionMouseExited
+        resetPanelColor(btnDescription);
+    }//GEN-LAST:event_btnDescriptionMouseExited
+
+    private void btnWebMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWebMouseClicked
         //Event handler for the "Web" button, opening the TripAdvisor link associated with the event.
         try {
             String tripAdvisorLink = apiP.getPlaceDetails(event.getLocationId()).getTripAdvisor_link();
@@ -359,9 +414,17 @@ public class EventPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             System.out.println("Error opening TripAdvisor link: " + e.getMessage());
         }
-    }//GEN-LAST:event_btnWebActionPerformed
+    }//GEN-LAST:event_btnWebMouseClicked
 
-    private void btnReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservationActionPerformed
+    private void btnWebMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWebMouseEntered
+        panelColor(btnWeb);
+    }//GEN-LAST:event_btnWebMouseEntered
+
+    private void btnWebMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWebMouseExited
+        resetPanelColor(btnWeb);
+    }//GEN-LAST:event_btnWebMouseExited
+
+    private void btnBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseClicked
         //Event handler for the "Reserve" button, prompting the user to confirm redirection to the reservation page.
         String eventName = event.getName();
 
@@ -374,21 +437,35 @@ public class EventPanel extends javax.swing.JPanel {
             parent.actualizarFecha(eventName);
         } else {
         }
-    }//GEN-LAST:event_btnReservationActionPerformed
+    }//GEN-LAST:event_btnBookingMouseClicked
+
+    private void btnBookingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseEntered
+        panelColor(btnBooking);
+    }//GEN-LAST:event_btnBookingMouseEntered
+
+    private void btnBookingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseExited
+        resetPanelColor(btnBooking);
+    }//GEN-LAST:event_btnBookingMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDetails;
+    private javax.swing.JPanel btnBooking;
+    private javax.swing.JPanel btnDescription;
     private javax.swing.JButton btnNextImage;
     private javax.swing.JButton btnPrevImage;
-    private javax.swing.JButton btnReservation;
-    private javax.swing.JButton btnWeb;
+    private javax.swing.JPanel btnWeb;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblRatingImage;
     private javax.swing.JLabel lblReviews;
     private javax.swing.JLabel lblSpeed;
