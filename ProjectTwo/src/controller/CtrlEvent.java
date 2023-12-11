@@ -31,7 +31,7 @@ public class CtrlEvent {
          // Retrieve a list of events from the data access object (DAO)
         List<Event> event = dao.read();
         for (Event events : event) {
-            Object[] row = {events.getId(), events.getName(), events.getDescription(), events.getDate(), events.getAddress(), events.getCity(), events.getPostal_code(),/* events.getPrice(), events.getRoom(),*/ this.place.getNamePlaces(events.getPlace_id())};
+            Object[] row = {events.getId(), events.getName(), events.getDescription(), events.getDate(), events.getAddress(), events.getCity(), events.getPostal_code(),events.getPrice(), events.getRoom(), this.place.getNamePlaces(events.getPlace_id())};
             model.addRow(row);
         }
     }

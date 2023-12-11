@@ -274,13 +274,13 @@ public class frmAdmin extends javax.swing.JFrame {
 
         tblEvents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nombre", "Descripcion", "Fecha", "Direccion", "Ciudad", "Codigo postal", "Place"
+                "Id", "Nombre", "Descripcion", "Fecha", "Direccion", "Ciudad", "Codigo postal", "Precio", "Capacidad", "Place"
             }
         ));
         tblEvents.addMouseListener(new java.awt.event.MouseAdapter() {

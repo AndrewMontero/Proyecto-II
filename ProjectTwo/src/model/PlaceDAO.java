@@ -134,13 +134,13 @@ public class PlaceDAO {
     public String getNamePlaces(int id) {
         String name = "";
         DBConnection db = new DBConnection();
-        String sql = "SELECT name FROM places WHERE id = ?";
+        String sql = "SELECT city FROM places WHERE id = ?";
         try {
             PreparedStatement ps = db.getConnection().prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
             if (resultSet.next()) {
-                name = resultSet.getString("name");
+                name = resultSet.getString("city");
             }
         } catch (SQLException e) {
             System.err.println("Error: " + e.getMessage());
